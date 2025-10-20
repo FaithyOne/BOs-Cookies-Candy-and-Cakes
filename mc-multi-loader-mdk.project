@@ -1,0 +1,16 @@
+{
+  "config_version": "1.0.0",
+  "game_version": "1.21.1",
+  "author": "Markus Bordihn",
+  "mod_name": "Cookies, Candy and Cakes",
+  "license": "MIT",
+  "description": "Add cookies, candy and cakes for Halloween and other holidays. Fun seasonal treats with optional effects and mob drops. Fully configurable for servers and singleplayer.",
+  "mod_id": "cookies_candy_and_cakes",
+  "class_name": "CookiesCandyAndCakes",
+  "class_namespace": "de.markusbordihn.cookiescandyandcakes",
+  "class_package_name": "cookiescandyandcakes",
+  "vendor_name": "markusbordihn",
+  "display_url": "https://curseforge.com/minecraft/mc-mods/cookies_candy_and_cakes",
+  "issue_tracker_url": "https://github.com/MarkusBordihn/Cookies-Candy-and-Cakes/issues",
+  "confirmed": true
+}
