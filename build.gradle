@@ -3,10 +3,18 @@ plugins {
   id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.8"
 }
 
-tasks.register('runAllGameTests') {
+tasks.register('allGameTests') {
   group = 'verification'
-  description = 'Runs both Fabric and Forge game tests.'
-  dependsOn ':Fabric:runGameTest', ':Forge:runGameTestServer', ':NeoForge:runGameTestServer'
+  description = 'Runs Fabric, Forge and NeoForge game tests.'
+  doLast {
+    println "All game tests completed successfully!"
+  }
+}
+
+gradle.projectsEvaluated {
+  tasks.named('allGameTests').configure {
+    dependsOn ':Fabric:runGameTest', ':Forge:runGameTestServer', ':NeoForge:runGameTestServer'
+  }
 }
 
 subprojects {

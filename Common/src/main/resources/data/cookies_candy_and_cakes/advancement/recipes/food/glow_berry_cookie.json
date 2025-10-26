@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glow_berries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:glow_berries"
+          }
+        ]
+      }
+    },
+    "has_wheat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wheat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "cookies_candy_and_cakes:glow_berry_cookie"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_glow_berries",
+      "has_wheat",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cookies_candy_and_cakes:glow_berry_cookie"
+    ]
+  },
+  "sends_telemetry_event": false
+}

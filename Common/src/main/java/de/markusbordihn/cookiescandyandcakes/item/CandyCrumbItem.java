@@ -1,0 +1,90 @@
+/*
+ * Copyright 2025 Markus Bordihn
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+package de.markusbordihn.cookiescandyandcakes.item;
+
+import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import java.util.List;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class CandyCrumbItem extends BaseSpookyCookie implements IdentifiableCookie {
+
+  private final CookieType cookieType;
+
+  public CandyCrumbItem(CookieType cookieType) {
+    super(cookieType);
+    this.cookieType = cookieType;
+  }
+
+  @Override
+  public CookieType getCookieType() {
+    return cookieType;
+  }
+
+  @Override
+  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+    onConsume(livingEntity);
+    
+    if (!level.isClientSide) {
+      spawnParticles(level, livingEntity);
+
+      if (level.random.nextBoolean()) {
+        LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
+        if (lightning != null) {
+          lightning.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
+          lightning.setVisualOnly(true);
+          level.addFreshEntity(lightning);
+        }
+      } else {
+        level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(),
+            SoundEvents.ENDER_DRAGON_AMBIENT, SoundSource.PLAYERS, 4.0f,
+            0.7f + level.random.nextFloat() * 0.3f);
+
+        if (livingEntity instanceof Player player) {
+          player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0, false, false, false));
+        }
+      }
+    }
+
+    return super.finishUsingItem(stack, level, livingEntity);
+  }
+
+  @Override
+  public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
+      TooltipFlag tooltipFlag) {
+    tooltipComponents.add(getIdentifiedTooltip());
+  }
+
+  @Override
+  public Component getName(ItemStack stack) {
+    return getUnidentifiedName();
+  }
+}
+

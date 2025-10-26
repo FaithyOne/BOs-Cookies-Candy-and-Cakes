@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "HBH",
+    " M "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "H": {
+      "item": "minecraft:wheat"
+    },
+    "B": {
+      "item": "minecraft:pumpkin"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:pumpkin_cookie",
+    "count": 2
+  }
+}
