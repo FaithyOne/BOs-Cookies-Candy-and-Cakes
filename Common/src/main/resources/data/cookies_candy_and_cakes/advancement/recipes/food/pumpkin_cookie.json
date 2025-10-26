@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pumpkin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:pumpkin"
+          }
+        ]
+      }
+    },
+    "has_wheat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wheat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "cookies_candy_and_cakes:pumpkin_cookie"
+      }
+    }
+  },
+  "requirements": [["has_pumpkin", "has_wheat", "has_the_recipe"]],
+  "rewards": {
+    "recipes": ["cookies_candy_and_cakes:pumpkin_cookie"]
+  },
+  "sends_telemetry_event": false
+}
