@@ -45,14 +45,19 @@ public abstract class BaseSpookyCookie extends Item {
   };
 
   protected BaseSpookyCookie(CookieType cookieType) {
-    super(new Item.Properties().food(buildFoodProperties(cookieType)).stacksTo(CookieProperties.STACK_SIZE));
+    super(
+        new Item.Properties()
+            .food(buildFoodProperties(cookieType))
+            .stacksTo(CookieProperties.STACK_SIZE));
   }
 
   private static FoodProperties buildFoodProperties(CookieType cookieType) {
-    FoodProperties.Builder builder = new FoodProperties.Builder().nutrition(CookieProperties.NUTRITION).fast();
+    FoodProperties.Builder builder =
+        new FoodProperties.Builder().nutrition(CookieProperties.NUTRITION).fast();
     if (cookieType.hasEffect()) {
       builder.effect(
-          new MobEffectInstance(cookieType.getEffect(), CookieProperties.EFFECT_DURATION, cookieType.getAmplifier()),
+          new MobEffectInstance(
+              cookieType.getEffect(), CookieProperties.EFFECT_DURATION, cookieType.getAmplifier()),
           CookieProperties.EFFECT_CHANCE);
     }
     return builder.build();
@@ -65,22 +70,33 @@ public abstract class BaseSpookyCookie extends Item {
       double angle = (2 * Math.PI * i) / 15;
       double offsetX = Math.cos(angle) * 0.5;
       double offsetZ = Math.sin(angle) * 0.5;
-      level.addParticle(particle, livingEntity.getX() + offsetX, livingEntity.getY() + 1.0,
-          livingEntity.getZ() + offsetZ, 0.0, 0.1, 0.0);
+      level.addParticle(
+          particle,
+          livingEntity.getX() + offsetX,
+          livingEntity.getY() + 1.0,
+          livingEntity.getZ() + offsetZ,
+          0.0,
+          0.1,
+          0.0);
     }
 
     for (int i = 0; i < 10; i++) {
-      level.addParticle(particle,
+      level.addParticle(
+          particle,
           livingEntity.getX() + (level.random.nextDouble() - 0.5) * 1.5,
           livingEntity.getY() + level.random.nextDouble() * 2.0,
           livingEntity.getZ() + (level.random.nextDouble() - 0.5) * 1.5,
-          (level.random.nextDouble() - 0.5) * 0.1, level.random.nextDouble() * 0.1,
+          (level.random.nextDouble() - 0.5) * 0.1,
+          level.random.nextDouble() * 0.1,
           (level.random.nextDouble() - 0.5) * 0.1);
     }
   }
 
   @Override
-  public void appendHoverText(ItemStack itemStack, TooltipContext context, List<Component> tooltipComponents,
+  public void appendHoverText(
+      ItemStack itemStack,
+      TooltipContext context,
+      List<Component> tooltipComponents,
       TooltipFlag tooltipFlag) {
     tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc"));
   }

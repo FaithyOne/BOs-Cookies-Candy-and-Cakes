@@ -51,7 +51,7 @@ public class CursedCandyCrumbItem extends BaseSpookyCookie implements Identifiab
   @Override
   public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
     onConsume(livingEntity);
-    
+
     if (!level.isClientSide) {
       spawnParticles(level, livingEntity);
 
@@ -63,8 +63,14 @@ public class CursedCandyCrumbItem extends BaseSpookyCookie implements Identifiab
           level.addFreshEntity(lightning);
         }
       } else {
-        level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(),
-            SoundEvents.ENDER_DRAGON_AMBIENT, SoundSource.PLAYERS, 4.0f,
+        level.playSound(
+            null,
+            livingEntity.getX(),
+            livingEntity.getY(),
+            livingEntity.getZ(),
+            SoundEvents.ENDER_DRAGON_AMBIENT,
+            SoundSource.PLAYERS,
+            4.0f,
             0.7f + level.random.nextFloat() * 0.3f);
 
         if (livingEntity instanceof Player player) {
@@ -77,7 +83,10 @@ public class CursedCandyCrumbItem extends BaseSpookyCookie implements Identifiab
   }
 
   @Override
-  public void appendHoverText(ItemStack itemStack, TooltipContext context, List<Component> tooltipComponents,
+  public void appendHoverText(
+      ItemStack itemStack,
+      TooltipContext context,
+      List<Component> tooltipComponents,
       TooltipFlag tooltipFlag) {
     tooltipComponents.add(getIdentifiedTooltip());
   }

@@ -27,8 +27,6 @@ import net.minecraft.world.item.CreativeModeTab.Row;
 import net.minecraft.world.item.ItemStack;
 
 public final class ModCreativeTabs {
-  private ModCreativeTabs() {}
-
   public static final CreativeModeTab COOKIES_TAB =
       CreativeModeTab.builder(Row.TOP, 0)
           .title(Component.translatable("itemGroup." + Constants.MOD_ID + ".cookies"))
@@ -43,7 +41,6 @@ public final class ModCreativeTabs {
                 output.accept(ModItems.SWEET_BERRY_COOKIE);
               })
           .build();
-
   public static final CreativeModeTab SPOOKY_CANDY_CRUMB_TAB =
       CreativeModeTab.builder(Row.TOP, 1)
           .title(Component.translatable("itemGroup." + Constants.MOD_ID + ".spooky_candy_crumb"))
@@ -64,4 +61,6 @@ public final class ModCreativeTabs {
                 output.accept(ModItems.SWEET_BERRY_COOKIE_CURSED);
               })
           .build();
+
+  private ModCreativeTabs() {}
 }

@@ -21,88 +21,95 @@ package de.markusbordihn.cookiescandyandcakes.registry;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegisterEvent;
 
-public class ForgeRegistryManager {
-  private ForgeRegistryManager() {}
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ItemRegistryManager {
 
+  private ItemRegistryManager() {}
+
+  @SubscribeEvent
   public static void register(RegisterEvent event) {
     if (event.getRegistryKey().equals(Registries.ITEM)) {
       event.register(
           Registries.ITEM,
           helper -> {
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.APPLE_COOKIE.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.APPLE_COOKIE.getId()),
                 ModItems.APPLE_COOKIE);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.APPLE_COOKIE_MYSTIC.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.APPLE_COOKIE_MYSTIC.getId()),
                 ModItems.APPLE_COOKIE_MYSTIC);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.APPLE_COOKIE_CURSED.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.APPLE_COOKIE_CURSED.getId()),
                 ModItems.APPLE_COOKIE_CURSED);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.CARROT_COOKIE.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.CARROT_COOKIE.getId()),
                 ModItems.CARROT_COOKIE);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.CARROT_COOKIE_MYSTIC.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.CARROT_COOKIE_MYSTIC.getId()),
                 ModItems.CARROT_COOKIE_MYSTIC);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.CARROT_COOKIE_CURSED.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.CARROT_COOKIE_CURSED.getId()),
                 ModItems.CARROT_COOKIE_CURSED);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.GLOW_BERRY_COOKIE.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.GLOW_BERRY_COOKIE.getId()),
                 ModItems.GLOW_BERRY_COOKIE);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.GLOW_BERRY_COOKIE_MYSTIC.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.GLOW_BERRY_COOKIE_MYSTIC.getId()),
                 ModItems.GLOW_BERRY_COOKIE_MYSTIC);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.GLOW_BERRY_COOKIE_CURSED.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.GLOW_BERRY_COOKIE_CURSED.getId()),
                 ModItems.GLOW_BERRY_COOKIE_CURSED);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.MELON_COOKIE.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.MELON_COOKIE.getId()),
                 ModItems.MELON_COOKIE);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.MELON_COOKIE_MYSTIC.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.MELON_COOKIE_MYSTIC.getId()),
                 ModItems.MELON_COOKIE_MYSTIC);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.MELON_COOKIE_CURSED.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.MELON_COOKIE_CURSED.getId()),
                 ModItems.MELON_COOKIE_CURSED);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.PUMPKIN_COOKIE.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.PUMPKIN_COOKIE.getId()),
                 ModItems.PUMPKIN_COOKIE);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.PUMPKIN_COOKIE_MYSTIC.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.PUMPKIN_COOKIE_MYSTIC.getId()),
                 ModItems.PUMPKIN_COOKIE_MYSTIC);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.PUMPKIN_COOKIE_CURSED.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.PUMPKIN_COOKIE_CURSED.getId()),
                 ModItems.PUMPKIN_COOKIE_CURSED);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.SWEET_BERRY_COOKIE.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.SWEET_BERRY_COOKIE.getId()),
                 ModItems.SWEET_BERRY_COOKIE);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.SWEET_BERRY_COOKIE_MYSTIC.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.SWEET_BERRY_COOKIE_MYSTIC.getId()),
                 ModItems.SWEET_BERRY_COOKIE_MYSTIC);
             helper.register(
-                ResourceLocation.tryParse(Constants.MOD_ID + ":" + CookieType.SWEET_BERRY_COOKIE_CURSED.getId()),
+                ResourceLocation.fromNamespaceAndPath(
+                    Constants.MOD_ID, CookieType.SWEET_BERRY_COOKIE_CURSED.getId()),
                 ModItems.SWEET_BERRY_COOKIE_CURSED);
-          });
-    }
-
-    if (event.getRegistryKey().equals(Registries.CREATIVE_MODE_TAB)) {
-      event.register(
-          Registries.CREATIVE_MODE_TAB,
-          helper -> {
-            helper.register(
-                ResourceLocation.tryParse(
-                    Constants.MOD_ID + ":" + ModCreativeTabType.COOKIES.getId()),
-                ModCreativeTabs.COOKIES_TAB);
-            helper.register(
-                ResourceLocation.tryParse(
-                    Constants.MOD_ID + ":" + ModCreativeTabType.SPOOKY_CANDY_CRUMB.getId()),
-                ModCreativeTabs.SPOOKY_CANDY_CRUMB_TAB);
           });
     }
   }

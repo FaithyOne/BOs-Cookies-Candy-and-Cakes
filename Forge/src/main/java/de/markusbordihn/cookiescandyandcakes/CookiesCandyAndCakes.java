@@ -19,13 +19,7 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
-import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
-import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,92 +31,5 @@ public class CookiesCandyAndCakes {
   @SuppressWarnings("java:S1118")
   public CookiesCandyAndCakes() {
     log.info("Initializing {} (Forge) ...", Constants.MOD_NAME);
-  }
-
-  @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-  public static class RegistryEvents {
-
-    private RegistryEvents() {}
-
-    @SubscribeEvent
-    public static void onRegister(final RegisterEvent event) {
-      if (event.getRegistryKey().equals(Registries.ITEM)) {
-        event.register(
-            Registries.ITEM,
-            helper -> {
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "apple_cookie"),
-                  ModItems.APPLE_COOKIE);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "apple_cookie_mystic"),
-                  ModItems.APPLE_COOKIE_MYSTIC);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "apple_cookie_cursed"),
-                  ModItems.APPLE_COOKIE_CURSED);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "carrot_cookie"),
-                  ModItems.CARROT_COOKIE);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "carrot_cookie_mystic"),
-                  ModItems.CARROT_COOKIE_MYSTIC);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "carrot_cookie_cursed"),
-                  ModItems.CARROT_COOKIE_CURSED);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "glow_berry_cookie"),
-                  ModItems.GLOW_BERRY_COOKIE);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(
-                      Constants.MOD_ID, "glow_berry_cookie_mystic"),
-                  ModItems.GLOW_BERRY_COOKIE_MYSTIC);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(
-                      Constants.MOD_ID, "glow_berry_cookie_cursed"),
-                  ModItems.GLOW_BERRY_COOKIE_CURSED);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "melon_cookie"),
-                  ModItems.MELON_COOKIE);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "melon_cookie_mystic"),
-                  ModItems.MELON_COOKIE_MYSTIC);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "melon_cookie_cursed"),
-                  ModItems.MELON_COOKIE_CURSED);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "pumpkin_cookie"),
-                  ModItems.PUMPKIN_COOKIE);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "pumpkin_cookie_mystic"),
-                  ModItems.PUMPKIN_COOKIE_MYSTIC);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "pumpkin_cookie_cursed"),
-                  ModItems.PUMPKIN_COOKIE_CURSED);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "sweet_berry_cookie"),
-                  ModItems.SWEET_BERRY_COOKIE);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(
-                      Constants.MOD_ID, "sweet_berry_cookie_mystic"),
-                  ModItems.SWEET_BERRY_COOKIE_MYSTIC);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(
-                      Constants.MOD_ID, "sweet_berry_cookie_cursed"),
-                  ModItems.SWEET_BERRY_COOKIE_CURSED);
-            });
-      }
-
-      if (event.getRegistryKey().equals(Registries.CREATIVE_MODE_TAB)) {
-        event.register(
-            Registries.CREATIVE_MODE_TAB,
-            helper -> {
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cookies"),
-                  ModCreativeTabs.COOKIES_TAB);
-              helper.register(
-                  ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "spooky_candy_crumb"),
-                  ModCreativeTabs.SPOOKY_CANDY_CRUMB_TAB);
-            });
-      }
-    }
   }
 }

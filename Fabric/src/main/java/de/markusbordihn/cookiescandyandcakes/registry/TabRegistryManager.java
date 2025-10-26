@@ -17,13 +17,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.data.cookies;
+package de.markusbordihn.cookiescandyandcakes.registry;
 
-public final class CookieProperties {
-  public static final int NUTRITION = 2;
-  public static final int STACK_SIZE = 64;
-  public static final int EFFECT_DURATION = 600;
-  public static final float EFFECT_CHANCE = 1.0f;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 
-  private CookieProperties() {}
+public class TabRegistryManager {
+
+  private TabRegistryManager() {}
+
+  public static void register() {
+    Registry.register(
+        BuiltInRegistries.CREATIVE_MODE_TAB,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModCreativeTabType.COOKIES.getId()),
+        ModCreativeTabs.COOKIES_TAB);
+    Registry.register(
+        BuiltInRegistries.CREATIVE_MODE_TAB,
+        ResourceLocation.fromNamespaceAndPath(
+            Constants.MOD_ID, ModCreativeTabType.SPOOKY_CANDY_CRUMB.getId()),
+        ModCreativeTabs.SPOOKY_CANDY_CRUMB_TAB);
+  }
 }

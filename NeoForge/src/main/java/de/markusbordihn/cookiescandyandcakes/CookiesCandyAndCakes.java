@@ -19,7 +19,8 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
-import de.markusbordihn.cookiescandyandcakes.registry.NeoForgeRegistryManager;
+import de.markusbordihn.cookiescandyandcakes.registry.ItemRegistryManager;
+import de.markusbordihn.cookiescandyandcakes.registry.TabRegistryManager;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLPaths;
@@ -40,7 +41,10 @@ public class CookiesCandyAndCakes {
     Constants.GAME_DIR = FMLPaths.GAMEDIR.get();
     Constants.CONFIG_DIR = FMLPaths.CONFIGDIR.get();
 
-    log.info("{} Registry Manager ...", Constants.LOG_REGISTER_PREFIX);
-    NeoForgeRegistryManager.register(modEventBus);
+    log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
+    ItemRegistryManager.register(modEventBus);
+
+    log.info("{} Creative Tabs ...", Constants.LOG_REGISTER_PREFIX);
+    TabRegistryManager.register(modEventBus);
   }
 }

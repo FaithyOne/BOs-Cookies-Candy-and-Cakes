@@ -26,8 +26,6 @@ import de.markusbordihn.cookiescandyandcakes.item.CursedCandyCrumbItem;
 import net.minecraft.world.item.Item;
 
 public class ModItems {
-  private ModItems() {}
-
   public static final Item APPLE_COOKIE = createCookieItem(CookieType.APPLE_COOKIE);
   public static final Item APPLE_COOKIE_MYSTIC = createCookieItem(CookieType.APPLE_COOKIE_MYSTIC);
   public static final Item APPLE_COOKIE_CURSED = createCookieItem(CookieType.APPLE_COOKIE_CURSED);
@@ -35,17 +33,25 @@ public class ModItems {
   public static final Item CARROT_COOKIE_MYSTIC = createCookieItem(CookieType.CARROT_COOKIE_MYSTIC);
   public static final Item CARROT_COOKIE_CURSED = createCookieItem(CookieType.CARROT_COOKIE_CURSED);
   public static final Item GLOW_BERRY_COOKIE = createCookieItem(CookieType.GLOW_BERRY_COOKIE);
-  public static final Item GLOW_BERRY_COOKIE_MYSTIC = createCookieItem(CookieType.GLOW_BERRY_COOKIE_MYSTIC);
-  public static final Item GLOW_BERRY_COOKIE_CURSED = createCookieItem(CookieType.GLOW_BERRY_COOKIE_CURSED);
+  public static final Item GLOW_BERRY_COOKIE_MYSTIC =
+      createCookieItem(CookieType.GLOW_BERRY_COOKIE_MYSTIC);
+  public static final Item GLOW_BERRY_COOKIE_CURSED =
+      createCookieItem(CookieType.GLOW_BERRY_COOKIE_CURSED);
   public static final Item MELON_COOKIE = createCookieItem(CookieType.MELON_COOKIE);
   public static final Item MELON_COOKIE_MYSTIC = createCookieItem(CookieType.MELON_COOKIE_MYSTIC);
   public static final Item MELON_COOKIE_CURSED = createCookieItem(CookieType.MELON_COOKIE_CURSED);
   public static final Item PUMPKIN_COOKIE = createCookieItem(CookieType.PUMPKIN_COOKIE);
-  public static final Item PUMPKIN_COOKIE_MYSTIC = createCookieItem(CookieType.PUMPKIN_COOKIE_MYSTIC);
-  public static final Item PUMPKIN_COOKIE_CURSED = createCookieItem(CookieType.PUMPKIN_COOKIE_CURSED);
+  public static final Item PUMPKIN_COOKIE_MYSTIC =
+      createCookieItem(CookieType.PUMPKIN_COOKIE_MYSTIC);
+  public static final Item PUMPKIN_COOKIE_CURSED =
+      createCookieItem(CookieType.PUMPKIN_COOKIE_CURSED);
   public static final Item SWEET_BERRY_COOKIE = createCookieItem(CookieType.SWEET_BERRY_COOKIE);
-  public static final Item SWEET_BERRY_COOKIE_MYSTIC = createCookieItem(CookieType.SWEET_BERRY_COOKIE_MYSTIC);
-  public static final Item SWEET_BERRY_COOKIE_CURSED = createCookieItem(CookieType.SWEET_BERRY_COOKIE_CURSED);
+  public static final Item SWEET_BERRY_COOKIE_MYSTIC =
+      createCookieItem(CookieType.SWEET_BERRY_COOKIE_MYSTIC);
+  public static final Item SWEET_BERRY_COOKIE_CURSED =
+      createCookieItem(CookieType.SWEET_BERRY_COOKIE_CURSED);
+
+  private ModItems() {}
 
   private static Item createCookieItem(CookieType cookieType) {
     return switch (cookieType.getVariant()) {

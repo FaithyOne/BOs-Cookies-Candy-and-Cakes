@@ -1,8 +1,8 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
-"java.compile.nullAnalysis.mode": "disabled",
-"cSpell.words": [
+  "java.compile.nullAnalysis.mode": "disabled",
+  "cSpell.words": [
     "cookiescandyandcakes",
     "markusbordihn"
-]
+  ]
 }

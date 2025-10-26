@@ -46,9 +46,7 @@ public class BaseCookie extends Item {
     if (cookieType.hasEffect()) {
       builder.effect(
           new MobEffectInstance(
-              cookieType.getEffect(),
-              CookieProperties.EFFECT_DURATION,
-              cookieType.getAmplifier()),
+              cookieType.getEffect(), CookieProperties.EFFECT_DURATION, cookieType.getAmplifier()),
           CookieProperties.EFFECT_CHANCE);
     }
     return builder.build();

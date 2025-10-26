@@ -21,20 +21,15 @@ package de.markusbordihn.cookiescandyandcakes.registry;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class NeoForgeRegistryManager {
-  private NeoForgeRegistryManager() {}
+public class ItemRegistryManager {
 
   private static final DeferredRegister<Item> ITEMS =
       DeferredRegister.create(Registries.ITEM, Constants.MOD_ID);
-  private static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-      DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
 
   static {
     ITEMS.register(CookieType.APPLE_COOKIE.getId(), () -> ModItems.APPLE_COOKIE);
@@ -44,8 +39,10 @@ public class NeoForgeRegistryManager {
     ITEMS.register(CookieType.CARROT_COOKIE_MYSTIC.getId(), () -> ModItems.CARROT_COOKIE_MYSTIC);
     ITEMS.register(CookieType.CARROT_COOKIE_CURSED.getId(), () -> ModItems.CARROT_COOKIE_CURSED);
     ITEMS.register(CookieType.GLOW_BERRY_COOKIE.getId(), () -> ModItems.GLOW_BERRY_COOKIE);
-    ITEMS.register(CookieType.GLOW_BERRY_COOKIE_MYSTIC.getId(), () -> ModItems.GLOW_BERRY_COOKIE_MYSTIC);
-    ITEMS.register(CookieType.GLOW_BERRY_COOKIE_CURSED.getId(), () -> ModItems.GLOW_BERRY_COOKIE_CURSED);
+    ITEMS.register(
+        CookieType.GLOW_BERRY_COOKIE_MYSTIC.getId(), () -> ModItems.GLOW_BERRY_COOKIE_MYSTIC);
+    ITEMS.register(
+        CookieType.GLOW_BERRY_COOKIE_CURSED.getId(), () -> ModItems.GLOW_BERRY_COOKIE_CURSED);
     ITEMS.register(CookieType.MELON_COOKIE.getId(), () -> ModItems.MELON_COOKIE);
     ITEMS.register(CookieType.MELON_COOKIE_MYSTIC.getId(), () -> ModItems.MELON_COOKIE_MYSTIC);
     ITEMS.register(CookieType.MELON_COOKIE_CURSED.getId(), () -> ModItems.MELON_COOKIE_CURSED);
@@ -53,18 +50,15 @@ public class NeoForgeRegistryManager {
     ITEMS.register(CookieType.PUMPKIN_COOKIE_MYSTIC.getId(), () -> ModItems.PUMPKIN_COOKIE_MYSTIC);
     ITEMS.register(CookieType.PUMPKIN_COOKIE_CURSED.getId(), () -> ModItems.PUMPKIN_COOKIE_CURSED);
     ITEMS.register(CookieType.SWEET_BERRY_COOKIE.getId(), () -> ModItems.SWEET_BERRY_COOKIE);
-    ITEMS.register(CookieType.SWEET_BERRY_COOKIE_MYSTIC.getId(), () -> ModItems.SWEET_BERRY_COOKIE_MYSTIC);
-    ITEMS.register(CookieType.SWEET_BERRY_COOKIE_CURSED.getId(), () -> ModItems.SWEET_BERRY_COOKIE_CURSED);
-
-    CREATIVE_MODE_TABS.register(
-        ModCreativeTabType.COOKIES.getId(), () -> ModCreativeTabs.COOKIES_TAB);
-    CREATIVE_MODE_TABS.register(
-        ModCreativeTabType.SPOOKY_CANDY_CRUMB.getId(),
-        () -> ModCreativeTabs.SPOOKY_CANDY_CRUMB_TAB);
+    ITEMS.register(
+        CookieType.SWEET_BERRY_COOKIE_MYSTIC.getId(), () -> ModItems.SWEET_BERRY_COOKIE_MYSTIC);
+    ITEMS.register(
+        CookieType.SWEET_BERRY_COOKIE_CURSED.getId(), () -> ModItems.SWEET_BERRY_COOKIE_CURSED);
   }
+
+  private ItemRegistryManager() {}
 
   public static void register(IEventBus modEventBus) {
     ITEMS.register(modEventBus);
-    CREATIVE_MODE_TABS.register(modEventBus);
   }
 }
