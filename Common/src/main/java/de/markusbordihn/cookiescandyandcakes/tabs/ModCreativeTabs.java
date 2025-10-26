@@ -27,6 +27,9 @@ import net.minecraft.world.item.CreativeModeTab.Row;
 import net.minecraft.world.item.ItemStack;
 
 public final class ModCreativeTabs {
+  public static final String COOKIES_TAB_ID = "cookies";
+  public static final String SPECIAL_COOKIES_TAB_ID = "special_cookies";
+
   public static final CreativeModeTab COOKIES_TAB =
       CreativeModeTab.builder(Row.TOP, 0)
           .title(Component.translatable("itemGroup." + Constants.MOD_ID + ".cookies"))
@@ -39,11 +42,12 @@ public final class ModCreativeTabs {
                 output.accept(ModItems.MELON_COOKIE);
                 output.accept(ModItems.PUMPKIN_COOKIE);
                 output.accept(ModItems.SWEET_BERRY_COOKIE);
+                output.accept(ModItems.SLIME_SUGAR_COOKIE);
               })
           .build();
-  public static final CreativeModeTab SPOOKY_CANDY_CRUMB_TAB =
+  public static final CreativeModeTab SPECIAL_COOKIES_TAB =
       CreativeModeTab.builder(Row.TOP, 1)
-          .title(Component.translatable("itemGroup." + Constants.MOD_ID + ".spooky_candy_crumb"))
+          .title(Component.translatable("itemGroup." + Constants.MOD_ID + ".special_cookies"))
           .icon(() -> new ItemStack(ModItems.APPLE_COOKIE_MYSTIC))
           .displayItems(
               (parameters, output) -> {
@@ -59,6 +63,8 @@ public final class ModCreativeTabs {
                 output.accept(ModItems.PUMPKIN_COOKIE_CURSED);
                 output.accept(ModItems.SWEET_BERRY_COOKIE_MYSTIC);
                 output.accept(ModItems.SWEET_BERRY_COOKIE_CURSED);
+                output.accept(ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
+                output.accept(ModItems.SLIME_SUGAR_COOKIE_CURSED);
               })
           .build();
 

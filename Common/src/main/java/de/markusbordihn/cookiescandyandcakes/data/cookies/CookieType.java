@@ -19,6 +19,7 @@
 
 package de.markusbordihn.cookiescandyandcakes.data.cookies;
 
+import de.markusbordihn.cookiescandyandcakes.config.CookieConfig;
 import java.util.Locale;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
@@ -42,7 +43,10 @@ public enum CookieType {
   PUMPKIN_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.WEAKNESS, 1),
   SWEET_BERRY_COOKIE(CookieVariant.NORMAL, null, 0),
   SWEET_BERRY_COOKIE_MYSTIC(CookieVariant.MYSTIC, MobEffects.JUMP, 2),
-  SWEET_BERRY_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 1);
+  SWEET_BERRY_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 1),
+  SLIME_SUGAR_COOKIE(CookieVariant.NORMAL, null, 0),
+  SLIME_SUGAR_COOKIE_MYSTIC(CookieVariant.MYSTIC, MobEffects.JUMP, 1),
+  SLIME_SUGAR_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 0);
 
   private final CookieVariant variant;
   private final Holder<MobEffect> effect;
@@ -76,9 +80,47 @@ public enum CookieType {
     return effect != null;
   }
 
+  public int getNutrition() {
+    return CookieConfig.getNutrition(this);
+  }
+
+  public int getEffectDuration() {
+    return CookieConfig.getEffectDuration(this);
+  }
+
+  public float getEffectChance() {
+    return CookieConfig.getEffectChance(this);
+  }
+
+  public SpecialCookieEffect getSpecialCookieEffect() {
+    return CookieConfig.getSpecialCookieEffect(this);
+  }
+
   public enum CookieVariant {
     NORMAL,
     MYSTIC,
     CURSED
+  }
+
+  public record SpecialCookieEffect(
+      float lightningChance,
+      boolean enableSounds,
+      float soundVolume,
+      int darknessEffectDuration,
+      String mysticSoundType,
+      String cursedSoundType) {
+
+    public static final SpecialCookieEffect NONE =
+        new SpecialCookieEffect(0.0f, false, 0.0f, 0, "none", "none");
+
+    public static final SpecialCookieEffect DEFAULT_MYSTIC =
+        new SpecialCookieEffect(0.5f, true, 1.0f, 0, "levelup", "none");
+
+    public static final SpecialCookieEffect DEFAULT_CURSED =
+        new SpecialCookieEffect(0.5f, true, 4.0f, 60, "none", "ender_dragon");
+
+    public boolean hasEffects() {
+      return lightningChance > 0.0f || enableSounds;
+    }
   }
 }

@@ -19,9 +19,12 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
+import de.markusbordihn.cookiescandyandcakes.config.Config;
 import de.markusbordihn.cookiescandyandcakes.event.FabricMonsterLootHandler;
+import de.markusbordihn.cookiescandyandcakes.event.FabricPlayerTickHandler;
 import de.markusbordihn.cookiescandyandcakes.registry.ItemRegistryManager;
 import de.markusbordihn.cookiescandyandcakes.registry.TabRegistryManager;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +42,9 @@ public class CookiesCandyAndCakes implements ModInitializer {
     Constants.GAME_DIR = FabricLoader.getInstance().getGameDir();
     Constants.CONFIG_DIR = FabricLoader.getInstance().getConfigDir();
 
+    log.info("{} Configuration ...", Constants.LOG_REGISTER_PREFIX);
+    Config.register(FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER);
+
     log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
     ItemRegistryManager.register();
 
@@ -47,5 +53,6 @@ public class CookiesCandyAndCakes implements ModInitializer {
 
     log.info("{} Events ...", Constants.LOG_REGISTER_PREFIX);
     FabricMonsterLootHandler.register();
+    FabricPlayerTickHandler.register();
   }
 }

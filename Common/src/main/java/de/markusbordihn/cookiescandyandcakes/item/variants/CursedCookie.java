@@ -17,12 +17,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item;
+package de.markusbordihn.cookiescandyandcakes.item.variants;
 
+import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieSoundType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.item.base.BaseSpecialCookie;
+import de.markusbordihn.cookiescandyandcakes.item.base.IdentifiableCookie;
 import java.util.List;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -34,13 +37,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-public class CandyCrumbItem extends BaseSpookyCookie implements IdentifiableCookie {
+public class CursedCookie extends BaseSpecialCookie implements IdentifiableCookie {
 
-  private final CookieType cookieType;
-
-  public CandyCrumbItem(CookieType cookieType) {
+  public CursedCookie(final CookieType cookieType) {
     super(cookieType);
-    this.cookieType = cookieType;
   }
 
   @Override
@@ -55,27 +55,40 @@ public class CandyCrumbItem extends BaseSpookyCookie implements IdentifiableCook
     if (!level.isClientSide) {
       spawnParticles(level, livingEntity);
 
-      if (level.random.nextBoolean()) {
+      CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
+
+      if (!effect.hasEffects()) {
+        return super.finishUsingItem(stack, level, livingEntity);
+      }
+
+      if (level.random.nextFloat() < effect.lightningChance()) {
         LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
         if (lightning != null) {
           lightning.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
           lightning.setVisualOnly(true);
           level.addFreshEntity(lightning);
         }
-      } else {
-        level.playSound(
-            null,
-            livingEntity.getX(),
-            livingEntity.getY(),
-            livingEntity.getZ(),
-            SoundEvents.ENDER_DRAGON_AMBIENT,
-            SoundSource.PLAYERS,
-            4.0f,
-            0.7f + level.random.nextFloat() * 0.3f);
+      }
 
-        if (livingEntity instanceof Player player) {
-          player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0, false, false, false));
+      if (effect.enableSounds()) {
+        SoundEvent sound = CookieSoundType.getCursedSound(effect.cursedSoundType());
+        if (sound != null) {
+          level.playSound(
+              null,
+              livingEntity.getX(),
+              livingEntity.getY(),
+              livingEntity.getZ(),
+              sound,
+              SoundSource.PLAYERS,
+              effect.soundVolume(),
+              CookieSoundType.getPitch(effect.cursedSoundType(), level.random.nextFloat()));
         }
+      }
+
+      if (livingEntity instanceof Player player && effect.darknessEffectDuration() > 0) {
+        player.addEffect(
+            new MobEffectInstance(
+                MobEffects.DARKNESS, effect.darknessEffectDuration(), 0, false, false, false));
       }
     }
 
@@ -84,7 +97,7 @@ public class CandyCrumbItem extends BaseSpookyCookie implements IdentifiableCook
 
   @Override
   public void appendHoverText(
-      ItemStack stack,
+      ItemStack itemStack,
       TooltipContext context,
       List<Component> tooltipComponents,
       TooltipFlag tooltipFlag) {

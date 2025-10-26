@@ -20,9 +20,9 @@
 package de.markusbordihn.cookiescandyandcakes.registry;
 
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
-import de.markusbordihn.cookiescandyandcakes.item.CandyCrumbItem;
-import de.markusbordihn.cookiescandyandcakes.item.CursedCandyCrumbItem;
+import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCookie;
+import de.markusbordihn.cookiescandyandcakes.item.variants.MysticCookie;
+import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCookie;
 import net.minecraft.world.item.Item;
 
 public class ModItems {
@@ -50,14 +50,19 @@ public class ModItems {
       createCookieItem(CookieType.SWEET_BERRY_COOKIE_MYSTIC);
   public static final Item SWEET_BERRY_COOKIE_CURSED =
       createCookieItem(CookieType.SWEET_BERRY_COOKIE_CURSED);
+  public static final Item SLIME_SUGAR_COOKIE = createCookieItem(CookieType.SLIME_SUGAR_COOKIE);
+  public static final Item SLIME_SUGAR_COOKIE_MYSTIC =
+      createCookieItem(CookieType.SLIME_SUGAR_COOKIE_MYSTIC);
+  public static final Item SLIME_SUGAR_COOKIE_CURSED =
+      createCookieItem(CookieType.SLIME_SUGAR_COOKIE_CURSED);
 
   private ModItems() {}
 
   private static Item createCookieItem(CookieType cookieType) {
     return switch (cookieType.getVariant()) {
-      case NORMAL -> new BaseCookie(cookieType);
-      case MYSTIC -> new CandyCrumbItem(cookieType);
-      case CURSED -> new CursedCandyCrumbItem(cookieType);
+      case NORMAL -> new NormalCookie(cookieType);
+      case MYSTIC -> new MysticCookie(cookieType);
+      case CURSED -> new CursedCookie(cookieType);
     };
   }
 }

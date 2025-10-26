@@ -19,7 +19,11 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
+import de.markusbordihn.cookiescandyandcakes.config.Config;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,5 +35,12 @@ public class CookiesCandyAndCakes {
   @SuppressWarnings("java:S1118")
   public CookiesCandyAndCakes() {
     log.info("Initializing {} (Forge) ...", Constants.MOD_NAME);
+
+    log.info("{} Constants ...", Constants.LOG_REGISTER_PREFIX);
+    Constants.GAME_DIR = FMLPaths.GAMEDIR.get();
+    Constants.CONFIG_DIR = FMLPaths.CONFIGDIR.get();
+
+    log.info("{} Configuration ...", Constants.LOG_REGISTER_PREFIX);
+    Config.register(FMLEnvironment.dist == Dist.DEDICATED_SERVER);
   }
 }

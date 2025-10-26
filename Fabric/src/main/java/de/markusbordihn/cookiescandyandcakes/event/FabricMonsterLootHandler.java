@@ -28,8 +28,8 @@ public class FabricMonsterLootHandler {
   public static void register() {
     ServerLivingEntityEvents.AFTER_DEATH.register(
         (entity, damageSource) -> {
-          if (MonsterLootHandler.shouldDropCandyCrumbs(entity)) {
-            entity.level().addFreshEntity(MonsterLootHandler.createCandyCrumbDrop(entity));
+          if (MonsterLootHandler.shouldDropSpecialCookies(entity)) {
+            entity.level().addFreshEntity(MonsterLootHandler.createSpecialCookieDrop(entity));
           }
         });
   }

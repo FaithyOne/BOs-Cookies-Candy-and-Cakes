@@ -116,5 +116,20 @@ public class ItemRegistryManager {
         ResourceLocation.fromNamespaceAndPath(
             Constants.MOD_ID, CookieType.SWEET_BERRY_COOKIE_CURSED.getId()),
         ModItems.SWEET_BERRY_COOKIE_CURSED);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(
+            Constants.MOD_ID, CookieType.SLIME_SUGAR_COOKIE.getId()),
+        ModItems.SLIME_SUGAR_COOKIE);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(
+            Constants.MOD_ID, CookieType.SLIME_SUGAR_COOKIE_MYSTIC.getId()),
+        ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(
+            Constants.MOD_ID, CookieType.SLIME_SUGAR_COOKIE_CURSED.getId()),
+        ModItems.SLIME_SUGAR_COOKIE_CURSED);
   }
 }

@@ -32,12 +32,12 @@ public class TabRegistryManager {
   public static void register() {
     Registry.register(
         BuiltInRegistries.CREATIVE_MODE_TAB,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModCreativeTabType.COOKIES.getId()),
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModCreativeTabs.COOKIES_TAB_ID),
         ModCreativeTabs.COOKIES_TAB);
     Registry.register(
         BuiltInRegistries.CREATIVE_MODE_TAB,
         ResourceLocation.fromNamespaceAndPath(
-            Constants.MOD_ID, ModCreativeTabType.SPOOKY_CANDY_CRUMB.getId()),
-        ModCreativeTabs.SPOOKY_CANDY_CRUMB_TAB);
+            Constants.MOD_ID, ModCreativeTabs.SPECIAL_COOKIES_TAB_ID),
+        ModCreativeTabs.SPECIAL_COOKIES_TAB);
   }
 }

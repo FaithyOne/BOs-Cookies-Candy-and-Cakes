@@ -19,7 +19,11 @@
 
 package de.markusbordihn.cookiescandyandcakes.event;
 
+import de.markusbordihn.cookiescandyandcakes.config.MonsterLootConfig;
+import de.markusbordihn.cookiescandyandcakes.data.loot.ItemWeight;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -27,36 +31,79 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class MonsterLootHandler {
-  private static final float DROP_CHANCE = 0.25f;
 
-  private static final Item[] CANDY_CRUMB_ITEMS = {
-    ModItems.APPLE_COOKIE_MYSTIC,
-    ModItems.APPLE_COOKIE_CURSED,
-    ModItems.CARROT_COOKIE_MYSTIC,
-    ModItems.CARROT_COOKIE_CURSED,
-    ModItems.GLOW_BERRY_COOKIE_MYSTIC,
-    ModItems.GLOW_BERRY_COOKIE_CURSED,
-    ModItems.MELON_COOKIE_MYSTIC,
-    ModItems.MELON_COOKIE_CURSED,
-    ModItems.PUMPKIN_COOKIE_MYSTIC,
-    ModItems.PUMPKIN_COOKIE_CURSED,
-    ModItems.SWEET_BERRY_COOKIE_MYSTIC,
-    ModItems.SWEET_BERRY_COOKIE_CURSED
+  private static final ItemWeight[] SPECIAL_COOKIE_ITEMS_WITH_WEIGHTS = {
+    new ItemWeight(
+        ModItems.APPLE_COOKIE_MYSTIC, () -> MonsterLootConfig.appleCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.APPLE_COOKIE_CURSED, () -> MonsterLootConfig.appleCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.CARROT_COOKIE_MYSTIC, () -> MonsterLootConfig.carrotCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.CARROT_COOKIE_CURSED, () -> MonsterLootConfig.carrotCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.GLOW_BERRY_COOKIE_MYSTIC, () -> MonsterLootConfig.glowBerryCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.GLOW_BERRY_COOKIE_CURSED, () -> MonsterLootConfig.glowBerryCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.MELON_COOKIE_MYSTIC, () -> MonsterLootConfig.melonCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.MELON_COOKIE_CURSED, () -> MonsterLootConfig.melonCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.PUMPKIN_COOKIE_MYSTIC, () -> MonsterLootConfig.pumpkinCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.PUMPKIN_COOKIE_CURSED, () -> MonsterLootConfig.pumpkinCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.SWEET_BERRY_COOKIE_MYSTIC,
+        () -> MonsterLootConfig.sweetBerryCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.SWEET_BERRY_COOKIE_CURSED,
+        () -> MonsterLootConfig.sweetBerryCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.SLIME_SUGAR_COOKIE_MYSTIC,
+        () -> MonsterLootConfig.slimeSugarCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.SLIME_SUGAR_COOKIE_CURSED,
+        () -> MonsterLootConfig.slimeSugarCookieCursedDropWeight)
   };
 
   private MonsterLootHandler() {}
 
-  public static boolean shouldDropCandyCrumbs(Entity entity) {
-    return entity instanceof Monster && entity.level().getRandom().nextFloat() < DROP_CHANCE;
+  public static boolean shouldDropSpecialCookies(Entity entity) {
+    if (!(entity instanceof Monster)) {
+      return false;
+    }
+
+    float dropChance = MonsterLootConfig.globalDropChance / 100.0f;
+    return entity.level().getRandom().nextFloat() < dropChance;
   }
 
-  public static ItemStack getRandomCandyCrumb(Entity entity) {
-    Item item = CANDY_CRUMB_ITEMS[entity.level().getRandom().nextInt(CANDY_CRUMB_ITEMS.length)];
+  public static ItemStack getRandomSpecialCookie(Entity entity) {
+    // Build weighted list of enabled items
+    List<Item> weightedItems = new ArrayList<>();
+    for (ItemWeight itemWeight : SPECIAL_COOKIE_ITEMS_WITH_WEIGHTS) {
+      int weight = itemWeight.weightSupplier().getAsInt();
+      for (int i = 0; i < weight; i++) {
+        weightedItems.add(itemWeight.item());
+      }
+    }
+
+    // If no items are enabled, return empty stack
+    if (weightedItems.isEmpty()) {
+      return ItemStack.EMPTY;
+    }
+
+    // Select random item from weighted list
+    Item item = weightedItems.get(entity.level().getRandom().nextInt(weightedItems.size()));
     return new ItemStack(item);
   }
 
-  public static ItemEntity createCandyCrumbDrop(Entity entity) {
+  public static ItemEntity createSpecialCookieDrop(Entity entity) {
     return new ItemEntity(
-        entity.level(), entity.getX(), entity.getY(), entity.getZ(), getRandomCandyCrumb(entity));
+        entity.level(),
+        entity.getX(),
+        entity.getY(),
+        entity.getZ(),
+        getRandomSpecialCookie(entity));
   }
 }

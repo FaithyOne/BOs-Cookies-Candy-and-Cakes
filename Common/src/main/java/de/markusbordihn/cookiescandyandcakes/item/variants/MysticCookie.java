@@ -17,30 +17,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item;
+package de.markusbordihn.cookiescandyandcakes.item.variants;
 
+import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieSoundType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.effect.CookieEffectManager;
+import de.markusbordihn.cookiescandyandcakes.item.base.BaseSpecialCookie;
+import de.markusbordihn.cookiescandyandcakes.item.base.IdentifiableCookie;
 import java.util.List;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-public class CursedCandyCrumbItem extends BaseSpookyCookie implements IdentifiableCookie {
+public class MysticCookie extends BaseSpecialCookie implements IdentifiableCookie {
 
-  private final CookieType cookieType;
-
-  public CursedCandyCrumbItem(CookieType cookieType) {
+  public MysticCookie(final CookieType cookieType) {
     super(cookieType);
-    this.cookieType = cookieType;
   }
 
   @Override
@@ -55,26 +54,37 @@ public class CursedCandyCrumbItem extends BaseSpookyCookie implements Identifiab
     if (!level.isClientSide) {
       spawnParticles(level, livingEntity);
 
-      if (level.random.nextBoolean()) {
+      if (livingEntity instanceof ServerPlayer serverPlayer) {
+        CookieEffectManager.applyEffect(serverPlayer, cookieType);
+      }
+
+      CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
+
+      if (!effect.hasEffects()) {
+        return super.finishUsingItem(stack, level, livingEntity);
+      }
+
+      if (level.random.nextFloat() < effect.lightningChance()) {
         LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
         if (lightning != null) {
           lightning.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
           lightning.setVisualOnly(true);
           level.addFreshEntity(lightning);
         }
-      } else {
-        level.playSound(
-            null,
-            livingEntity.getX(),
-            livingEntity.getY(),
-            livingEntity.getZ(),
-            SoundEvents.ENDER_DRAGON_AMBIENT,
-            SoundSource.PLAYERS,
-            4.0f,
-            0.7f + level.random.nextFloat() * 0.3f);
+      }
 
-        if (livingEntity instanceof Player player) {
-          player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0, false, false, false));
+      if (effect.enableSounds()) {
+        SoundEvent sound = CookieSoundType.getMysticSound(effect.mysticSoundType());
+        if (sound != null) {
+          level.playSound(
+              null,
+              livingEntity.getX(),
+              livingEntity.getY(),
+              livingEntity.getZ(),
+              sound,
+              SoundSource.PLAYERS,
+              effect.soundVolume(),
+              CookieSoundType.getPitch(effect.mysticSoundType(), level.random.nextFloat()));
         }
       }
     }
@@ -84,7 +94,7 @@ public class CursedCandyCrumbItem extends BaseSpookyCookie implements Identifiab
 
   @Override
   public void appendHoverText(
-      ItemStack itemStack,
+      ItemStack stack,
       TooltipContext context,
       List<Component> tooltipComponents,
       TooltipFlag tooltipFlag) {

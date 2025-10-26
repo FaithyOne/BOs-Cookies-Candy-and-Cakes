@@ -29,10 +29,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
-public class BaseCookie extends Item {
-  private final CookieType cookieType;
+public abstract class BaseCookie extends Item {
 
-  public BaseCookie(CookieType cookieType) {
+  protected final CookieType cookieType;
+
+  protected BaseCookie(CookieType cookieType) {
     super(
         new Item.Properties()
             .food(buildFoodProperties(cookieType))
@@ -40,14 +41,14 @@ public class BaseCookie extends Item {
     this.cookieType = cookieType;
   }
 
-  private static FoodProperties buildFoodProperties(CookieType cookieType) {
+  protected static FoodProperties buildFoodProperties(CookieType cookieType) {
     FoodProperties.Builder builder =
-        new FoodProperties.Builder().nutrition(CookieProperties.NUTRITION).fast();
+        new FoodProperties.Builder().nutrition(cookieType.getNutrition()).fast();
     if (cookieType.hasEffect()) {
       builder.effect(
           new MobEffectInstance(
-              cookieType.getEffect(), CookieProperties.EFFECT_DURATION, cookieType.getAmplifier()),
-          CookieProperties.EFFECT_CHANCE);
+              cookieType.getEffect(), cookieType.getEffectDuration(), cookieType.getAmplifier()),
+          cookieType.getEffectChance());
     }
     return builder.build();
   }

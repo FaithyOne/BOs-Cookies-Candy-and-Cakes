@@ -54,6 +54,11 @@ public class ItemRegistryManager {
         CookieType.SWEET_BERRY_COOKIE_MYSTIC.getId(), () -> ModItems.SWEET_BERRY_COOKIE_MYSTIC);
     ITEMS.register(
         CookieType.SWEET_BERRY_COOKIE_CURSED.getId(), () -> ModItems.SWEET_BERRY_COOKIE_CURSED);
+    ITEMS.register(CookieType.SLIME_SUGAR_COOKIE.getId(), () -> ModItems.SLIME_SUGAR_COOKIE);
+    ITEMS.register(
+        CookieType.SLIME_SUGAR_COOKIE_MYSTIC.getId(), () -> ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
+    ITEMS.register(
+        CookieType.SLIME_SUGAR_COOKIE_CURSED.getId(), () -> ModItems.SLIME_SUGAR_COOKIE_CURSED);
   }
 
   private ItemRegistryManager() {}

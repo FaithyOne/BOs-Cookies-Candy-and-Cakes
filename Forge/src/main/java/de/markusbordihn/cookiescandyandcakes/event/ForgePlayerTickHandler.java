@@ -17,36 +17,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.event;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
-import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class TabRegistryManager {
+@Mod.EventBusSubscriber(modid = Constants.MOD_ID)
+public class ForgePlayerTickHandler {
 
-  private TabRegistryManager() {}
+  private ForgePlayerTickHandler() {}
 
   @SubscribeEvent
-  public static void register(RegisterEvent event) {
-    if (event.getRegistryKey().equals(Registries.CREATIVE_MODE_TAB)) {
-      event.register(
-          Registries.CREATIVE_MODE_TAB,
-          helper -> {
-            helper.register(
-                ResourceLocation.fromNamespaceAndPath(
-                    Constants.MOD_ID, ModCreativeTabs.COOKIES_TAB_ID),
-                ModCreativeTabs.COOKIES_TAB);
-            helper.register(
-                ResourceLocation.fromNamespaceAndPath(
-                    Constants.MOD_ID, ModCreativeTabs.SPECIAL_COOKIES_TAB_ID),
-                ModCreativeTabs.SPECIAL_COOKIES_TAB);
-          });
+  public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+    if (event.phase == TickEvent.Phase.END && event.player instanceof ServerPlayer serverPlayer) {
+      PlayerTickHandler.onPlayerTick(serverPlayer);
     }
   }
 }

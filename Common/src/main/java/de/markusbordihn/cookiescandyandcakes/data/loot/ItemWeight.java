@@ -17,10 +17,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.data.cookies;
+package de.markusbordihn.cookiescandyandcakes.data.loot;
 
-public final class CookieProperties {
-  public static final int STACK_SIZE = 64;
+import java.util.function.IntSupplier;
+import net.minecraft.world.item.Item;
 
-  private CookieProperties() {}
-}
+public record ItemWeight(Item item, IntSupplier weightSupplier) {}

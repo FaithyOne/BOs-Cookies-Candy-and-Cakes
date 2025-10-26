@@ -31,8 +31,8 @@ public class ForgeMonsterLootHandler {
 
   @SubscribeEvent
   public static void onLivingDrops(LivingDropsEvent event) {
-    if (MonsterLootHandler.shouldDropCandyCrumbs(event.getEntity())) {
-      event.getDrops().add(MonsterLootHandler.createCandyCrumbDrop(event.getEntity()));
+    if (MonsterLootHandler.shouldDropSpecialCookies(event.getEntity())) {
+      event.getDrops().add(MonsterLootHandler.createSpecialCookieDrop(event.getEntity()));
     }
   }
 }

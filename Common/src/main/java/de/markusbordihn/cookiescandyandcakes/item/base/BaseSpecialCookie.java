@@ -17,25 +17,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item;
+package de.markusbordihn.cookiescandyandcakes.item.base;
 
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieProperties;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import java.util.List;
+import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-public abstract class BaseSpookyCookie extends Item {
+public abstract class BaseSpecialCookie extends BaseCookie {
 
-  protected static final ParticleOptions[] SPOOKY_PARTICLES = {
+  protected static final ParticleOptions[] SPECIAL_PARTICLES = {
     ParticleTypes.SOUL,
     ParticleTypes.SOUL_FIRE_FLAME,
     ParticleTypes.SMOKE,
@@ -44,28 +38,12 @@ public abstract class BaseSpookyCookie extends Item {
     ParticleTypes.CRIMSON_SPORE
   };
 
-  protected BaseSpookyCookie(CookieType cookieType) {
-    super(
-        new Item.Properties()
-            .food(buildFoodProperties(cookieType))
-            .stacksTo(CookieProperties.STACK_SIZE));
+  protected BaseSpecialCookie(final CookieType cookieType) {
+    super(cookieType);
   }
 
-  private static FoodProperties buildFoodProperties(CookieType cookieType) {
-    FoodProperties.Builder builder =
-        new FoodProperties.Builder().nutrition(CookieProperties.NUTRITION).fast();
-    if (cookieType.hasEffect()) {
-      builder.effect(
-          new MobEffectInstance(
-              cookieType.getEffect(), CookieProperties.EFFECT_DURATION, cookieType.getAmplifier()),
-          CookieProperties.EFFECT_CHANCE);
-    }
-    return builder.build();
-  }
-
-  protected void spawnParticles(Level level, LivingEntity livingEntity) {
-    ParticleOptions particle = SPOOKY_PARTICLES[level.random.nextInt(SPOOKY_PARTICLES.length)];
-
+  protected void spawnParticles(final Level level, final LivingEntity livingEntity) {
+    ParticleOptions particle = SPECIAL_PARTICLES[level.random.nextInt(SPECIAL_PARTICLES.length)];
     for (int i = 0; i < 15; i++) {
       double angle = (2 * Math.PI * i) / 15;
       double offsetX = Math.cos(angle) * 0.5;
@@ -90,15 +68,6 @@ public abstract class BaseSpookyCookie extends Item {
           level.random.nextDouble() * 0.1,
           (level.random.nextDouble() - 0.5) * 0.1);
     }
-  }
-
-  @Override
-  public void appendHoverText(
-      ItemStack itemStack,
-      TooltipContext context,
-      List<Component> tooltipComponents,
-      TooltipFlag tooltipFlag) {
-    tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc"));
   }
 
   @Override

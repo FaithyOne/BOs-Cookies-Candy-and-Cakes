@@ -19,10 +19,13 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
+import de.markusbordihn.cookiescandyandcakes.config.Config;
 import de.markusbordihn.cookiescandyandcakes.registry.ItemRegistryManager;
 import de.markusbordihn.cookiescandyandcakes.registry.TabRegistryManager;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,6 +43,9 @@ public class CookiesCandyAndCakes {
     log.info("{} Constants ...", Constants.LOG_REGISTER_PREFIX);
     Constants.GAME_DIR = FMLPaths.GAMEDIR.get();
     Constants.CONFIG_DIR = FMLPaths.CONFIGDIR.get();
+
+    log.info("{} Configuration ...", Constants.LOG_REGISTER_PREFIX);
+    Config.register(FMLEnvironment.dist == Dist.DEDICATED_SERVER);
 
     log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
     ItemRegistryManager.register(modEventBus);

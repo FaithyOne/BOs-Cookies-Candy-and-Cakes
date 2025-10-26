@@ -17,10 +17,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.data.cookies;
+package de.markusbordihn.cookiescandyandcakes.event;
 
-public final class CookieProperties {
-  public static final int STACK_SIZE = 64;
+import de.markusbordihn.cookiescandyandcakes.effect.CookieEffectManager;
+import net.minecraft.server.level.ServerPlayer;
 
-  private CookieProperties() {}
+public class PlayerTickHandler {
+
+  private PlayerTickHandler() {}
+
+  public static void onPlayerTick(ServerPlayer player) {
+    if (player != null && !player.level().isClientSide) {
+      CookieEffectManager.tick(player);
+    }
+  }
 }

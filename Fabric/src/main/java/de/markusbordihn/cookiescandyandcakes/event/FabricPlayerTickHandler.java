@@ -17,10 +17,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.data.cookies;
+package de.markusbordihn.cookiescandyandcakes.event;
 
-public final class CookieProperties {
-  public static final int STACK_SIZE = 64;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.level.ServerPlayer;
 
-  private CookieProperties() {}
+public class FabricPlayerTickHandler {
+
+  private FabricPlayerTickHandler() {}
+
+  public static void register() {
+    ServerTickEvents.END_SERVER_TICK.register(
+        server -> {
+          for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+            PlayerTickHandler.onPlayerTick(player);
+          }
+        });
+  }
 }

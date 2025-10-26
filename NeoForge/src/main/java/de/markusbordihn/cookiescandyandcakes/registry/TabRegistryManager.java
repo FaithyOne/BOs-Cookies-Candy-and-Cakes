@@ -32,11 +32,9 @@ public class TabRegistryManager {
       DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
 
   static {
+    CREATIVE_MODE_TABS.register(ModCreativeTabs.COOKIES_TAB_ID, () -> ModCreativeTabs.COOKIES_TAB);
     CREATIVE_MODE_TABS.register(
-        ModCreativeTabType.COOKIES.getId(), () -> ModCreativeTabs.COOKIES_TAB);
-    CREATIVE_MODE_TABS.register(
-        ModCreativeTabType.SPOOKY_CANDY_CRUMB.getId(),
-        () -> ModCreativeTabs.SPOOKY_CANDY_CRUMB_TAB);
+        ModCreativeTabs.SPECIAL_COOKIES_TAB_ID, () -> ModCreativeTabs.SPECIAL_COOKIES_TAB);
   }
 
   private TabRegistryManager() {}

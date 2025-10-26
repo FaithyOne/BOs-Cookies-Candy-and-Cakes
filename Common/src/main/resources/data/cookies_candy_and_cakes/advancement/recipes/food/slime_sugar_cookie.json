@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_slime_ball": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:slime_ball"
+          }
+        ]
+      }
+    },
+    "has_wheat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wheat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "cookies_candy_and_cakes:slime_sugar_cookie"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_slime_ball",
+      "has_wheat",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cookies_candy_and_cakes:slime_sugar_cookie"
+    ]
+  }
+}

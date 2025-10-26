@@ -17,36 +17,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.event;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
-import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
+import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class TabRegistryManager {
+@EventBusSubscriber(modid = Constants.MOD_ID)
+public class NeoForgePlayerTickHandler {
 
-  private TabRegistryManager() {}
+  private NeoForgePlayerTickHandler() {}
 
   @SubscribeEvent
-  public static void register(RegisterEvent event) {
-    if (event.getRegistryKey().equals(Registries.CREATIVE_MODE_TAB)) {
-      event.register(
-          Registries.CREATIVE_MODE_TAB,
-          helper -> {
-            helper.register(
-                ResourceLocation.fromNamespaceAndPath(
-                    Constants.MOD_ID, ModCreativeTabs.COOKIES_TAB_ID),
-                ModCreativeTabs.COOKIES_TAB);
-            helper.register(
-                ResourceLocation.fromNamespaceAndPath(
-                    Constants.MOD_ID, ModCreativeTabs.SPECIAL_COOKIES_TAB_ID),
-                ModCreativeTabs.SPECIAL_COOKIES_TAB);
-          });
+  public static void onPlayerTick(PlayerTickEvent.Post event) {
+    if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+      PlayerTickHandler.onPlayerTick(serverPlayer);
     }
   }
 }

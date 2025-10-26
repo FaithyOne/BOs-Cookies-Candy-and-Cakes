@@ -17,21 +17,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.item.variants;
 
-import java.util.Locale;
+import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
+import net.minecraft.world.item.ItemStack;
 
-public enum ModCreativeTabType {
-  COOKIES,
-  SPOOKY_CANDY_CRUMB;
+public class NormalCookie extends BaseCookie {
 
-  private final String id;
-
-  ModCreativeTabType() {
-    this.id = name().toLowerCase(Locale.ROOT);
+  public NormalCookie(final CookieType cookieType) {
+    super(cookieType);
   }
 
-  public String getId() {
-    return id;
+  @Override
+  public boolean isFoil(ItemStack itemStack) {
+    return false;
   }
 }
