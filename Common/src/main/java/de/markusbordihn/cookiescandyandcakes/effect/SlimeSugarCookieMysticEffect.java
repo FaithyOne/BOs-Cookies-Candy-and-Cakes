@@ -103,16 +103,16 @@ public class SlimeSugarCookieMysticEffect implements CookieEffectInterface {
       Vec3 normalizedMovement = deltaMovement.normalize();
       dropPosition =
           new Vec3(
-              serverPlayer.getX() - normalizedMovement.x * 1.0,
+              serverPlayer.getX() - normalizedMovement.x,
               serverPlayer.getY(),
-              serverPlayer.getZ() - normalizedMovement.z * 1.0);
+              serverPlayer.getZ() - normalizedMovement.z);
     } else {
       Vec3 lookDirection = serverPlayer.getLookAngle();
       dropPosition =
           new Vec3(
-              serverPlayer.getX() - lookDirection.x * 1.0,
+              serverPlayer.getX() - lookDirection.x,
               serverPlayer.getY(),
-              serverPlayer.getZ() - lookDirection.z * 1.0);
+              serverPlayer.getZ() - lookDirection.z);
     }
 
     ItemStack slimeball = new ItemStack(Items.SLIME_BALL, 1);

@@ -19,9 +19,14 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
+import de.markusbordihn.cookiescandyandcakes.block.NeoForgeModBlocks;
+import de.markusbordihn.cookiescandyandcakes.block.entity.NeoForgeModBlockEntities;
 import de.markusbordihn.cookiescandyandcakes.config.Config;
-import de.markusbordihn.cookiescandyandcakes.registry.ItemRegistryManager;
-import de.markusbordihn.cookiescandyandcakes.registry.TabRegistryManager;
+import de.markusbordihn.cookiescandyandcakes.item.NeoForgeModBlockItems;
+import de.markusbordihn.cookiescandyandcakes.item.NeoForgeModItems;
+import de.markusbordihn.cookiescandyandcakes.menu.MenuManager;
+import de.markusbordihn.cookiescandyandcakes.menu.NeoForgeMenuOpener;
+import de.markusbordihn.cookiescandyandcakes.menu.NeoForgeModMenus;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -37,7 +42,7 @@ public class CookiesCandyAndCakes {
   private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
 
   @SuppressWarnings({"java:S1118", "java:S2440"})
-  public CookiesCandyAndCakes(IEventBus modEventBus) {
+  public CookiesCandyAndCakes(final IEventBus modEventBus) {
     log.info("Initializing {} (NeoForged) ...", Constants.MOD_NAME);
 
     log.info("{} Constants ...", Constants.LOG_REGISTER_PREFIX);
@@ -47,10 +52,22 @@ public class CookiesCandyAndCakes {
     log.info("{} Configuration ...", Constants.LOG_REGISTER_PREFIX);
     Config.register(FMLEnvironment.dist == Dist.DEDICATED_SERVER);
 
-    log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
-    ItemRegistryManager.register(modEventBus);
+    log.info("{} Menu Manager ...", Constants.LOG_REGISTER_PREFIX);
+    MenuManager.setMenuOpener(new NeoForgeMenuOpener());
 
-    log.info("{} Creative Tabs ...", Constants.LOG_REGISTER_PREFIX);
-    TabRegistryManager.register(modEventBus);
+    log.info("{} Blocks ...", Constants.LOG_REGISTER_PREFIX);
+    NeoForgeModBlocks.register(modEventBus);
+
+    log.info("{} Block Entities ...", Constants.LOG_REGISTER_PREFIX);
+    NeoForgeModBlockEntities.register(modEventBus);
+
+    log.info("{} Block Items ...", Constants.LOG_REGISTER_PREFIX);
+    NeoForgeModBlockItems.register(modEventBus);
+
+    log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
+    NeoForgeModItems.register(modEventBus);
+
+    log.info("{} Menus ...", Constants.LOG_REGISTER_PREFIX);
+    NeoForgeModMenus.register(modEventBus);
   }
 }

@@ -17,22 +17,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.data.cookiejar;
 
-import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemContainerContents;
 
-public class ModBlocks {
+public record CookieJarData(NonNullList<ItemStack> items) {
 
-  public static final PumpkinHeadCookieJarBlock PUMPKIN_HEAD_COOKIE_JAR =
-      new PumpkinHeadCookieJarBlock(
-          BlockBehaviour.Properties.of()
-              .mapColor(MapColor.COLOR_ORANGE)
-              .strength(0.3F)
-              .sound(SoundType.WOOD)
-              .noOcclusion());
+  public static final int CONTAINER_SIZE = 27;
 
-  private ModBlocks() {}
+  public static CookieJarData fromItemStack(ItemStack stack) {
+    ItemContainerContents contents =
+        stack.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+    NonNullList<ItemStack> items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
+    contents.copyInto(items);
+    return new CookieJarData(items);
+  }
+
+  public void saveToItemStack(ItemStack stack) {
+    if (!isEmpty()) {
+      stack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(items));
+    } else {
+      stack.remove(DataComponents.CONTAINER);
+    }
+  }
+
+  public boolean isEmpty() {
+    for (ItemStack item : items) {
+      if (!item.isEmpty()) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

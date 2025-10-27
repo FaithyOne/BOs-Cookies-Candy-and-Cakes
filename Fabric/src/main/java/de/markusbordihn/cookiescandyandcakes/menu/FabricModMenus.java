@@ -17,29 +17,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.menu;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
-import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.CreativeModeTab;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
+import de.markusbordihn.cookiescandyandcakes.registry.ModMenuTypes;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.inventory.MenuType;
 
-public class TabRegistryManager {
+public class FabricModMenus {
 
-  private static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-      DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
+  public static final MenuType<CookieJarMenu> COOKIE_JAR_MENU =
+      Registry.register(
+          BuiltInRegistries.MENU,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, PumpkinHeadCookieJarBlock.ID),
+          new MenuType<>(CookieJarMenu::new, FeatureFlagSet.of()));
 
-  static {
-    CREATIVE_MODE_TABS.register(ModCreativeTabs.COOKIES_TAB_ID, () -> ModCreativeTabs.COOKIES_TAB);
-    CREATIVE_MODE_TABS.register(
-        ModCreativeTabs.SPECIAL_COOKIES_TAB_ID, () -> ModCreativeTabs.SPECIAL_COOKIES_TAB);
-  }
+  private FabricModMenus() {}
 
-  private TabRegistryManager() {}
-
-  public static void register(IEventBus modEventBus) {
-    CREATIVE_MODE_TABS.register(modEventBus);
+  public static void register() {
+    ModMenuTypes.setCookieJar(COOKIE_JAR_MENU);
   }
 }

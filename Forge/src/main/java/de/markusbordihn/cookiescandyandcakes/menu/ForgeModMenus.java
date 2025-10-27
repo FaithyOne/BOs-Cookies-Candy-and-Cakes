@@ -17,22 +17,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes;
+package de.markusbordihn.cookiescandyandcakes.menu;
 
-import de.markusbordihn.cookiescandyandcakes.client.ClientScreens;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.registry.ModMenuTypes;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-@SuppressWarnings("unused")
-public class CookiesCandyAndCakesClient {
+public class ForgeModMenus {
 
-  private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
+  public static final DeferredRegister<MenuType<?>> MENU_TYPES =
+      DeferredRegister.create(ForgeRegistries.MENU_TYPES, Constants.MOD_ID);
 
-  @SuppressWarnings("java:S1118")
-  public CookiesCandyAndCakesClient(IEventBus modEventBus) {
-    log.info("Initializing {} (Forge-Client) ...", Constants.MOD_NAME);
+  public static final RegistryObject<MenuType<CookieJarMenu>> COOKIE_JAR_MENU =
+      MENU_TYPES.register(
+          "cookie_jar", () -> new MenuType<>(CookieJarMenu::new, FeatureFlags.DEFAULT_FLAGS));
 
-    modEventBus.addListener(ClientScreens::registerScreens);
+  private ForgeModMenus() {}
+
+  public static void register(IEventBus eventBus) {
+    MENU_TYPES.register(eventBus);
+
+    eventBus.addListener(
+        (net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent event) -> {
+          ModMenuTypes.setCookieJar(COOKIE_JAR_MENU.get());
+        });
   }
 }

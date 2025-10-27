@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "CPC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "cookies_candy_and_cakes:cookies"
+    },
+    "P": {
+      "item": "minecraft:carved_pumpkin"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:pumpkin_head_cookie_jar",
+    "count": 1
+  }
+}

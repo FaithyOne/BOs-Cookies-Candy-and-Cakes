@@ -19,11 +19,16 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
+import de.markusbordihn.cookiescandyandcakes.block.FabricModBlocks;
+import de.markusbordihn.cookiescandyandcakes.block.entity.FabricModBlockEntities;
 import de.markusbordihn.cookiescandyandcakes.config.Config;
 import de.markusbordihn.cookiescandyandcakes.event.FabricMonsterLootHandler;
 import de.markusbordihn.cookiescandyandcakes.event.FabricPlayerTickHandler;
-import de.markusbordihn.cookiescandyandcakes.registry.ItemRegistryManager;
-import de.markusbordihn.cookiescandyandcakes.registry.TabRegistryManager;
+import de.markusbordihn.cookiescandyandcakes.item.FabricModBlockItems;
+import de.markusbordihn.cookiescandyandcakes.item.FabricModItems;
+import de.markusbordihn.cookiescandyandcakes.menu.FabricMenuOpener;
+import de.markusbordihn.cookiescandyandcakes.menu.FabricModMenus;
+import de.markusbordihn.cookiescandyandcakes.menu.MenuManager;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
@@ -45,11 +50,23 @@ public class CookiesCandyAndCakes implements ModInitializer {
     log.info("{} Configuration ...", Constants.LOG_REGISTER_PREFIX);
     Config.register(FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER);
 
-    log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
-    ItemRegistryManager.register();
+    log.info("{} Menu Manager ...", Constants.LOG_REGISTER_PREFIX);
+    MenuManager.setMenuOpener(new FabricMenuOpener());
 
-    log.info("{} Creative Tabs ...", Constants.LOG_REGISTER_PREFIX);
-    TabRegistryManager.register();
+    log.info("{} Blocks ...", Constants.LOG_REGISTER_PREFIX);
+    FabricModBlocks.register();
+
+    log.info("{} Block Entities ...", Constants.LOG_REGISTER_PREFIX);
+    FabricModBlockEntities.register();
+
+    log.info("{} Block Items ...", Constants.LOG_REGISTER_PREFIX);
+    FabricModBlockItems.register();
+
+    log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
+    FabricModItems.register();
+
+    log.info("{} Menus ...", Constants.LOG_REGISTER_PREFIX);
+    FabricModMenus.register();
 
     log.info("{} Events ...", Constants.LOG_REGISTER_PREFIX);
     FabricMonsterLootHandler.register();

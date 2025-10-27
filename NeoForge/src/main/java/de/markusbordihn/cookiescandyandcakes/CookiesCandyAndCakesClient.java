@@ -19,6 +19,7 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
+import de.markusbordihn.cookiescandyandcakes.client.ClientScreens;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -34,5 +35,7 @@ public class CookiesCandyAndCakesClient {
   @SuppressWarnings("java:S1118")
   public CookiesCandyAndCakesClient(IEventBus modEventBus) {
     log.info("Initializing {} (NeoForge-Client) ...", Constants.MOD_NAME);
+
+    modEventBus.addListener(ClientScreens::registerScreens);
   }
 }

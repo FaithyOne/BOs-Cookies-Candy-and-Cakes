@@ -46,5 +46,11 @@
   "item.cookies_candy_and_cakes.unidentified_mystic_cookie": "Unbekannter Mystischer Keks",
   "item.cookies_candy_and_cakes.unidentified_mystic_cookie.desc": "Ein mysteriöser Keks, der seltsame Energie ausstrahlt. Du musst ihn probieren, um seine wahre Natur zu erkennen...",
   "itemGroup.cookies_candy_and_cakes.cookies": "Cookies",
-  "itemGroup.cookies_candy_and_cakes.special_cookies": "Besondere Kekse"
+  "itemGroup.cookies_candy_and_cakes.special_cookies": "Besondere Kekse",
+  "block.cookies_candy_and_cakes.pumpkin_head_cookie_jar": "Kürbiskopf-Keksdose",
+  "container.cookies_candy_and_cakes.cookie_jar": "Keksdose",
+  "item.cookies_candy_and_cakes.cookie_jar.desc": "Ein verzaubertes Glas, das die Essenz von Keksen bewahrt. Nur Kekse dürfen in seinen mystischen Grenzen ruhen.",
+  "item.cookies_candy_and_cakes.cookie_jar.open_hint": "In Hand halten und Rechtsklick zum Öffnen",
+  "item.cookies_candy_and_cakes.cookie_jar.contents": "%s Kekse in %s Fächern",
+  "item.cookies_candy_and_cakes.cookie_jar.empty": "Sehnt sich nach Keksen..."
 }

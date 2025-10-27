@@ -21,7 +21,6 @@ package de.markusbordihn.cookiescandyandcakes.effect;
 
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
@@ -69,9 +68,8 @@ public class CookieEffectManager {
   }
 
   public static void tickAll(final Iterable<ServerPlayer> players) {
-    Iterator<ServerPlayer> iterator = players.iterator();
-    while (iterator.hasNext()) {
-      tick(iterator.next());
+    for (ServerPlayer player : players) {
+      tick(player);
     }
   }
 

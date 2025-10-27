@@ -17,22 +17,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.block;
 
-import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.registry.ModBlocks;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ModBlocks {
+public class NeoForgeModBlocks {
 
-  public static final PumpkinHeadCookieJarBlock PUMPKIN_HEAD_COOKIE_JAR =
-      new PumpkinHeadCookieJarBlock(
-          BlockBehaviour.Properties.of()
-              .mapColor(MapColor.COLOR_ORANGE)
-              .strength(0.3F)
-              .sound(SoundType.WOOD)
-              .noOcclusion());
+  public static final DeferredRegister<Block> BLOCKS =
+      DeferredRegister.create(Registries.BLOCK, Constants.MOD_ID);
 
-  private ModBlocks() {}
+  public static final DeferredHolder<Block, Block> PUMPKIN_HEAD_COOKIE_JAR =
+      BLOCKS.register(PumpkinHeadCookieJarBlock.ID, () -> ModBlocks.PUMPKIN_HEAD_COOKIE_JAR);
+
+  private NeoForgeModBlocks() {}
+
+  public static void register(IEventBus eventBus) {
+    BLOCKS.register(eventBus);
+  }
 }

@@ -17,22 +17,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.block.entity;
 
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.block.FabricModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import de.markusbordihn.cookiescandyandcakes.registry.ModBlockEntityTypes;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
-public class ModBlocks {
+public class FabricModBlockEntities {
 
-  public static final PumpkinHeadCookieJarBlock PUMPKIN_HEAD_COOKIE_JAR =
-      new PumpkinHeadCookieJarBlock(
-          BlockBehaviour.Properties.of()
-              .mapColor(MapColor.COLOR_ORANGE)
-              .strength(0.3F)
-              .sound(SoundType.WOOD)
-              .noOcclusion());
+  public static final BlockEntityType<CookieJarBlockEntity> COOKIE_JAR_BLOCK_ENTITY =
+      Registry.register(
+          BuiltInRegistries.BLOCK_ENTITY_TYPE,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, PumpkinHeadCookieJarBlock.ID),
+          BlockEntityType.Builder.of(
+                  CookieJarBlockEntity::new, FabricModBlocks.PUMPKIN_HEAD_COOKIE_JAR)
+              .build(null));
 
-  private ModBlocks() {}
+  private FabricModBlockEntities() {}
+
+  public static void register() {
+    ModBlockEntityTypes.setCookieJar(COOKIE_JAR_BLOCK_ENTITY);
+  }
 }

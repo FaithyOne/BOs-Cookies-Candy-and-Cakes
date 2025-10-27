@@ -1,0 +1,83 @@
+/*
+ * Copyright 2025 Markus Bordihn
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+package de.markusbordihn.cookiescandyandcakes.item;
+
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
+import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+
+public class FabricModItems {
+
+  public static final CreativeModeTab COOKIES_TAB =
+      Registry.register(
+          BuiltInRegistries.CREATIVE_MODE_TAB,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModCreativeTabs.COOKIES_TAB_ID),
+          ModCreativeTabs.createCookiesTab().build());
+
+  public static final CreativeModeTab SPECIAL_COOKIES_TAB =
+      Registry.register(
+          BuiltInRegistries.CREATIVE_MODE_TAB,
+          ResourceLocation.fromNamespaceAndPath(
+              Constants.MOD_ID, ModCreativeTabs.SPECIAL_COOKIES_TAB_ID),
+          ModCreativeTabs.createSpecialCookiesTab().build());
+
+  static {
+    registerCookie(CookieType.APPLE_COOKIE, ModItems.APPLE_COOKIE);
+    registerCookie(CookieType.APPLE_COOKIE_MYSTIC, ModItems.APPLE_COOKIE_MYSTIC);
+    registerCookie(CookieType.APPLE_COOKIE_CURSED, ModItems.APPLE_COOKIE_CURSED);
+    registerCookie(CookieType.CARROT_COOKIE, ModItems.CARROT_COOKIE);
+    registerCookie(CookieType.CARROT_COOKIE_MYSTIC, ModItems.CARROT_COOKIE_MYSTIC);
+    registerCookie(CookieType.CARROT_COOKIE_CURSED, ModItems.CARROT_COOKIE_CURSED);
+    registerCookie(CookieType.GLOW_BERRY_COOKIE, ModItems.GLOW_BERRY_COOKIE);
+    registerCookie(CookieType.GLOW_BERRY_COOKIE_MYSTIC, ModItems.GLOW_BERRY_COOKIE_MYSTIC);
+    registerCookie(CookieType.GLOW_BERRY_COOKIE_CURSED, ModItems.GLOW_BERRY_COOKIE_CURSED);
+    registerCookie(CookieType.MELON_COOKIE, ModItems.MELON_COOKIE);
+    registerCookie(CookieType.MELON_COOKIE_MYSTIC, ModItems.MELON_COOKIE_MYSTIC);
+    registerCookie(CookieType.MELON_COOKIE_CURSED, ModItems.MELON_COOKIE_CURSED);
+    registerCookie(CookieType.PUMPKIN_COOKIE, ModItems.PUMPKIN_COOKIE);
+    registerCookie(CookieType.PUMPKIN_COOKIE_MYSTIC, ModItems.PUMPKIN_COOKIE_MYSTIC);
+    registerCookie(CookieType.PUMPKIN_COOKIE_CURSED, ModItems.PUMPKIN_COOKIE_CURSED);
+    registerCookie(CookieType.SWEET_BERRY_COOKIE, ModItems.SWEET_BERRY_COOKIE);
+    registerCookie(CookieType.SWEET_BERRY_COOKIE_MYSTIC, ModItems.SWEET_BERRY_COOKIE_MYSTIC);
+    registerCookie(CookieType.SWEET_BERRY_COOKIE_CURSED, ModItems.SWEET_BERRY_COOKIE_CURSED);
+    registerCookie(CookieType.SLIME_SUGAR_COOKIE, ModItems.SLIME_SUGAR_COOKIE);
+    registerCookie(CookieType.SLIME_SUGAR_COOKIE_MYSTIC, ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
+    registerCookie(CookieType.SLIME_SUGAR_COOKIE_CURSED, ModItems.SLIME_SUGAR_COOKIE_CURSED);
+  }
+
+  private FabricModItems() {}
+
+  public static void register() {
+    // Items are registered in static initialization
+  }
+
+  private static void registerCookie(CookieType cookieType, Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, cookieType.getId()),
+        item);
+  }
+}

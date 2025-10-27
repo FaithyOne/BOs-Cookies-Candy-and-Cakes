@@ -17,22 +17,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.client;
 
-import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.client.screen.CookieJarScreen;
+import de.markusbordihn.cookiescandyandcakes.menu.FabricModMenus;
+import net.minecraft.client.gui.screens.MenuScreens;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class ModBlocks {
+public class ClientScreens {
 
-  public static final PumpkinHeadCookieJarBlock PUMPKIN_HEAD_COOKIE_JAR =
-      new PumpkinHeadCookieJarBlock(
-          BlockBehaviour.Properties.of()
-              .mapColor(MapColor.COLOR_ORANGE)
-              .strength(0.3F)
-              .sound(SoundType.WOOD)
-              .noOcclusion());
+  private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
 
-  private ModBlocks() {}
+  private ClientScreens() {}
+
+  public static void registerScreens() {
+    log.info("{} Client Screens ...", Constants.LOG_REGISTER_PREFIX);
+    MenuScreens.register(FabricModMenus.COOKIE_JAR_MENU, CookieJarScreen::new);
+  }
 }

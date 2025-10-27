@@ -17,27 +17,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.client;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
-import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import de.markusbordihn.cookiescandyandcakes.client.screen.CookieJarScreen;
+import de.markusbordihn.cookiescandyandcakes.menu.ForgeModMenus;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class TabRegistryManager {
+public class ClientScreens {
 
-  private TabRegistryManager() {}
+  private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
 
-  public static void register() {
-    Registry.register(
-        BuiltInRegistries.CREATIVE_MODE_TAB,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModCreativeTabs.COOKIES_TAB_ID),
-        ModCreativeTabs.COOKIES_TAB);
-    Registry.register(
-        BuiltInRegistries.CREATIVE_MODE_TAB,
-        ResourceLocation.fromNamespaceAndPath(
-            Constants.MOD_ID, ModCreativeTabs.SPECIAL_COOKIES_TAB_ID),
-        ModCreativeTabs.SPECIAL_COOKIES_TAB);
+  private ClientScreens() {}
+
+  public static void registerScreens(FMLClientSetupEvent event) {
+    log.info("{} Client Screens ...", Constants.LOG_REGISTER_PREFIX);
+    event.enqueueWork(
+        () -> {
+          MenuScreens.register(ForgeModMenus.COOKIE_JAR_MENU.get(), CookieJarScreen::new);
+        });
   }
 }

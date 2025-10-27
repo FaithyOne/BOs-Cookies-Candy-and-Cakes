@@ -46,5 +46,12 @@
   "item.cookies_candy_and_cakes.unidentified_mystic_cookie": "Unidentified Mystic Cookie",
   "item.cookies_candy_and_cakes.unidentified_mystic_cookie.desc": "A mysterious cookie radiating strange energy. You need to taste it to identify its true nature...",
   "itemGroup.cookies_candy_and_cakes.cookies": "Cookies, Candy and Cakes",
-  "itemGroup.cookies_candy_and_cakes.special_cookies": "Special Cookies"
+  "itemGroup.cookies_candy_and_cakes.special_cookies": "Special Cookies",
+  "block.cookies_candy_and_cakes.pumpkin_head_cookie_jar": "Pumpkin Head Cookie Jar",
+  "block.cookies_candy_and_cakes.pumpkin_head_cookie_jar.desc": "An enchanted jar that preserves the essence of cookies. Can be placed as a block or opened while held in hand.",
+  "container.cookies_candy_and_cakes.cookie_jar": "Cookie Jar",
+  "item.cookies_candy_and_cakes.cookie_jar.desc": "An enchanted jar that preserves the essence of cookies. Only cookies may rest within its mystical confines.",
+  "item.cookies_candy_and_cakes.cookie_jar.open_hint": "Hold in hand and right-click to open",
+  "item.cookies_candy_and_cakes.cookie_jar.contents": "%s cookies in %s slots",
+  "item.cookies_candy_and_cakes.cookie_jar.empty": "Yearning for cookies..."
 }

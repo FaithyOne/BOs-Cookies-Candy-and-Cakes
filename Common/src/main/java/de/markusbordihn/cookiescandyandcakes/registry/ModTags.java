@@ -19,20 +19,22 @@
 
 package de.markusbordihn.cookiescandyandcakes.registry;
 
-import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 
-public class ModBlocks {
+public class ModTags {
 
-  public static final PumpkinHeadCookieJarBlock PUMPKIN_HEAD_COOKIE_JAR =
-      new PumpkinHeadCookieJarBlock(
-          BlockBehaviour.Properties.of()
-              .mapColor(MapColor.COLOR_ORANGE)
-              .strength(0.3F)
-              .sound(SoundType.WOOD)
-              .noOcclusion());
+  public static final TagKey<Item> COOKIE_JAR_ITEMS =
+      TagKey.create(
+          Registries.ITEM,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cookie_jar_items"));
 
-  private ModBlocks() {}
+  public static final TagKey<Item> COOKIES =
+      TagKey.create(
+          Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cookies"));
+
+  private ModTags() {}
 }

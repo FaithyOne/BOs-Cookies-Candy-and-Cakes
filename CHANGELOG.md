@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 This change log includes the summarized changes.
 For the full changelog, please go to the [GitHub History][history] instead.
 
+### v0.3.0
+
+- Fixed registration issues with specific edge cases.
+- Added basic pumpkin head cookie jar to store cookies.
+- Refactored block, block item, item, menu and screen registration.
+
 ### v0.2.0
 
 - Fixed wrong effects being applied for special cookies.

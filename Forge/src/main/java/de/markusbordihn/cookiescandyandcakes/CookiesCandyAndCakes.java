@@ -19,9 +19,19 @@
 
 package de.markusbordihn.cookiescandyandcakes;
 
+import de.markusbordihn.cookiescandyandcakes.block.ForgeModBlocks;
+import de.markusbordihn.cookiescandyandcakes.block.entity.ForgeModBlockEntities;
 import de.markusbordihn.cookiescandyandcakes.config.Config;
+import de.markusbordihn.cookiescandyandcakes.item.ForgeModBlockItems;
+import de.markusbordihn.cookiescandyandcakes.item.ForgeModItems;
+import de.markusbordihn.cookiescandyandcakes.menu.ForgeMenuOpener;
+import de.markusbordihn.cookiescandyandcakes.menu.ForgeModMenus;
+import de.markusbordihn.cookiescandyandcakes.menu.MenuManager;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
@@ -33,7 +43,9 @@ public class CookiesCandyAndCakes {
   private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
 
   @SuppressWarnings("java:S1118")
-  public CookiesCandyAndCakes() {
+  public CookiesCandyAndCakes(final FMLJavaModLoadingContext context) {
+    final IEventBus modEventBus = context.getModEventBus();
+
     log.info("Initializing {} (Forge) ...", Constants.MOD_NAME);
 
     log.info("{} Constants ...", Constants.LOG_REGISTER_PREFIX);
@@ -42,5 +54,26 @@ public class CookiesCandyAndCakes {
 
     log.info("{} Configuration ...", Constants.LOG_REGISTER_PREFIX);
     Config.register(FMLEnvironment.dist == Dist.DEDICATED_SERVER);
+
+    log.info("{} Menu Manager ...", Constants.LOG_REGISTER_PREFIX);
+    MenuManager.setMenuOpener(new ForgeMenuOpener());
+
+    log.info("{} Blocks ...", Constants.LOG_REGISTER_PREFIX);
+    ForgeModBlocks.register(modEventBus);
+
+    log.info("{} Block Entities ...", Constants.LOG_REGISTER_PREFIX);
+    ForgeModBlockEntities.register(modEventBus);
+
+    log.info("{} Block Items ...", Constants.LOG_REGISTER_PREFIX);
+    ForgeModBlockItems.register(modEventBus);
+
+    log.info("{} Items ...", Constants.LOG_REGISTER_PREFIX);
+    ForgeModItems.register(modEventBus);
+
+    log.info("{} Menus ...", Constants.LOG_REGISTER_PREFIX);
+    ForgeModMenus.register(modEventBus);
+
+    DistExecutor.unsafeRunWhenOn(
+        Dist.CLIENT, () -> () -> new CookiesCandyAndCakesClient(modEventBus));
   }
 }

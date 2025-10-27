@@ -17,19 +17,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.item;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import net.minecraft.core.registries.Registries;
+import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
+import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-public class ItemRegistryManager {
+public class ForgeModItems {
 
-  private static final DeferredRegister<Item> ITEMS =
-      DeferredRegister.create(Registries.ITEM, Constants.MOD_ID);
+  public static final DeferredRegister<Item> ITEMS =
+      DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MOD_ID);
+
+  public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
+      DeferredRegister.create(
+          net.minecraft.core.registries.Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
+
+  public static final RegistryObject<CreativeModeTab> COOKIES_TAB =
+      CREATIVE_MODE_TABS.register(
+          ModCreativeTabs.COOKIES_TAB_ID, ModCreativeTabs.createCookiesTab()::build);
+
+  public static final RegistryObject<CreativeModeTab> SPECIAL_COOKIES_TAB =
+      CREATIVE_MODE_TABS.register(
+          ModCreativeTabs.SPECIAL_COOKIES_TAB_ID, ModCreativeTabs.createSpecialCookiesTab()::build);
 
   static {
     ITEMS.register(CookieType.APPLE_COOKIE.getId(), () -> ModItems.APPLE_COOKIE);
@@ -61,9 +77,10 @@ public class ItemRegistryManager {
         CookieType.SLIME_SUGAR_COOKIE_CURSED.getId(), () -> ModItems.SLIME_SUGAR_COOKIE_CURSED);
   }
 
-  private ItemRegistryManager() {}
+  private ForgeModItems() {}
 
-  public static void register(IEventBus modEventBus) {
-    ITEMS.register(modEventBus);
+  public static void register(IEventBus eventBus) {
+    ITEMS.register(eventBus);
+    CREATIVE_MODE_TABS.register(eventBus);
   }
 }

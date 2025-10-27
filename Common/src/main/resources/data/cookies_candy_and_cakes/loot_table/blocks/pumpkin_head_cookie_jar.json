@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cookies_candy_and_cakes:pumpkin_head_cookie_jar",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "source": "block_entity",
+              "include": [
+                "minecraft:container"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -17,22 +17,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.registry;
+package de.markusbordihn.cookiescandyandcakes.item;
 
+import de.markusbordihn.cookiescandyandcakes.block.FabricModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import de.markusbordihn.cookiescandyandcakes.registry.ModBlockItems;
+import java.util.function.Supplier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 
-public class ModBlocks {
+public class FabricModBlockItems {
 
-  public static final PumpkinHeadCookieJarBlock PUMPKIN_HEAD_COOKIE_JAR =
-      new PumpkinHeadCookieJarBlock(
-          BlockBehaviour.Properties.of()
-              .mapColor(MapColor.COLOR_ORANGE)
-              .strength(0.3F)
-              .sound(SoundType.WOOD)
-              .noOcclusion());
+  private FabricModBlockItems() {}
 
-  private ModBlocks() {}
+  public static void register() {
+    ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR =
+        registerBlockItem(
+            PumpkinHeadCookieJarBlock.ID,
+            () ->
+                new CookieJarItem(FabricModBlocks.PUMPKIN_HEAD_COOKIE_JAR, new Item.Properties()));
+  }
+
+  private static Supplier<BlockItem> registerBlockItem(
+      String name, Supplier<BlockItem> blockItemSupplier) {
+    BlockItem blockItem = blockItemSupplier.get();
+    Registry.register(BuiltInRegistries.ITEM, ModBlockItems.getBlockItemId(name), blockItem);
+    return () -> blockItem;
+  }
 }
