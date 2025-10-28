@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:apple_cookie_cursed"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.cursed_curiosity.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.cursed_curiosity.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:cookie_baker",
+  "criteria": {
+    "ate_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "cookies_candy_and_cakes:apple_cookie_cursed",
+            "cookies_candy_and_cakes:carrot_cookie_cursed",
+            "cookies_candy_and_cakes:glow_berry_cookie_cursed",
+            "cookies_candy_and_cakes:melon_cookie_cursed",
+            "cookies_candy_and_cakes:pumpkin_cookie_cursed",
+            "cookies_candy_and_cakes:sweet_berry_cookie_cursed"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ate_cursed"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  }
+}

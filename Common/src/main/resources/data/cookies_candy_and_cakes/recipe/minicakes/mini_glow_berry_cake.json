@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "WMW",
+    " EG"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "E": {
+      "item": "minecraft:egg"
+    },
+    "G": {
+      "item": "minecraft:glow_berries"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:mini_glow_berry_cake",
+    "count": 3
+  }
+}

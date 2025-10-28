@@ -19,38 +19,12 @@
 
 package de.markusbordihn.cookiescandyandcakes.item.variants;
 
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
+import de.markusbordihn.cookiescandyandcakes.item.BaseMiniCake;
 
-public class NormalCookie extends BaseCookie {
+public class NormalMiniCake extends BaseMiniCake {
 
-  public NormalCookie(final CookieType cookieType) {
-    super(cookieType);
-  }
-
-  @Override
-  public Component getName(ItemStack stack) {
-    return Component.translatable(this.getDescriptionId(stack));
-  }
-
-  @Override
-  public void appendHoverText(
-      ItemStack itemStack,
-      TooltipContext context,
-      List<Component> tooltipComponents,
-      TooltipFlag tooltipFlag) {
-    tooltipComponents.add(
-        Component.translatable(this.getDescriptionId() + ".desc")
-            .withStyle(ChatFormatting.DARK_GRAY));
-  }
-
-  @Override
-  public boolean isFoil(ItemStack itemStack) {
-    return false;
+  public NormalMiniCake(final MiniCakeType miniCakeType) {
+    super(miniCakeType);
   }
 }

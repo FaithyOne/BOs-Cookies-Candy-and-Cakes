@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "WMW",
+    "LFE"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "F": {
+      "item": "cookies_candy_and_cakes:mini_cake_mold",
+      "components": {
+        "minecraft:use_remainder": {
+          "id": "cookies_candy_and_cakes:mini_cake_mold"
+        }
+      }
+    },
+    "E": {
+      "item": "minecraft:egg"
+    },
+    "L": {
+      "item": "minecraft:melon_slice"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:mini_melon_cake",
+    "count": 6
+  }
+}

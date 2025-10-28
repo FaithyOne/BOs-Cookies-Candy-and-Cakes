@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:apple_cookie"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.cookie_baker.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.cookie_baker.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:root",
+  "criteria": {
+    "has_cookie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "cookies_candy_and_cakes:cookies"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cookie"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:elder_guardian_cookie_mystic"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.ultimate_cookie_master.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.ultimate_cookie_master.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:cookie_connoisseur",
+  "criteria": {
+    "completed_normal": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "cookies_candy_and_cakes:apple_cookie",
+            "cookies_candy_and_cakes:carrot_cookie",
+            "cookies_candy_and_cakes:glow_berry_cookie",
+            "cookies_candy_and_cakes:melon_cookie",
+            "cookies_candy_and_cakes:pumpkin_cookie",
+            "cookies_candy_and_cakes:sweet_berry_cookie"
+          ]
+        }
+      }
+    },
+    "completed_mystic": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "cookies_candy_and_cakes:apple_cookie_mystic",
+            "cookies_candy_and_cakes:carrot_cookie_mystic",
+            "cookies_candy_and_cakes:glow_berry_cookie_mystic",
+            "cookies_candy_and_cakes:melon_cookie_mystic",
+            "cookies_candy_and_cakes:pumpkin_cookie_mystic",
+            "cookies_candy_and_cakes:sweet_berry_cookie_mystic"
+          ]
+        }
+      }
+    },
+    "completed_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "cookies_candy_and_cakes:apple_cookie_cursed",
+            "cookies_candy_and_cakes:carrot_cookie_cursed",
+            "cookies_candy_and_cakes:glow_berry_cookie_cursed",
+            "cookies_candy_and_cakes:melon_cookie_cursed",
+            "cookies_candy_and_cakes:pumpkin_cookie_cursed",
+            "cookies_candy_and_cakes:sweet_berry_cookie_cursed"
+          ]
+        }
+      }
+    },
+    "completed_special": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "cookies_candy_and_cakes:slime_sugar_cookie",
+            "cookies_candy_and_cakes:creeper_crunch_cookie"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed_normal",
+      "completed_mystic",
+      "completed_cursed",
+      "completed_special"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:pumpkin_head_cookie_jar"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.cookie_jar_collector.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.cookie_jar_collector.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:root",
+  "criteria": {
+    "has_cookie_jar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cookies_candy_and_cakes:pumpkin_head_cookie_jar",
+              "cookies_candy_and_cakes:skeleton_head_cookie_jar"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cookie_jar"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  }
+}

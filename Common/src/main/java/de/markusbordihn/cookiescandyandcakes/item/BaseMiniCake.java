@@ -17,25 +17,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item.variants;
+package de.markusbordihn.cookiescandyandcakes.item;
 
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
+import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import java.util.List;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
-public class NormalCookie extends BaseCookie {
+public abstract class BaseMiniCake extends Item {
 
-  public NormalCookie(final CookieType cookieType) {
-    super(cookieType);
+  protected final MiniCakeType miniCakeType;
+
+  protected BaseMiniCake(MiniCakeType miniCakeType) {
+    super(new Item.Properties().food(buildFoodProperties(miniCakeType)));
+    this.miniCakeType = miniCakeType;
   }
 
-  @Override
-  public Component getName(ItemStack stack) {
-    return Component.translatable(this.getDescriptionId(stack));
+  protected static FoodProperties buildFoodProperties(MiniCakeType miniCakeType) {
+    return new FoodProperties.Builder().nutrition(miniCakeType.getNutrition()).build();
   }
 
   @Override
@@ -46,7 +48,7 @@ public class NormalCookie extends BaseCookie {
       TooltipFlag tooltipFlag) {
     tooltipComponents.add(
         Component.translatable(this.getDescriptionId() + ".desc")
-            .withStyle(ChatFormatting.DARK_GRAY));
+            .withStyle(net.minecraft.ChatFormatting.GRAY));
   }
 
   @Override

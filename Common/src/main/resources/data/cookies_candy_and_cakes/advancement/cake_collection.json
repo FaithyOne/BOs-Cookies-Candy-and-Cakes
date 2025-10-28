@@ -1,0 +1,127 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:mini_chocolate_cake"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.cake_collection.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.cake_collection.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:cake_tasting",
+  "criteria": {
+    "ate_apple_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_apple_cake"
+        }
+      }
+    },
+    "ate_melon_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_melon_cake"
+        }
+      }
+    },
+    "ate_pumpkin_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_pumpkin_cake"
+        }
+      }
+    },
+    "ate_carrot_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_carrot_cake"
+        }
+      }
+    },
+    "ate_beetroot_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_beetroot_cake"
+        }
+      }
+    },
+    "ate_glow_berry_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_glow_berry_cake"
+        }
+      }
+    },
+    "ate_sweet_berry_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_sweet_berry_cake"
+        }
+      }
+    },
+    "ate_chocolate_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_chocolate_cake"
+        }
+      }
+    },
+    "ate_mushroom_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_mushroom_cake"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ate_apple_cake"
+    ],
+    [
+      "ate_melon_cake"
+    ],
+    [
+      "ate_pumpkin_cake"
+    ],
+    [
+      "ate_carrot_cake"
+    ],
+    [
+      "ate_beetroot_cake"
+    ],
+    [
+      "ate_glow_berry_cake"
+    ],
+    [
+      "ate_sweet_berry_cake"
+    ],
+    [
+      "ate_chocolate_cake"
+    ],
+    [
+      "ate_mushroom_cake"
+    ]
+  ],
+  "rewards": {
+    "experience": 30,
+    "loot": [
+      "cookies_candy_and_cakes:advancements/cake_collection"
+    ]
+  }
+}

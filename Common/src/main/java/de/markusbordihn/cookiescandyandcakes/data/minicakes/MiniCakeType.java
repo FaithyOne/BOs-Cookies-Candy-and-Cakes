@@ -17,40 +17,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item.variants;
+package de.markusbordihn.cookiescandyandcakes.data.minicakes;
 
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import java.util.Locale;
 
-public class NormalCookie extends BaseCookie {
+public enum MiniCakeType {
+  MINI_APPLE_CAKE(3),
+  MINI_MELON_CAKE(3),
+  MINI_PUMPKIN_CAKE(3),
+  MINI_CARROT_CAKE(3),
+  MINI_BEETROOT_CAKE(3),
+  MINI_GLOW_BERRY_CAKE(3),
+  MINI_SWEET_BERRY_CAKE(3),
+  MINI_CHOCOLATE_CAKE(3),
+  MINI_MUSHROOM_CAKE(3);
 
-  public NormalCookie(final CookieType cookieType) {
-    super(cookieType);
+  private final int nutrition;
+  private final String id;
+
+  MiniCakeType(final int nutrition) {
+    this.nutrition = nutrition;
+    this.id = name().toLowerCase(Locale.ROOT);
   }
 
-  @Override
-  public Component getName(ItemStack stack) {
-    return Component.translatable(this.getDescriptionId(stack));
+  public String getId() {
+    return id;
   }
 
-  @Override
-  public void appendHoverText(
-      ItemStack itemStack,
-      TooltipContext context,
-      List<Component> tooltipComponents,
-      TooltipFlag tooltipFlag) {
-    tooltipComponents.add(
-        Component.translatable(this.getDescriptionId() + ".desc")
-            .withStyle(ChatFormatting.DARK_GRAY));
-  }
-
-  @Override
-  public boolean isFoil(ItemStack itemStack) {
-    return false;
+  public int getNutrition() {
+    return nutrition;
   }
 }

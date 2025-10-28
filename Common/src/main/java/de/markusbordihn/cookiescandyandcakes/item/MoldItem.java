@@ -17,25 +17,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item.variants;
+package de.markusbordihn.cookiescandyandcakes.item;
 
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
 import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
-public class NormalCookie extends BaseCookie {
+public class MoldItem extends Item {
 
-  public NormalCookie(final CookieType cookieType) {
-    super(cookieType);
-  }
-
-  @Override
-  public Component getName(ItemStack stack) {
-    return Component.translatable(this.getDescriptionId(stack));
+  public MoldItem() {
+    super(new Item.Properties().stacksTo(1));
   }
 
   @Override
@@ -46,11 +40,6 @@ public class NormalCookie extends BaseCookie {
       TooltipFlag tooltipFlag) {
     tooltipComponents.add(
         Component.translatable(this.getDescriptionId() + ".desc")
-            .withStyle(ChatFormatting.DARK_GRAY));
-  }
-
-  @Override
-  public boolean isFoil(ItemStack itemStack) {
-    return false;
+            .withStyle(ChatFormatting.GRAY));
   }
 }

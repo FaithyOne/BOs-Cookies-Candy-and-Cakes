@@ -35,7 +35,10 @@ public interface IdentifiableCookie {
 
   default Component getUnidentifiedName() {
     if (ClientCookieData.hasIdentified(getCookieType())) {
-      return Component.translatable(getDescriptionId());
+      ChatFormatting nameColor = getCookieType().getVariant() == CookieType.CookieVariant.MYSTIC
+          ? ChatFormatting.LIGHT_PURPLE
+          : ChatFormatting.DARK_RED;
+      return Component.translatable(getDescriptionId()).withStyle(nameColor);
     }
     return Component.translatable(getUnidentifiedKey())
         .withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withObfuscated(true));
@@ -43,7 +46,8 @@ public interface IdentifiableCookie {
 
   default Component getIdentifiedTooltip() {
     if (ClientCookieData.hasIdentified(getCookieType())) {
-      return Component.translatable(getDescriptionId() + ".desc");
+      return Component.translatable(getDescriptionId() + ".desc")
+          .withStyle(ChatFormatting.DARK_GRAY);
     }
     return Component.translatable(getUnidentifiedDescKey())
         .withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withObfuscated(true));

@@ -1,0 +1,51 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:mini_apple_cake"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.first_mini_cake.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.first_mini_cake.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:mini_pastry_chef",
+  "criteria": {
+    "has_mini_cake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cookies_candy_and_cakes:mini_apple_cake",
+              "cookies_candy_and_cakes:mini_melon_cake",
+              "cookies_candy_and_cakes:mini_pumpkin_cake",
+              "cookies_candy_and_cakes:mini_carrot_cake",
+              "cookies_candy_and_cakes:mini_beetroot_cake",
+              "cookies_candy_and_cakes:mini_glow_berry_cake",
+              "cookies_candy_and_cakes:mini_sweet_berry_cake",
+              "cookies_candy_and_cakes:mini_chocolate_cake",
+              "cookies_candy_and_cakes:mini_mushroom_cake"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mini_cake"
+    ]
+  ],
+  "rewards": {
+    "experience": 10,
+    "loot": [
+      "cookies_candy_and_cakes:advancements/first_mini_cake"
+    ]
+  }
+}
