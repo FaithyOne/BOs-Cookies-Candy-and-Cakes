@@ -46,7 +46,15 @@ public enum CookieType {
   SWEET_BERRY_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 1),
   SLIME_SUGAR_COOKIE(CookieVariant.NORMAL, null, 0),
   SLIME_SUGAR_COOKIE_MYSTIC(CookieVariant.MYSTIC, MobEffects.JUMP, 1),
-  SLIME_SUGAR_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 0);
+  SLIME_SUGAR_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 0),
+  CREEPER_CRUNCH_COOKIE(CookieVariant.NORMAL, null, 0),
+  CREEPER_CRUNCH_COOKIE_MYSTIC(CookieVariant.MYSTIC, MobEffects.MOVEMENT_SPEED, 0),
+  CREEPER_CRUNCH_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.CONFUSION, 0) {
+    @Override
+    public int getEffectDuration() {
+      return 60; // 3 seconds (60 ticks) for nausea effect
+    }
+  };
 
   private final CookieVariant variant;
   private final Holder<MobEffect> effect;

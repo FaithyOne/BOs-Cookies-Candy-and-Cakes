@@ -55,6 +55,12 @@ public class ModItems {
       createCookieItem(CookieType.SLIME_SUGAR_COOKIE_MYSTIC);
   public static final Item SLIME_SUGAR_COOKIE_CURSED =
       createCookieItem(CookieType.SLIME_SUGAR_COOKIE_CURSED);
+  public static final Item CREEPER_CRUNCH_COOKIE =
+      createCookieItem(CookieType.CREEPER_CRUNCH_COOKIE);
+  public static final Item CREEPER_CRUNCH_COOKIE_MYSTIC =
+      createCookieItem(CookieType.CREEPER_CRUNCH_COOKIE_MYSTIC);
+  public static final Item CREEPER_CRUNCH_COOKIE_CURSED =
+      createCookieItem(CookieType.CREEPER_CRUNCH_COOKIE_CURSED);
 
   private ModItems() {}
 

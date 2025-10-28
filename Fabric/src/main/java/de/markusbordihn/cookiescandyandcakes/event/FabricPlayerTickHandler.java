@@ -30,7 +30,7 @@ public class FabricPlayerTickHandler {
     ServerTickEvents.END_SERVER_TICK.register(
         server -> {
           for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-            PlayerTickHandler.onPlayerTick(player);
+            PlayerTickHandler.onServerPlayerTick(player);
           }
         });
   }

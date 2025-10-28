@@ -17,23 +17,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.event;
+package de.markusbordihn.cookiescandyandcakes.effect;
 
-import de.markusbordihn.cookiescandyandcakes.Constants;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-@EventBusSubscriber(modid = Constants.MOD_ID)
-public class NeoForgePlayerTickHandler {
+public interface ServerEffectInterface {
 
-  private NeoForgePlayerTickHandler() {}
+  int getDuration();
 
-  @SubscribeEvent
-  public static void onPlayerTick(PlayerTickEvent.Post event) {
-    if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-      PlayerTickHandler.onServerPlayerTick(serverPlayer);
-    }
-  }
+  void tick(final ServerPlayer serverPlayer, final int elapsedTicks);
+
+  void onStart(final ServerPlayer serverPlayer);
+
+  void onEnd(final ServerPlayer serverPlayer);
 }

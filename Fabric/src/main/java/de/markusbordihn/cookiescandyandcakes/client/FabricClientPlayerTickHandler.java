@@ -17,17 +17,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.effect;
+package de.markusbordihn.cookiescandyandcakes.client;
 
-import net.minecraft.server.level.ServerPlayer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
-public interface CookieEffectInterface {
+public class FabricClientPlayerTickHandler {
 
-  int getDuration();
+  private FabricClientPlayerTickHandler() {}
 
-  void tick(final ServerPlayer serverPlayer, final int elapsedTicks);
-
-  void onStart(final ServerPlayer serverPlayer);
-
-  void onEnd(final ServerPlayer serverPlayer);
+  public static void register() {
+    ClientTickEvents.END_CLIENT_TICK.register(client -> ClientPlayerTickHandler.onClientTick());
+  }
 }

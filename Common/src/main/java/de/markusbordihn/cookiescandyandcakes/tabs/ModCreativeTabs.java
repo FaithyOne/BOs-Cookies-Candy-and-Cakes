@@ -40,6 +40,7 @@ public final class ModCreativeTabs {
             (parameters, output) -> {
               output.accept(ModItems.APPLE_COOKIE);
               output.accept(ModItems.CARROT_COOKIE);
+              output.accept(ModItems.CREEPER_CRUNCH_COOKIE);
               output.accept(ModItems.GLOW_BERRY_COOKIE);
               output.accept(ModItems.MELON_COOKIE);
               output.accept(ModItems.PUMPKIN_COOKIE);
@@ -59,6 +60,8 @@ public final class ModCreativeTabs {
               output.accept(ModItems.APPLE_COOKIE_CURSED);
               output.accept(ModItems.CARROT_COOKIE_MYSTIC);
               output.accept(ModItems.CARROT_COOKIE_CURSED);
+              output.accept(ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC);
+              output.accept(ModItems.CREEPER_CRUNCH_COOKIE_CURSED);
               output.accept(ModItems.GLOW_BERRY_COOKIE_MYSTIC);
               output.accept(ModItems.GLOW_BERRY_COOKIE_CURSED);
               output.accept(ModItems.MELON_COOKIE_MYSTIC);

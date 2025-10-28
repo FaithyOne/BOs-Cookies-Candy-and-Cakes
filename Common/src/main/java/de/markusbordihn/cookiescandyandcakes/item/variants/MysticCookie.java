@@ -21,10 +21,12 @@ package de.markusbordihn.cookiescandyandcakes.item.variants;
 
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieSoundType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.effect.CookieEffectManager;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
 import de.markusbordihn.cookiescandyandcakes.item.base.BaseSpecialCookie;
 import de.markusbordihn.cookiescandyandcakes.item.base.IdentifiableCookie;
 import java.util.List;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -51,13 +53,19 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
     onConsume(livingEntity);
 
+    // Apply cookie effects
     if (!level.isClientSide) {
       spawnParticles(level, livingEntity);
-
       if (livingEntity instanceof ServerPlayer serverPlayer) {
-        CookieEffectManager.applyEffect(serverPlayer, cookieType);
+        CookieServerEffectManager.applyCookieEffect(serverPlayer, cookieType);
       }
+    } else {
+      if (livingEntity instanceof LocalPlayer localPlayer) {
+        CookieClientEffectManager.applyCookieEffect(localPlayer, cookieType);
+      }
+    }
 
+    if (!level.isClientSide) {
       CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
 
       if (!effect.hasEffects()) {

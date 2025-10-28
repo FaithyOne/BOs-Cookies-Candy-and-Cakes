@@ -74,6 +74,13 @@ public class NeoForgeModItems {
         CookieType.SLIME_SUGAR_COOKIE_MYSTIC.getId(), () -> ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
     ITEMS.register(
         CookieType.SLIME_SUGAR_COOKIE_CURSED.getId(), () -> ModItems.SLIME_SUGAR_COOKIE_CURSED);
+    ITEMS.register(CookieType.CREEPER_CRUNCH_COOKIE.getId(), () -> ModItems.CREEPER_CRUNCH_COOKIE);
+    ITEMS.register(
+        CookieType.CREEPER_CRUNCH_COOKIE_MYSTIC.getId(),
+        () -> ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC);
+    ITEMS.register(
+        CookieType.CREEPER_CRUNCH_COOKIE_CURSED.getId(),
+        () -> ModItems.CREEPER_CRUNCH_COOKIE_CURSED);
   }
 
   private NeoForgeModItems() {}

@@ -20,6 +20,7 @@
 package de.markusbordihn.cookiescandyandcakes;
 
 import de.markusbordihn.cookiescandyandcakes.client.ClientScreens;
+import de.markusbordihn.cookiescandyandcakes.client.FabricClientPlayerTickHandler;
 import net.fabricmc.api.ClientModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,5 +34,6 @@ public class CookiesCandyAndCakesClient implements ClientModInitializer {
     log.info("Initializing {} (Fabric-Client) ...", Constants.MOD_NAME);
 
     ClientScreens.registerScreens();
+    FabricClientPlayerTickHandler.register();
   }
 }

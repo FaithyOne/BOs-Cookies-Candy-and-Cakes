@@ -19,47 +19,34 @@
 
 package de.markusbordihn.cookiescandyandcakes.effect;
 
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
 
-public class CookieEffectManager {
+public class ServerEffectManager {
 
-  private static final Map<CookieType, CookieEffectInterface> SPECIAL_EFFECTS = new HashMap<>();
-  private static final Map<UUID, ActiveEffect> activeEffects = new HashMap<>();
+  private final Map<UUID, ActiveEffect> activeEffects = new HashMap<>();
 
-  static {
-    SPECIAL_EFFECTS.put(CookieType.SLIME_SUGAR_COOKIE_MYSTIC, new SlimeSugarCookieMysticEffect());
-  }
-
-  private CookieEffectManager() {}
-
-  public static void applyEffect(final ServerPlayer player, final CookieType cookieType) {
-    if (player == null || cookieType == null) {
+  public void applyEffect(final ServerPlayer player, final ServerEffectInterface effect) {
+    if (player == null || effect == null) {
       return;
     }
 
-    CookieEffectInterface effect = SPECIAL_EFFECTS.get(cookieType);
-    if (effect != null) {
-      UUID playerUUID = player.getUUID();
-      activeEffects.put(playerUUID, new ActiveEffect(effect, 0, effect.getDuration()));
-      effect.onStart(player);
-    }
+    UUID playerUUID = player.getUUID();
+    activeEffects.put(playerUUID, new ActiveEffect(effect, 0, effect.getDuration()));
+    effect.onStart(player);
   }
 
-  public static void tick(final ServerPlayer player) {
+  public void tick(final ServerPlayer player) {
     if (player == null) {
       return;
     }
 
     UUID playerUUID = player.getUUID();
     ActiveEffect activeEffect = activeEffects.get(playerUUID);
-
     if (activeEffect != null) {
       activeEffect.tick(player);
-
       if (activeEffect.isExpired()) {
         activeEffect.effect.onEnd(player);
         activeEffects.remove(playerUUID);
@@ -67,13 +54,13 @@ public class CookieEffectManager {
     }
   }
 
-  public static void tickAll(final Iterable<ServerPlayer> players) {
+  public void tickAll(final Iterable<ServerPlayer> players) {
     for (ServerPlayer player : players) {
       tick(player);
     }
   }
 
-  public static void removeEffect(final ServerPlayer player) {
+  public void removeEffect(final ServerPlayer player) {
     if (player != null) {
       UUID playerUUID = player.getUUID();
       ActiveEffect activeEffect = activeEffects.remove(playerUUID);
@@ -83,16 +70,20 @@ public class CookieEffectManager {
     }
   }
 
-  public static void clearAll() {
+  public void clearAll() {
     activeEffects.clear();
   }
 
+  public boolean hasActiveEffect(final ServerPlayer player) {
+    return player != null && activeEffects.containsKey(player.getUUID());
+  }
+
   static class ActiveEffect {
-    private final CookieEffectInterface effect;
+    private final ServerEffectInterface effect;
     private final int duration;
     private int elapsedTicks;
 
-    public ActiveEffect(CookieEffectInterface effect, int elapsedTicks, int duration) {
+    public ActiveEffect(ServerEffectInterface effect, int elapsedTicks, int duration) {
       this.effect = effect;
       this.elapsedTicks = elapsedTicks;
       this.duration = duration;

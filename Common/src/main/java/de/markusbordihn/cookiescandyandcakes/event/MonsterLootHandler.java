@@ -64,7 +64,13 @@ public class MonsterLootHandler {
         () -> MonsterLootConfig.slimeSugarCookieMysticDropWeight),
     new ItemWeight(
         ModItems.SLIME_SUGAR_COOKIE_CURSED,
-        () -> MonsterLootConfig.slimeSugarCookieCursedDropWeight)
+        () -> MonsterLootConfig.slimeSugarCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC,
+        () -> MonsterLootConfig.creeperCrunchCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.CREEPER_CRUNCH_COOKIE_CURSED,
+        () -> MonsterLootConfig.creeperCrunchCookieCursedDropWeight)
   };
 
   private MonsterLootHandler() {}

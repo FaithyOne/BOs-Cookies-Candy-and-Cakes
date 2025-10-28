@@ -17,9 +17,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.effect;
+package de.markusbordihn.cookiescandyandcakes.effect.cookie.server;
 
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.effect.ServerEffectInterface;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,7 +31,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 
-public class SlimeSugarCookieMysticEffect implements CookieEffectInterface {
+public class SlimeSugarCookieMysticEffect implements ServerEffectInterface {
 
   private static final int SLIMEBALL_DROP_INTERVAL = 40;
   private static final int SOUND_INTERVAL = 20;

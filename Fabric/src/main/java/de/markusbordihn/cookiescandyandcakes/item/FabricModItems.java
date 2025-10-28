@@ -66,6 +66,9 @@ public class FabricModItems {
     registerCookie(CookieType.SLIME_SUGAR_COOKIE, ModItems.SLIME_SUGAR_COOKIE);
     registerCookie(CookieType.SLIME_SUGAR_COOKIE_MYSTIC, ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
     registerCookie(CookieType.SLIME_SUGAR_COOKIE_CURSED, ModItems.SLIME_SUGAR_COOKIE_CURSED);
+    registerCookie(CookieType.CREEPER_CRUNCH_COOKIE, ModItems.CREEPER_CRUNCH_COOKIE);
+    registerCookie(CookieType.CREEPER_CRUNCH_COOKIE_MYSTIC, ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC);
+    registerCookie(CookieType.CREEPER_CRUNCH_COOKIE_CURSED, ModItems.CREEPER_CRUNCH_COOKIE_CURSED);
   }
 
   private FabricModItems() {}

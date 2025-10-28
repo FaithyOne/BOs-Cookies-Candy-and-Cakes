@@ -11,6 +11,8 @@ For the full changelog, please go to the [GitHub History][history] instead.
 
 - Fixed registration issues with specific edge cases.
 - Added basic pumpkin head cookie jar to store cookies.
+- Added Creeper Crunch Cookie (normal, mystic and cursed variants).
+- Improved Effect Manager for server and client side effects.
 - Refactored block, block item, item, menu and screen registration.
 
 ### v0.2.0

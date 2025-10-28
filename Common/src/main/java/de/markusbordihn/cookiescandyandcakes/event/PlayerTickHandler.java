@@ -19,16 +19,29 @@
 
 package de.markusbordihn.cookiescandyandcakes.event;
 
-import de.markusbordihn.cookiescandyandcakes.effect.CookieEffectManager;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
 
 public class PlayerTickHandler {
 
   private PlayerTickHandler() {}
 
-  public static void onPlayerTick(ServerPlayer player) {
+  public static void onServerPlayerTick(ServerPlayer player) {
     if (player != null && !player.level().isClientSide) {
-      CookieEffectManager.tick(player);
+      CookieServerEffectManager.tickPlayer(player);
     }
+  }
+
+  public static void onClientPlayerTick(LocalPlayer player) {
+    if (player != null && player.level().isClientSide) {
+      CookieClientEffectManager.tickPlayer(player);
+    }
+  }
+
+  @Deprecated
+  public static void onPlayerTick(ServerPlayer player) {
+    onServerPlayerTick(player);
   }
 }
