@@ -40,7 +40,8 @@ public class CookieJarMenu extends AbstractContainerMenu {
     this(containerId, playerInventory, new SimpleContainer(CookieJarData.CONTAINER_SIZE));
   }
 
-  public CookieJarMenu(int containerId, Inventory playerInventory, RegistryFriendlyByteBuf buf) {
+  public CookieJarMenu(
+      int containerId, Inventory playerInventory, RegistryFriendlyByteBuf ignoredBuf) {
     this(containerId, playerInventory, new SimpleContainer(CookieJarData.CONTAINER_SIZE));
   }
 
@@ -88,28 +89,43 @@ public class CookieJarMenu extends AbstractContainerMenu {
       ItemStack stack = slot.getItem();
       result = stack.copy();
 
-      if (index < CookieJarData.CONTAINER_SIZE) {
-        if (!moveItemStackTo(stack, CookieJarData.CONTAINER_SIZE, slots.size(), true)) {
+      if (isContainerSlot(index)) {
+        if (!tryMoveToPlayerInventory(stack)) {
           return ItemStack.EMPTY;
         }
       } else {
-        if (stack.is(ModTags.COOKIE_JAR_ITEMS)) {
-          if (!moveItemStackTo(stack, 0, CookieJarData.CONTAINER_SIZE, false)) {
-            return ItemStack.EMPTY;
-          }
-        } else {
+        if (!tryMoveToContainer(stack)) {
           return ItemStack.EMPTY;
         }
       }
 
-      if (stack.isEmpty()) {
-        slot.set(ItemStack.EMPTY);
-      } else {
-        slot.setChanged();
-      }
+      updateSlotAfterMove(slot, stack);
     }
 
     return result;
+  }
+
+  private boolean isContainerSlot(int index) {
+    return index < CookieJarData.CONTAINER_SIZE;
+  }
+
+  private boolean tryMoveToPlayerInventory(ItemStack stack) {
+    return moveItemStackTo(stack, CookieJarData.CONTAINER_SIZE, slots.size(), true);
+  }
+
+  private boolean tryMoveToContainer(ItemStack stack) {
+    if (stack.is(ModTags.COOKIE_JAR_ITEMS)) {
+      return moveItemStackTo(stack, 0, CookieJarData.CONTAINER_SIZE, false);
+    }
+    return false;
+  }
+
+  private void updateSlotAfterMove(Slot slot, ItemStack stack) {
+    if (stack.isEmpty()) {
+      slot.set(ItemStack.EMPTY);
+    } else {
+      slot.setChanged();
+    }
   }
 
   @Override

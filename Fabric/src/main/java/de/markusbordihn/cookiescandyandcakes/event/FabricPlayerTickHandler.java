@@ -19,7 +19,9 @@
 
 package de.markusbordihn.cookiescandyandcakes.event;
 
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.level.ServerPlayer;
 
 public class FabricPlayerTickHandler {
@@ -33,5 +35,8 @@ public class FabricPlayerTickHandler {
             PlayerTickHandler.onServerPlayerTick(player);
           }
         });
+
+    ServerPlayConnectionEvents.DISCONNECT.register(
+        (handler, server) -> CookieServerEffectManager.removeCookieEffect(handler.getPlayer()));
   }
 }

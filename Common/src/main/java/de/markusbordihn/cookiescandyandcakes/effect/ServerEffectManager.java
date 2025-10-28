@@ -19,14 +19,14 @@
 
 package de.markusbordihn.cookiescandyandcakes.effect;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.server.level.ServerPlayer;
 
 public class ServerEffectManager {
 
-  private final Map<UUID, ActiveEffect> activeEffects = new HashMap<>();
+  private final Map<UUID, ActiveEffect> activeEffects = new ConcurrentHashMap<>();
 
   public void applyEffect(final ServerPlayer player, final ServerEffectInterface effect) {
     if (player == null || effect == null) {

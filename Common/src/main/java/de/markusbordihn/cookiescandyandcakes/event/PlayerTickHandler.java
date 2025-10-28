@@ -39,9 +39,4 @@ public class PlayerTickHandler {
       CookieClientEffectManager.tickPlayer(player);
     }
   }
-
-  @Deprecated
-  public static void onPlayerTick(ServerPlayer player) {
-    onServerPlayerTick(player);
-  }
 }

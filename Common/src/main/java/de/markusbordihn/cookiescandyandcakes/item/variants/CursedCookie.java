@@ -55,8 +55,16 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
   @Override
   public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
     onConsume(livingEntity);
+    applyCookieEffects(level, livingEntity);
 
-    // Apply cookie effects
+    if (!level.isClientSide) {
+      applySpecialEffects(level, livingEntity);
+    }
+
+    return super.finishUsingItem(stack, level, livingEntity);
+  }
+
+  private void applyCookieEffects(Level level, LivingEntity livingEntity) {
     if (!level.isClientSide) {
       spawnParticles(level, livingEntity);
       if (livingEntity instanceof ServerPlayer serverPlayer) {
@@ -67,46 +75,64 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
         CookieClientEffectManager.applyCookieEffect(localPlayer, cookieType);
       }
     }
+  }
 
-    if (!level.isClientSide) {
-      CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
-
-      if (!effect.hasEffects()) {
-        return super.finishUsingItem(stack, level, livingEntity);
-      }
-
-      if (level.random.nextFloat() < effect.lightningChance()) {
-        LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
-        if (lightning != null) {
-          lightning.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
-          lightning.setVisualOnly(true);
-          level.addFreshEntity(lightning);
-        }
-      }
-
-      if (effect.enableSounds()) {
-        SoundEvent sound = CookieSoundType.getCursedSound(effect.cursedSoundType());
-        if (sound != null) {
-          level.playSound(
-              null,
-              livingEntity.getX(),
-              livingEntity.getY(),
-              livingEntity.getZ(),
-              sound,
-              SoundSource.PLAYERS,
-              effect.soundVolume(),
-              CookieSoundType.getPitch(effect.cursedSoundType(), level.random.nextFloat()));
-        }
-      }
-
-      if (livingEntity instanceof Player player && effect.darknessEffectDuration() > 0) {
-        player.addEffect(
-            new MobEffectInstance(
-                MobEffects.DARKNESS, effect.darknessEffectDuration(), 0, false, false, false));
-      }
+  private void applySpecialEffects(Level level, LivingEntity livingEntity) {
+    CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
+    if (!effect.hasEffects()) {
+      return;
     }
 
-    return super.finishUsingItem(stack, level, livingEntity);
+    spawnLightningIfNeeded(level, livingEntity, effect);
+    playSoundIfEnabled(level, livingEntity, effect);
+    applyDarknessIfNeeded(livingEntity, effect);
+  }
+
+  private void spawnLightningIfNeeded(
+      Level level, LivingEntity livingEntity, CookieType.SpecialCookieEffect effect) {
+    if (level.random.nextFloat() < effect.lightningChance()) {
+      LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
+      if (lightning == null) {
+        return;
+      }
+      lightning.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
+      lightning.setVisualOnly(true);
+      level.addFreshEntity(lightning);
+    }
+  }
+
+  private void playSoundIfEnabled(
+      Level level, LivingEntity livingEntity, CookieType.SpecialCookieEffect effect) {
+    if (!effect.enableSounds()) {
+      return;
+    }
+    playCursedSound(level, livingEntity, effect);
+  }
+
+  private void playCursedSound(
+      Level level, LivingEntity livingEntity, CookieType.SpecialCookieEffect effect) {
+    SoundEvent sound = CookieSoundType.getCursedSound(effect.cursedSoundType());
+    if (sound == null) {
+      return;
+    }
+    level.playSound(
+        null,
+        livingEntity.getX(),
+        livingEntity.getY(),
+        livingEntity.getZ(),
+        sound,
+        SoundSource.PLAYERS,
+        effect.soundVolume(),
+        CookieSoundType.getPitch(effect.cursedSoundType(), level.random.nextFloat()));
+  }
+
+  private void applyDarknessIfNeeded(
+      LivingEntity livingEntity, CookieType.SpecialCookieEffect effect) {
+    if (livingEntity instanceof Player player && effect.darknessEffectDuration() > 0) {
+      player.addEffect(
+          new MobEffectInstance(
+              MobEffects.DARKNESS, effect.darknessEffectDuration(), 0, false, false, false));
+    }
   }
 
   @Override

@@ -19,7 +19,10 @@
 
 package de.markusbordihn.cookiescandyandcakes.client;
 
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+import net.minecraft.client.Minecraft;
 
 public class FabricClientPlayerTickHandler {
 
@@ -27,5 +30,12 @@ public class FabricClientPlayerTickHandler {
 
   public static void register() {
     ClientTickEvents.END_CLIENT_TICK.register(client -> ClientPlayerTickHandler.onClientTick());
+
+    ClientPlayConnectionEvents.DISCONNECT.register(
+        (handler, client) -> {
+          if (Minecraft.getInstance().player != null) {
+            CookieClientEffectManager.removeCookieEffect(Minecraft.getInstance().player);
+          }
+        });
   }
 }

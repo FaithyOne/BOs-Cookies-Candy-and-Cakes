@@ -20,7 +20,10 @@
 package de.markusbordihn.cookiescandyandcakes.client;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -34,6 +37,13 @@ public class ForgeClientPlayerTickHandler {
   public static void onClientTick(TickEvent.ClientTickEvent event) {
     if (event.phase == TickEvent.Phase.END) {
       ClientPlayerTickHandler.onClientTick();
+    }
+  }
+
+  @SubscribeEvent
+  public static void onClientDisconnect(ClientPlayerNetworkEvent.LoggingOut event) {
+    if (Minecraft.getInstance().player != null) {
+      CookieClientEffectManager.removeCookieEffect(Minecraft.getInstance().player);
     }
   }
 }

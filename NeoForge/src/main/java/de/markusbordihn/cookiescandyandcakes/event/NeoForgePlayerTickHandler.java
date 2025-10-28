@@ -20,9 +20,11 @@
 package de.markusbordihn.cookiescandyandcakes.event;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = Constants.MOD_ID)
@@ -34,6 +36,13 @@ public class NeoForgePlayerTickHandler {
   public static void onPlayerTick(PlayerTickEvent.Post event) {
     if (event.getEntity() instanceof ServerPlayer serverPlayer) {
       PlayerTickHandler.onServerPlayerTick(serverPlayer);
+    }
+  }
+
+  @SubscribeEvent
+  public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+    if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+      CookieServerEffectManager.removeCookieEffect(serverPlayer);
     }
   }
 }
