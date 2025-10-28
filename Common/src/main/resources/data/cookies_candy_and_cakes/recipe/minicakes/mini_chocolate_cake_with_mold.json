@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "pattern": [
+    " S ",
+    "WMW",
+    "CFE"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "F": {
+      "item": "cookies_candy_and_cakes:mini_cake_mold",
+      "components": {
+        "minecraft:use_remainder": {
+          "id": "cookies_candy_and_cakes:mini_cake_mold"
+        }
+      }
+    },
+    "E": {
+      "item": "minecraft:egg"
+    },
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    }
+  },
+  "result": {
+    "count": 6,
+    "id": "cookies_candy_and_cakes:mini_chocolate_cake"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:carrot_cookie"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.taste_test.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.taste_test.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:cookie_baker",
+  "criteria": {
+    "ate_apple": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:apple_cookie"
+        }
+      }
+    },
+    "ate_carrot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:carrot_cookie"
+        }
+      }
+    },
+    "ate_glow_berry": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:glow_berry_cookie"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ate_apple"
+    ],
+    [
+      "ate_carrot"
+    ],
+    [
+      "ate_glow_berry"
+    ]
+  ],
+  "rewards": {
+    "experience": 15,
+    "loot": [
+      "cookies_candy_and_cakes:advancements/taste_test"
+    ]
+  }
+}

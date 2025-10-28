@@ -19,9 +19,12 @@
 
 package de.markusbordihn.cookiescandyandcakes.registry;
 
+import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.item.MoldItem;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCookie;
 import de.markusbordihn.cookiescandyandcakes.item.variants.MysticCookie;
+import de.markusbordihn.cookiescandyandcakes.item.variants.NormalMiniCake;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCookie;
 import net.minecraft.world.item.Item;
 
@@ -67,6 +70,16 @@ public class ModItems {
       createCookieItem(CookieType.ELDER_GUARDIAN_COOKIE_MYSTIC);
   public static final Item ELDER_GUARDIAN_COOKIE_CURSED =
       createCookieItem(CookieType.ELDER_GUARDIAN_COOKIE_CURSED);
+  public static final Item MINI_APPLE_CAKE = createMiniCakeItem(MiniCakeType.MINI_APPLE_CAKE);
+  public static final Item MINI_MELON_CAKE = createMiniCakeItem(MiniCakeType.MINI_MELON_CAKE);
+  public static final Item MINI_PUMPKIN_CAKE = createMiniCakeItem(MiniCakeType.MINI_PUMPKIN_CAKE);
+  public static final Item MINI_CARROT_CAKE = createMiniCakeItem(MiniCakeType.MINI_CARROT_CAKE);
+  public static final Item MINI_BEETROOT_CAKE = createMiniCakeItem(MiniCakeType.MINI_BEETROOT_CAKE);
+  public static final Item MINI_GLOW_BERRY_CAKE = createMiniCakeItem(MiniCakeType.MINI_GLOW_BERRY_CAKE);
+  public static final Item MINI_SWEET_BERRY_CAKE = createMiniCakeItem(MiniCakeType.MINI_SWEET_BERRY_CAKE);
+  public static final Item MINI_CHOCOLATE_CAKE = createMiniCakeItem(MiniCakeType.MINI_CHOCOLATE_CAKE);
+  public static final Item MINI_MUSHROOM_CAKE = createMiniCakeItem(MiniCakeType.MINI_MUSHROOM_CAKE);
+  public static final Item MINI_CAKE_MOLD = new MoldItem();
 
   private ModItems() {}
 
@@ -76,5 +89,9 @@ public class ModItems {
       case MYSTIC -> new MysticCookie(cookieType);
       case CURSED -> new CursedCookie(cookieType);
     };
+  }
+
+  private static Item createMiniCakeItem(final MiniCakeType miniCakeType) {
+    return new NormalMiniCake(miniCakeType);
   }
 }

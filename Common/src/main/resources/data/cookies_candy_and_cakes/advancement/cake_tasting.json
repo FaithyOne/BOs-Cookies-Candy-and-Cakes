@@ -1,0 +1,58 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:mini_melon_cake"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.cake_tasting.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.cake_tasting.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:first_mini_cake",
+  "criteria": {
+    "ate_apple_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_apple_cake"
+        }
+      }
+    },
+    "ate_melon_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_melon_cake"
+        }
+      }
+    },
+    "ate_pumpkin_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:mini_pumpkin_cake"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ate_apple_cake"
+    ],
+    [
+      "ate_melon_cake"
+    ],
+    [
+      "ate_pumpkin_cake"
+    ]
+  ],
+  "rewards": {
+    "experience": 15
+  }
+}

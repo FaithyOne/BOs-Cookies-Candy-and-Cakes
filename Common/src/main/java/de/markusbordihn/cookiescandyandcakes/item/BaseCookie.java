@@ -59,7 +59,9 @@ public abstract class BaseCookie extends Item {
       TooltipContext context,
       List<Component> tooltipComponents,
       TooltipFlag tooltipFlag) {
-    tooltipComponents.add(Component.translatable(this.getDescriptionId() + ".desc"));
+    tooltipComponents.add(
+        Component.translatable(this.getDescriptionId() + ".desc")
+            .withStyle(net.minecraft.ChatFormatting.DARK_GRAY));
   }
 
   @Override

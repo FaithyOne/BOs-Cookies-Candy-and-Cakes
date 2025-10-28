@@ -1,0 +1,94 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:glow_berry_cookie_mystic"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.mystic_master.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.mystic_master.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:mystic_discovery",
+  "criteria": {
+    "ate_apple_mystic": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:apple_cookie_mystic"
+        }
+      }
+    },
+    "ate_carrot_mystic": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:carrot_cookie_mystic"
+        }
+      }
+    },
+    "ate_glow_berry_mystic": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:glow_berry_cookie_mystic"
+        }
+      }
+    },
+    "ate_melon_mystic": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:melon_cookie_mystic"
+        }
+      }
+    },
+    "ate_pumpkin_mystic": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:pumpkin_cookie_mystic"
+        }
+      }
+    },
+    "ate_sweet_berry_mystic": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:sweet_berry_cookie_mystic"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ate_apple_mystic"
+    ],
+    [
+      "ate_carrot_mystic"
+    ],
+    [
+      "ate_glow_berry_mystic"
+    ],
+    [
+      "ate_melon_mystic"
+    ],
+    [
+      "ate_pumpkin_mystic"
+    ],
+    [
+      "ate_sweet_berry_mystic"
+    ]
+  ],
+  "rewards": {
+    "experience": 35,
+    "loot": [
+      "cookies_candy_and_cakes:advancements/mystic_master"
+    ]
+  }
+}

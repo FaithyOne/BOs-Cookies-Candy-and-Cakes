@@ -20,6 +20,7 @@
 package de.markusbordihn.cookiescandyandcakes.item;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
 import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
@@ -72,6 +73,19 @@ public class FabricModItems {
     registerCookie(CookieType.ELDER_GUARDIAN_COOKIE, ModItems.ELDER_GUARDIAN_COOKIE);
     registerCookie(CookieType.ELDER_GUARDIAN_COOKIE_MYSTIC, ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC);
     registerCookie(CookieType.ELDER_GUARDIAN_COOKIE_CURSED, ModItems.ELDER_GUARDIAN_COOKIE_CURSED);
+    registerMiniCake(MiniCakeType.MINI_APPLE_CAKE, ModItems.MINI_APPLE_CAKE);
+    registerMiniCake(MiniCakeType.MINI_MELON_CAKE, ModItems.MINI_MELON_CAKE);
+    registerMiniCake(MiniCakeType.MINI_PUMPKIN_CAKE, ModItems.MINI_PUMPKIN_CAKE);
+    registerMiniCake(MiniCakeType.MINI_CARROT_CAKE, ModItems.MINI_CARROT_CAKE);
+    registerMiniCake(MiniCakeType.MINI_BEETROOT_CAKE, ModItems.MINI_BEETROOT_CAKE);
+    registerMiniCake(MiniCakeType.MINI_GLOW_BERRY_CAKE, ModItems.MINI_GLOW_BERRY_CAKE);
+    registerMiniCake(MiniCakeType.MINI_SWEET_BERRY_CAKE, ModItems.MINI_SWEET_BERRY_CAKE);
+    registerMiniCake(MiniCakeType.MINI_CHOCOLATE_CAKE, ModItems.MINI_CHOCOLATE_CAKE);
+    registerMiniCake(MiniCakeType.MINI_MUSHROOM_CAKE, ModItems.MINI_MUSHROOM_CAKE);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "mini_cake_mold"),
+        ModItems.MINI_CAKE_MOLD);
   }
 
   private FabricModItems() {}
@@ -84,6 +98,13 @@ public class FabricModItems {
     Registry.register(
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, cookieType.getId()),
+        item);
+  }
+
+  private static void registerMiniCake(final MiniCakeType miniCakeType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, miniCakeType.getId()),
         item);
   }
 }

@@ -1,0 +1,46 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:cookie"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.root.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "has_vanilla_cookie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cookie"
+          }
+        ]
+      }
+    },
+    "has_mod_cookie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "cookies_candy_and_cakes:cookies"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_vanilla_cookie",
+      "has_mod_cookie"
+    ]
+  ]
+}

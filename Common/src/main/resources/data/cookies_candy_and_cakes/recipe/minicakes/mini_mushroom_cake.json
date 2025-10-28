@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "pattern": [
+    " S ",
+    "WMW",
+    " EM"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "M": [
+      {
+        "item": "minecraft:brown_mushroom"
+      },
+      {
+        "item": "minecraft:red_mushroom"
+      }
+    ],
+    "E": {
+      "item": "minecraft:egg"
+    }
+  },
+  "result": {
+    "count": 3,
+    "id": "cookies_candy_and_cakes:mini_mushroom_cake"
+  }
+}

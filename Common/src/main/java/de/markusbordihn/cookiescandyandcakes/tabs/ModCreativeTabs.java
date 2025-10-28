@@ -47,6 +47,16 @@ public final class ModCreativeTabs {
               output.accept(ModItems.PUMPKIN_COOKIE);
               output.accept(ModItems.SWEET_BERRY_COOKIE);
               output.accept(ModItems.SLIME_SUGAR_COOKIE);
+              output.accept(ModItems.MINI_APPLE_CAKE);
+              output.accept(ModItems.MINI_MELON_CAKE);
+              output.accept(ModItems.MINI_PUMPKIN_CAKE);
+              output.accept(ModItems.MINI_CARROT_CAKE);
+              output.accept(ModItems.MINI_BEETROOT_CAKE);
+              output.accept(ModItems.MINI_GLOW_BERRY_CAKE);
+              output.accept(ModItems.MINI_SWEET_BERRY_CAKE);
+              output.accept(ModItems.MINI_CHOCOLATE_CAKE);
+              output.accept(ModItems.MINI_MUSHROOM_CAKE);
+              output.accept(ModItems.MINI_CAKE_MOLD);
               output.accept(ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR.get());
               output.accept(ModBlockItems.SKELETON_HEAD_COOKIE_JAR.get());
             });

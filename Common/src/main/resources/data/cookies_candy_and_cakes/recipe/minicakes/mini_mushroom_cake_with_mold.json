@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "pattern": [
+    " S ",
+    "WMW",
+    "MFE"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "M": [
+      {
+        "item": "minecraft:brown_mushroom"
+      },
+      {
+        "item": "minecraft:red_mushroom"
+      }
+    ],
+    "F": {
+      "item": "cookies_candy_and_cakes:mini_cake_mold",
+      "components": {
+        "minecraft:use_remainder": {
+          "id": "cookies_candy_and_cakes:mini_cake_mold"
+        }
+      }
+    },
+    "E": {
+      "item": "minecraft:egg"
+    }
+  },
+  "result": {
+    "count": 6,
+    "id": "cookies_candy_and_cakes:mini_mushroom_cake"
+  }
+}

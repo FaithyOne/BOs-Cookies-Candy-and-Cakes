@@ -1,0 +1,91 @@
+{
+  "display": {
+    "icon": {
+      "id": "cookies_candy_and_cakes:pumpkin_cookie_cursed"
+    },
+    "title": {
+      "translate": "advancement.cookies_candy_and_cakes.brave_soul.title"
+    },
+    "description": {
+      "translate": "advancement.cookies_candy_and_cakes.brave_soul.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "cookies_candy_and_cakes:cursed_curiosity",
+  "criteria": {
+    "ate_apple_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:apple_cookie_cursed"
+        }
+      }
+    },
+    "ate_carrot_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:carrot_cookie_cursed"
+        }
+      }
+    },
+    "ate_glow_berry_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:glow_berry_cookie_cursed"
+        }
+      }
+    },
+    "ate_melon_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:melon_cookie_cursed"
+        }
+      }
+    },
+    "ate_pumpkin_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:pumpkin_cookie_cursed"
+        }
+      }
+    },
+    "ate_sweet_berry_cursed": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "cookies_candy_and_cakes:sweet_berry_cookie_cursed"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ate_apple_cursed"
+    ],
+    [
+      "ate_carrot_cursed"
+    ],
+    [
+      "ate_glow_berry_cursed"
+    ],
+    [
+      "ate_melon_cursed"
+    ],
+    [
+      "ate_pumpkin_cursed"
+    ],
+    [
+      "ate_sweet_berry_cursed"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}
