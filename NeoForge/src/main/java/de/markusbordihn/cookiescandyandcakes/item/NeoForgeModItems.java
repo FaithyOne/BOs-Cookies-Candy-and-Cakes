@@ -81,11 +81,18 @@ public class NeoForgeModItems {
     ITEMS.register(
         CookieType.CREEPER_CRUNCH_COOKIE_CURSED.getId(),
         () -> ModItems.CREEPER_CRUNCH_COOKIE_CURSED);
+    ITEMS.register(CookieType.ELDER_GUARDIAN_COOKIE.getId(), () -> ModItems.ELDER_GUARDIAN_COOKIE);
+    ITEMS.register(
+        CookieType.ELDER_GUARDIAN_COOKIE_MYSTIC.getId(),
+        () -> ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC);
+    ITEMS.register(
+        CookieType.ELDER_GUARDIAN_COOKIE_CURSED.getId(),
+        () -> ModItems.ELDER_GUARDIAN_COOKIE_CURSED);
   }
 
   private NeoForgeModItems() {}
 
-  public static void register(IEventBus eventBus) {
+  public static void register(final IEventBus eventBus) {
     ITEMS.register(eventBus);
     CREATIVE_MODE_TABS.register(eventBus);
   }

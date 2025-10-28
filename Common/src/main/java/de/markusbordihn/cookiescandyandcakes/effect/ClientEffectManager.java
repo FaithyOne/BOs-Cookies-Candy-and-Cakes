@@ -33,7 +33,13 @@ public class ClientEffectManager {
       return;
     }
 
+    // Remove any existing effect first to clean up properly
     UUID playerUUID = player.getUUID();
+    ActiveEffect existingEffect = activeEffects.get(playerUUID);
+    if (existingEffect != null) {
+      existingEffect.effect.onEnd(player);
+    }
+
     activeEffects.put(playerUUID, new ActiveEffect(effect, 0, effect.getDuration()));
     effect.onStart(player);
   }
@@ -43,6 +49,7 @@ public class ClientEffectManager {
       return;
     }
 
+    // Tick active effect
     UUID playerUUID = player.getUUID();
     ActiveEffect activeEffect = activeEffects.get(playerUUID);
     if (activeEffect != null) {

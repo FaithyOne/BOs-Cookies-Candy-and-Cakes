@@ -21,6 +21,7 @@ package de.markusbordihn.cookiescandyandcakes.item;
 
 import de.markusbordihn.cookiescandyandcakes.block.FabricModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
+import de.markusbordihn.cookiescandyandcakes.block.SkeletonHeadCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.registry.ModBlockItems;
 import java.util.function.Supplier;
 import net.minecraft.core.Registry;
@@ -38,10 +39,15 @@ public class FabricModBlockItems {
             PumpkinHeadCookieJarBlock.ID,
             () ->
                 new CookieJarItem(FabricModBlocks.PUMPKIN_HEAD_COOKIE_JAR, new Item.Properties()));
+    ModBlockItems.SKELETON_HEAD_COOKIE_JAR =
+        registerBlockItem(
+            SkeletonHeadCookieJarBlock.ID,
+            () ->
+                new CookieJarItem(FabricModBlocks.SKELETON_HEAD_COOKIE_JAR, new Item.Properties()));
   }
 
   private static Supplier<BlockItem> registerBlockItem(
-      String name, Supplier<BlockItem> blockItemSupplier) {
+      final String name, final Supplier<BlockItem> blockItemSupplier) {
     BlockItem blockItem = blockItemSupplier.get();
     Registry.register(BuiltInRegistries.ITEM, ModBlockItems.getBlockItemId(name), blockItem);
     return () -> blockItem;

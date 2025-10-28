@@ -52,7 +52,15 @@ public enum CookieType {
   CREEPER_CRUNCH_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.CONFUSION, 0) {
     @Override
     public int getEffectDuration() {
-      return 60; // 3 seconds (60 ticks) for nausea effect
+      return 80;
+    }
+  },
+  ELDER_GUARDIAN_COOKIE(CookieVariant.NORMAL, null, 0),
+  ELDER_GUARDIAN_COOKIE_MYSTIC(CookieVariant.MYSTIC, MobEffects.WATER_BREATHING, 0),
+  ELDER_GUARDIAN_COOKIE_CURSED(CookieVariant.CURSED, MobEffects.DIG_SLOWDOWN, 2) {
+    @Override
+    public int getEffectDuration() {
+      return 1200;
     }
   };
 
@@ -61,7 +69,7 @@ public enum CookieType {
   private final int amplifier;
   private final String id;
 
-  CookieType(CookieVariant variant, Holder<MobEffect> effect, int amplifier) {
+  CookieType(final CookieVariant variant, final Holder<MobEffect> effect, final int amplifier) {
     this.variant = variant;
     this.effect = effect;
     this.amplifier = amplifier;

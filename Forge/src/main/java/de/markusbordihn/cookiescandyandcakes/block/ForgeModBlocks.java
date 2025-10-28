@@ -35,9 +35,12 @@ public class ForgeModBlocks {
   public static final RegistryObject<Block> PUMPKIN_HEAD_COOKIE_JAR =
       BLOCKS.register(PumpkinHeadCookieJarBlock.ID, () -> ModBlocks.PUMPKIN_HEAD_COOKIE_JAR);
 
+  public static final RegistryObject<Block> SKELETON_HEAD_COOKIE_JAR =
+      BLOCKS.register(SkeletonHeadCookieJarBlock.ID, () -> ModBlocks.SKELETON_HEAD_COOKIE_JAR);
+
   private ForgeModBlocks() {}
 
-  public static void register(IEventBus eventBus) {
+  public static void register(final IEventBus eventBus) {
     BLOCKS.register(eventBus);
   }
 }

@@ -22,6 +22,7 @@ package de.markusbordihn.cookiescandyandcakes.item;
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.block.ForgeModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
+import de.markusbordihn.cookiescandyandcakes.block.SkeletonHeadCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.registry.ModBlockItems;
 import java.util.function.Supplier;
 import net.minecraft.world.item.BlockItem;
@@ -37,7 +38,7 @@ public class ForgeModBlockItems {
 
   private ForgeModBlockItems() {}
 
-  public static void register(IEventBus eventBus) {
+  public static void register(final IEventBus eventBus) {
     BLOCK_ITEMS.register(eventBus);
     ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR =
         registerBlockItem(
@@ -45,10 +46,16 @@ public class ForgeModBlockItems {
             () ->
                 new CookieJarItem(
                     ForgeModBlocks.PUMPKIN_HEAD_COOKIE_JAR.get(), new Item.Properties()));
+    ModBlockItems.SKELETON_HEAD_COOKIE_JAR =
+        registerBlockItem(
+            SkeletonHeadCookieJarBlock.ID,
+            () ->
+                new CookieJarItem(
+                    ForgeModBlocks.SKELETON_HEAD_COOKIE_JAR.get(), new Item.Properties()));
   }
 
   private static Supplier<BlockItem> registerBlockItem(
-      String name, Supplier<BlockItem> blockItemSupplier) {
+      final String name, final Supplier<BlockItem> blockItemSupplier) {
     return BLOCK_ITEMS.register(name, blockItemSupplier);
   }
 }

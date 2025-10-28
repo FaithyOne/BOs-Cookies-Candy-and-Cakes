@@ -69,6 +69,9 @@ public class FabricModItems {
     registerCookie(CookieType.CREEPER_CRUNCH_COOKIE, ModItems.CREEPER_CRUNCH_COOKIE);
     registerCookie(CookieType.CREEPER_CRUNCH_COOKIE_MYSTIC, ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC);
     registerCookie(CookieType.CREEPER_CRUNCH_COOKIE_CURSED, ModItems.CREEPER_CRUNCH_COOKIE_CURSED);
+    registerCookie(CookieType.ELDER_GUARDIAN_COOKIE, ModItems.ELDER_GUARDIAN_COOKIE);
+    registerCookie(CookieType.ELDER_GUARDIAN_COOKIE_MYSTIC, ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC);
+    registerCookie(CookieType.ELDER_GUARDIAN_COOKIE_CURSED, ModItems.ELDER_GUARDIAN_COOKIE_CURSED);
   }
 
   private FabricModItems() {}
@@ -77,7 +80,7 @@ public class FabricModItems {
     // Items are registered in static initialization
   }
 
-  private static void registerCookie(CookieType cookieType, Item item) {
+  private static void registerCookie(final CookieType cookieType, final Item item) {
     Registry.register(
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, cookieType.getId()),

@@ -70,12 +70,18 @@ public class MonsterLootHandler {
         () -> MonsterLootConfig.creeperCrunchCookieMysticDropWeight),
     new ItemWeight(
         ModItems.CREEPER_CRUNCH_COOKIE_CURSED,
-        () -> MonsterLootConfig.creeperCrunchCookieCursedDropWeight)
+        () -> MonsterLootConfig.creeperCrunchCookieCursedDropWeight),
+    new ItemWeight(
+        ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC,
+        () -> MonsterLootConfig.elderGuardianCookieMysticDropWeight),
+    new ItemWeight(
+        ModItems.ELDER_GUARDIAN_COOKIE_CURSED,
+        () -> MonsterLootConfig.elderGuardianCookieCursedDropWeight)
   };
 
   private MonsterLootHandler() {}
 
-  public static boolean shouldDropSpecialCookies(Entity entity) {
+  public static boolean shouldDropSpecialCookies(final Entity entity) {
     if (!(entity instanceof Monster)) {
       return false;
     }
@@ -84,7 +90,7 @@ public class MonsterLootHandler {
     return entity.level().getRandom().nextFloat() < dropChance;
   }
 
-  public static ItemStack getRandomSpecialCookie(Entity entity) {
+  public static ItemStack getRandomSpecialCookie(final Entity entity) {
     // Build weighted list of enabled items
     List<Item> weightedItems = new ArrayList<>();
     for (ItemWeight itemWeight : SPECIAL_COOKIE_ITEMS_WITH_WEIGHTS) {
@@ -104,7 +110,7 @@ public class MonsterLootHandler {
     return new ItemStack(item);
   }
 
-  public static ItemEntity createSpecialCookieDrop(Entity entity) {
+  public static ItemEntity createSpecialCookieDrop(final Entity entity) {
     return new ItemEntity(
         entity.level(),
         entity.getX(),

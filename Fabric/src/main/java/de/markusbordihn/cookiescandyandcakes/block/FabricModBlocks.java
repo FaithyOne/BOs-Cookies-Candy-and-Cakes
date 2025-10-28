@@ -34,6 +34,12 @@ public class FabricModBlocks {
           ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, PumpkinHeadCookieJarBlock.ID),
           ModBlocks.PUMPKIN_HEAD_COOKIE_JAR);
 
+  public static final Block SKELETON_HEAD_COOKIE_JAR =
+      Registry.register(
+          BuiltInRegistries.BLOCK,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, SkeletonHeadCookieJarBlock.ID),
+          ModBlocks.SKELETON_HEAD_COOKIE_JAR);
+
   private FabricModBlocks() {}
 
   public static void register() {

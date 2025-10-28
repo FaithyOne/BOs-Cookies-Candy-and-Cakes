@@ -80,14 +80,14 @@ public class CreeperCrunchCookieCursedEffectClient implements ClientEffectInterf
 
   private void spawnFakeCreepers(final ClientLevel level, final LocalPlayer player) {
     Vec3 playerPos = player.position();
-    double angleStep = Math.PI / 2;
 
+    // Spawn 4 creepers in a circle around the player
     for (int i = 0; i < 4; i++) {
-      double angle = angleStep * i;
-      double offsetX = Math.cos(angle) * CREEPER_SPAWN_DISTANCE;
-      double offsetZ = Math.sin(angle) * CREEPER_SPAWN_DISTANCE;
       Creeper creeper = EntityType.CREEPER.create(level);
       if (creeper != null) {
+        double angle = (Math.PI / 2) * i;
+        double offsetX = Math.cos(angle) * CREEPER_SPAWN_DISTANCE;
+        double offsetZ = Math.sin(angle) * CREEPER_SPAWN_DISTANCE;
         creeper.igniteForTicks(CREEPER_MOVE_DURATION);
         creeper.setPos(playerPos.x + offsetX, playerPos.y, playerPos.z + offsetZ);
         creeper.setYRot((float) Math.toDegrees(angle + Math.PI));
@@ -95,7 +95,7 @@ public class CreeperCrunchCookieCursedEffectClient implements ClientEffectInterf
         creeper.setYHeadRot(creeper.getYRot());
         creeper.setNoGravity(true);
         creeper.setInvulnerable(true);
-        creeper.setSilent(true);
+        creeper.setSilent(false);
         level.addEntity(creeper);
         fakeCreepers.add(new FakeCreeper(creeper, playerPos.x, playerPos.y, playerPos.z));
       }
@@ -115,15 +115,13 @@ public class CreeperCrunchCookieCursedEffectClient implements ClientEffectInterf
       Creeper creeper = fakeCreeper.creeper();
       if (creeper.isAlive()) {
         Vec3 creeperPos = creeper.position();
-        Vec3 direction = playerPos.subtract(creeperPos).normalize().scale(0.05);
+        Vec3 direction = playerPos.subtract(creeperPos).normalize().scale(0.065);
         Vec3 newPos = creeperPos.add(direction);
-
         creeper.setPos(newPos.x, newPos.y, newPos.z);
         creeper.tick();
-
-        double dx = playerPos.x - newPos.x;
-        double dz = playerPos.z - newPos.z;
-        float yaw = (float) (Math.atan2(dz, dx) * 180.0 / Math.PI) - 90.0f;
+        float yaw =
+            (float) (Math.atan2(playerPos.z - newPos.z, playerPos.x - newPos.x) * 180.0 / Math.PI)
+                - 90.0f;
         creeper.setYRot(yaw);
         creeper.setYHeadRot(yaw);
       }
@@ -140,7 +138,6 @@ public class CreeperCrunchCookieCursedEffectClient implements ClientEffectInterf
           double offsetX = (level.random.nextDouble() - 0.5) * 3.0;
           double offsetY = level.random.nextDouble() * 3.0;
           double offsetZ = (level.random.nextDouble() - 0.5) * 3.0;
-
           level.addParticle(
               ParticleTypes.EXPLOSION,
               pos.x + offsetX,

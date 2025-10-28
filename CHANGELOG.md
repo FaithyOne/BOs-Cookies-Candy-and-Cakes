@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 This change log includes the summarized changes.
 For the full changelog, please go to the [GitHub History][history] instead.
 
+### v0.4.0
+
+- Fixed memory leak with Effect Manager by making sure effects are properly removed.
+- Added skeleton head cookie jar to store cookies.
+- Added Elder Guardian Cookie (normal, mystic and cursed variants).
+- Improved pumpkin head cookie jar to store cookies.
+
 ### v0.3.0
 
 - Fixed registration issues with specific edge cases.

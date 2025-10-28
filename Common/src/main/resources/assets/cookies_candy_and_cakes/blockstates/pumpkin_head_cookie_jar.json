@@ -1,8 +1,16 @@
 {
   "variants": {
-    "facing=north": {"model": "minecraft:block/carved_pumpkin"},
-    "facing=south": {"model": "minecraft:block/carved_pumpkin", "y": 180},
-    "facing=west": {"model": "minecraft:block/carved_pumpkin", "y": 270},
-    "facing=east": {"model": "minecraft:block/carved_pumpkin", "y": 90}
+    "facing=north": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/pumpkin_head_cookie_jar", "y": 0
+    },
+    "facing=south": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/pumpkin_head_cookie_jar", "y": 180
+    },
+    "facing=west": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/pumpkin_head_cookie_jar", "y": 270
+    },
+    "facing=east": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/pumpkin_head_cookie_jar", "y": 90
+    }
   }
 }

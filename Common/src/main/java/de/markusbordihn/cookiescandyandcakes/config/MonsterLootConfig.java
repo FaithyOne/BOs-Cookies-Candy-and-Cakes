@@ -55,6 +55,8 @@ public class MonsterLootConfig extends Config {
   public static int slimeSugarCookieCursedDropWeight = 1;
   public static int creeperCrunchCookieMysticDropWeight = 1;
   public static int creeperCrunchCookieCursedDropWeight = 1;
+  public static int elderGuardianCookieMysticDropWeight = 1;
+  public static int elderGuardianCookieCursedDropWeight = 1;
 
   public static void registerConfig() {
     registerConfigFile(CONFIG_FILE_NAME, CONFIG_FILE_HEADER);
@@ -112,6 +114,12 @@ public class MonsterLootConfig extends Config {
     creeperCrunchCookieCursedDropWeight =
         parseConfigValue(
             properties, "creeperCrunchCookieCursedDropWeight", creeperCrunchCookieCursedDropWeight);
+    elderGuardianCookieMysticDropWeight =
+        parseConfigValue(
+            properties, "elderGuardianCookieMysticDropWeight", elderGuardianCookieMysticDropWeight);
+    elderGuardianCookieCursedDropWeight =
+        parseConfigValue(
+            properties, "elderGuardianCookieCursedDropWeight", elderGuardianCookieCursedDropWeight);
 
     // Update config file if needed
     updateConfigFileIfChanged(configFile, CONFIG_FILE_HEADER, properties, unmodifiedProperties);

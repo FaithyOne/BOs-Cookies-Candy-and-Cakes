@@ -33,7 +33,13 @@ public class ServerEffectManager {
       return;
     }
 
+    // Remove any existing effect first to clean up properly
     UUID playerUUID = player.getUUID();
+    ActiveEffect existingEffect = activeEffects.get(playerUUID);
+    if (existingEffect != null) {
+      existingEffect.effect.onEnd(player);
+    }
+
     activeEffects.put(playerUUID, new ActiveEffect(effect, 0, effect.getDuration()));
     effect.onStart(player);
   }
@@ -43,6 +49,7 @@ public class ServerEffectManager {
       return;
     }
 
+    // Tick active effect
     UUID playerUUID = player.getUUID();
     ActiveEffect activeEffect = activeEffects.get(playerUUID);
     if (activeEffect != null) {
@@ -83,13 +90,14 @@ public class ServerEffectManager {
     private final int duration;
     private int elapsedTicks;
 
-    public ActiveEffect(ServerEffectInterface effect, int elapsedTicks, int duration) {
+    public ActiveEffect(
+        final ServerEffectInterface effect, final int elapsedTicks, final int duration) {
       this.effect = effect;
       this.elapsedTicks = elapsedTicks;
       this.duration = duration;
     }
 
-    public void tick(ServerPlayer player) {
+    public void tick(final ServerPlayer player) {
       effect.tick(player, elapsedTicks);
       elapsedTicks++;
     }

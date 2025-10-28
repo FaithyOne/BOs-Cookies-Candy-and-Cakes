@@ -1,0 +1,7 @@
+{
+  "parent": "cookies_candy_and_cakes:block/cookie_jar/head_cookie_jar",
+  "textures": {
+    "particle": "cookies_candy_and_cakes:block/head/skeleton",
+    "head": "cookies_candy_and_cakes:block/head/skeleton"
+  }
+}

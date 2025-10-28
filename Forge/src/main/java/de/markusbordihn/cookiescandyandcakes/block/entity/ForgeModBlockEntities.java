@@ -42,12 +42,14 @@ public class ForgeModBlockEntities {
               PumpkinHeadCookieJarBlock.ID,
               () ->
                   BlockEntityType.Builder.of(
-                          CookieJarBlockEntity::new, ForgeModBlocks.PUMPKIN_HEAD_COOKIE_JAR.get())
+                          CookieJarBlockEntity::new,
+                          ForgeModBlocks.PUMPKIN_HEAD_COOKIE_JAR.get(),
+                          ForgeModBlocks.SKELETON_HEAD_COOKIE_JAR.get())
                       .build(null));
 
   private ForgeModBlockEntities() {}
 
-  public static void register(IEventBus eventBus) {
+  public static void register(final IEventBus eventBus) {
     BLOCK_ENTITY_TYPES.register(eventBus);
 
     eventBus.addListener(

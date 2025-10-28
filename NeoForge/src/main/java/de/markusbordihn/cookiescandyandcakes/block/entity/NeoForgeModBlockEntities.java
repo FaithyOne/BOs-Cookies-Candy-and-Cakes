@@ -42,12 +42,13 @@ public class NeoForgeModBlockEntities {
               () ->
                   BlockEntityType.Builder.of(
                           CookieJarBlockEntity::new,
-                          NeoForgeModBlocks.PUMPKIN_HEAD_COOKIE_JAR.get())
+                          NeoForgeModBlocks.PUMPKIN_HEAD_COOKIE_JAR.get(),
+                          NeoForgeModBlocks.SKELETON_HEAD_COOKIE_JAR.get())
                       .build(null));
 
   private NeoForgeModBlockEntities() {}
 
-  public static void register(IEventBus eventBus) {
+  public static void register(final IEventBus eventBus) {
     BLOCK_ENTITY_TYPES.register(eventBus);
 
     eventBus.addListener(

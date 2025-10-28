@@ -1,0 +1,9 @@
+{
+  "parent": "cookies_candy_and_cakes:block/cookie_jar/block_cookie_jar",
+  "textures": {
+    "top": "block/pumpkin_top",
+    "front": "block/carved_pumpkin",
+    "particle": "block/pumpkin_side",
+    "side": "block/pumpkin_side"
+  }
+}

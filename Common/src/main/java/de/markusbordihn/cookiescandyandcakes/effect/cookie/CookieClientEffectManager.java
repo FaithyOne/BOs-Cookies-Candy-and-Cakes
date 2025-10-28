@@ -24,6 +24,8 @@ import de.markusbordihn.cookiescandyandcakes.effect.ClientEffectInterface;
 import de.markusbordihn.cookiescandyandcakes.effect.ClientEffectManager;
 import de.markusbordihn.cookiescandyandcakes.effect.cookie.client.CreeperCrunchCookieCursedEffectClient;
 import de.markusbordihn.cookiescandyandcakes.effect.cookie.client.CreeperCrunchCookieMysticEffectClient;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.client.ElderGuardianCookieCursedEffectClient;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.client.ElderGuardianCookieMysticEffectClient;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.client.player.LocalPlayer;
@@ -38,6 +40,10 @@ public class CookieClientEffectManager extends ClientEffectManager {
         CookieType.CREEPER_CRUNCH_COOKIE_MYSTIC, new CreeperCrunchCookieMysticEffectClient());
     COOKIE_EFFECTS.put(
         CookieType.CREEPER_CRUNCH_COOKIE_CURSED, new CreeperCrunchCookieCursedEffectClient());
+    COOKIE_EFFECTS.put(
+        CookieType.ELDER_GUARDIAN_COOKIE_MYSTIC, new ElderGuardianCookieMysticEffectClient());
+    COOKIE_EFFECTS.put(
+        CookieType.ELDER_GUARDIAN_COOKIE_CURSED, new ElderGuardianCookieCursedEffectClient());
   }
 
   private CookieClientEffectManager() {}

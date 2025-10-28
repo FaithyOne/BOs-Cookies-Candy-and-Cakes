@@ -22,6 +22,7 @@ package de.markusbordihn.cookiescandyandcakes.item;
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.block.NeoForgeModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
+import de.markusbordihn.cookiescandyandcakes.block.SkeletonHeadCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.registry.ModBlockItems;
 import java.util.function.Supplier;
 import net.minecraft.core.registries.Registries;
@@ -37,7 +38,7 @@ public class NeoForgeModBlockItems {
 
   private NeoForgeModBlockItems() {}
 
-  public static void register(IEventBus eventBus) {
+  public static void register(final IEventBus eventBus) {
     BLOCK_ITEMS.register(eventBus);
     ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR =
         registerBlockItem(
@@ -45,6 +46,12 @@ public class NeoForgeModBlockItems {
             () ->
                 new CookieJarItem(
                     NeoForgeModBlocks.PUMPKIN_HEAD_COOKIE_JAR.get(), new Item.Properties()));
+    ModBlockItems.SKELETON_HEAD_COOKIE_JAR =
+        registerBlockItem(
+            SkeletonHeadCookieJarBlock.ID,
+            () ->
+                new CookieJarItem(
+                    NeoForgeModBlocks.SKELETON_HEAD_COOKIE_JAR.get(), new Item.Properties()));
   }
 
   private static Supplier<BlockItem> registerBlockItem(

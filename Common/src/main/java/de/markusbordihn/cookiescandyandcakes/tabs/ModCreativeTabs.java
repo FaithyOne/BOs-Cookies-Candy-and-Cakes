@@ -41,12 +41,14 @@ public final class ModCreativeTabs {
               output.accept(ModItems.APPLE_COOKIE);
               output.accept(ModItems.CARROT_COOKIE);
               output.accept(ModItems.CREEPER_CRUNCH_COOKIE);
+              output.accept(ModItems.ELDER_GUARDIAN_COOKIE);
               output.accept(ModItems.GLOW_BERRY_COOKIE);
               output.accept(ModItems.MELON_COOKIE);
               output.accept(ModItems.PUMPKIN_COOKIE);
               output.accept(ModItems.SWEET_BERRY_COOKIE);
               output.accept(ModItems.SLIME_SUGAR_COOKIE);
               output.accept(ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR.get());
+              output.accept(ModBlockItems.SKELETON_HEAD_COOKIE_JAR.get());
             });
   }
 
@@ -62,6 +64,8 @@ public final class ModCreativeTabs {
               output.accept(ModItems.CARROT_COOKIE_CURSED);
               output.accept(ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC);
               output.accept(ModItems.CREEPER_CRUNCH_COOKIE_CURSED);
+              output.accept(ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC);
+              output.accept(ModItems.ELDER_GUARDIAN_COOKIE_CURSED);
               output.accept(ModItems.GLOW_BERRY_COOKIE_MYSTIC);
               output.accept(ModItems.GLOW_BERRY_COOKIE_CURSED);
               output.accept(ModItems.MELON_COOKIE_MYSTIC);

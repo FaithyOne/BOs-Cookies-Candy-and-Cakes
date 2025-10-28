@@ -61,10 +61,16 @@ public class ModItems {
       createCookieItem(CookieType.CREEPER_CRUNCH_COOKIE_MYSTIC);
   public static final Item CREEPER_CRUNCH_COOKIE_CURSED =
       createCookieItem(CookieType.CREEPER_CRUNCH_COOKIE_CURSED);
+  public static final Item ELDER_GUARDIAN_COOKIE =
+      createCookieItem(CookieType.ELDER_GUARDIAN_COOKIE);
+  public static final Item ELDER_GUARDIAN_COOKIE_MYSTIC =
+      createCookieItem(CookieType.ELDER_GUARDIAN_COOKIE_MYSTIC);
+  public static final Item ELDER_GUARDIAN_COOKIE_CURSED =
+      createCookieItem(CookieType.ELDER_GUARDIAN_COOKIE_CURSED);
 
   private ModItems() {}
 
-  private static Item createCookieItem(CookieType cookieType) {
+  private static Item createCookieItem(final CookieType cookieType) {
     return switch (cookieType.getVariant()) {
       case NORMAL -> new NormalCookie(cookieType);
       case MYSTIC -> new MysticCookie(cookieType);

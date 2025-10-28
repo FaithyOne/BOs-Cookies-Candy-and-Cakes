@@ -35,7 +35,9 @@ public class FabricModBlockEntities {
           BuiltInRegistries.BLOCK_ENTITY_TYPE,
           ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, PumpkinHeadCookieJarBlock.ID),
           BlockEntityType.Builder.of(
-                  CookieJarBlockEntity::new, FabricModBlocks.PUMPKIN_HEAD_COOKIE_JAR)
+                  CookieJarBlockEntity::new,
+                  FabricModBlocks.PUMPKIN_HEAD_COOKIE_JAR,
+                  FabricModBlocks.SKELETON_HEAD_COOKIE_JAR)
               .build(null));
 
   private FabricModBlockEntities() {}

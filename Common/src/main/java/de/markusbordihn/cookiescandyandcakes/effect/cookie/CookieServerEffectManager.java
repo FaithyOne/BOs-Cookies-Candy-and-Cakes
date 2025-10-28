@@ -22,6 +22,7 @@ package de.markusbordihn.cookiescandyandcakes.effect.cookie;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.effect.ServerEffectInterface;
 import de.markusbordihn.cookiescandyandcakes.effect.ServerEffectManager;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.server.ElderGuardianCookieMysticEffect;
 import de.markusbordihn.cookiescandyandcakes.effect.cookie.server.SlimeSugarCookieMysticEffect;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,8 @@ public class CookieServerEffectManager extends ServerEffectManager {
 
   static {
     COOKIE_EFFECTS.put(CookieType.SLIME_SUGAR_COOKIE_MYSTIC, new SlimeSugarCookieMysticEffect());
+    COOKIE_EFFECTS.put(
+        CookieType.ELDER_GUARDIAN_COOKIE_MYSTIC, new ElderGuardianCookieMysticEffect());
   }
 
   private CookieServerEffectManager() {}

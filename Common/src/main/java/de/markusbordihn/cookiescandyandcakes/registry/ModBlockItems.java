@@ -28,10 +28,11 @@ public class ModBlockItems {
 
   // Cookie Jar Block Items
   public static Supplier<BlockItem> PUMPKIN_HEAD_COOKIE_JAR;
+  public static Supplier<BlockItem> SKELETON_HEAD_COOKIE_JAR;
 
   private ModBlockItems() {}
 
-  public static ResourceLocation getBlockItemId(String name) {
+  public static ResourceLocation getBlockItemId(final String name) {
     return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name);
   }
 }
