@@ -20,8 +20,8 @@
 package de.markusbordihn.cookiescandyandcakes.item;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
-import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
 import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
 import net.minecraft.core.registries.Registries;
@@ -95,7 +95,8 @@ public class NeoForgeModItems {
     ITEMS.register(MiniCakeType.MINI_CARROT_CAKE.getId(), () -> ModItems.MINI_CARROT_CAKE);
     ITEMS.register(MiniCakeType.MINI_BEETROOT_CAKE.getId(), () -> ModItems.MINI_BEETROOT_CAKE);
     ITEMS.register(MiniCakeType.MINI_GLOW_BERRY_CAKE.getId(), () -> ModItems.MINI_GLOW_BERRY_CAKE);
-    ITEMS.register(MiniCakeType.MINI_SWEET_BERRY_CAKE.getId(), () -> ModItems.MINI_SWEET_BERRY_CAKE);
+    ITEMS.register(
+        MiniCakeType.MINI_SWEET_BERRY_CAKE.getId(), () -> ModItems.MINI_SWEET_BERRY_CAKE);
     ITEMS.register(MiniCakeType.MINI_CHOCOLATE_CAKE.getId(), () -> ModItems.MINI_CHOCOLATE_CAKE);
     ITEMS.register(MiniCakeType.MINI_MUSHROOM_CAKE.getId(), () -> ModItems.MINI_MUSHROOM_CAKE);
     ITEMS.register("mini_cake_mold", () -> ModItems.MINI_CAKE_MOLD);

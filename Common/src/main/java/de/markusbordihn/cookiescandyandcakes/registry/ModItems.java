@@ -19,13 +19,13 @@
 
 package de.markusbordihn.cookiescandyandcakes.registry;
 
-import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.item.MoldItem;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCookie;
 import de.markusbordihn.cookiescandyandcakes.item.variants.MysticCookie;
-import de.markusbordihn.cookiescandyandcakes.item.variants.NormalMiniCake;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCookie;
+import de.markusbordihn.cookiescandyandcakes.item.variants.NormalMiniCake;
 import net.minecraft.world.item.Item;
 
 public class ModItems {
@@ -75,9 +75,12 @@ public class ModItems {
   public static final Item MINI_PUMPKIN_CAKE = createMiniCakeItem(MiniCakeType.MINI_PUMPKIN_CAKE);
   public static final Item MINI_CARROT_CAKE = createMiniCakeItem(MiniCakeType.MINI_CARROT_CAKE);
   public static final Item MINI_BEETROOT_CAKE = createMiniCakeItem(MiniCakeType.MINI_BEETROOT_CAKE);
-  public static final Item MINI_GLOW_BERRY_CAKE = createMiniCakeItem(MiniCakeType.MINI_GLOW_BERRY_CAKE);
-  public static final Item MINI_SWEET_BERRY_CAKE = createMiniCakeItem(MiniCakeType.MINI_SWEET_BERRY_CAKE);
-  public static final Item MINI_CHOCOLATE_CAKE = createMiniCakeItem(MiniCakeType.MINI_CHOCOLATE_CAKE);
+  public static final Item MINI_GLOW_BERRY_CAKE =
+      createMiniCakeItem(MiniCakeType.MINI_GLOW_BERRY_CAKE);
+  public static final Item MINI_SWEET_BERRY_CAKE =
+      createMiniCakeItem(MiniCakeType.MINI_SWEET_BERRY_CAKE);
+  public static final Item MINI_CHOCOLATE_CAKE =
+      createMiniCakeItem(MiniCakeType.MINI_CHOCOLATE_CAKE);
   public static final Item MINI_MUSHROOM_CAKE = createMiniCakeItem(MiniCakeType.MINI_MUSHROOM_CAKE);
   public static final Item MINI_CAKE_MOLD = new MoldItem();
 

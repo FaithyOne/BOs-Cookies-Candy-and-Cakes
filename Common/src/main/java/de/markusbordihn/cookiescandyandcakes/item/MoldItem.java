@@ -39,7 +39,6 @@ public class MoldItem extends Item {
       List<Component> tooltipComponents,
       TooltipFlag tooltipFlag) {
     tooltipComponents.add(
-        Component.translatable(this.getDescriptionId() + ".desc")
-            .withStyle(ChatFormatting.GRAY));
+        Component.translatable(this.getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
   }
 }

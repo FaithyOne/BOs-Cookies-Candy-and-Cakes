@@ -35,9 +35,10 @@ public interface IdentifiableCookie {
 
   default Component getUnidentifiedName() {
     if (ClientCookieData.hasIdentified(getCookieType())) {
-      ChatFormatting nameColor = getCookieType().getVariant() == CookieType.CookieVariant.MYSTIC
-          ? ChatFormatting.LIGHT_PURPLE
-          : ChatFormatting.DARK_RED;
+      ChatFormatting nameColor =
+          getCookieType().getVariant() == CookieType.CookieVariant.MYSTIC
+              ? ChatFormatting.LIGHT_PURPLE
+              : ChatFormatting.DARK_RED;
       return Component.translatable(getDescriptionId()).withStyle(nameColor);
     }
     return Component.translatable(getUnidentifiedKey())

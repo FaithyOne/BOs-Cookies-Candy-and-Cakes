@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 This change log includes the summarized changes.
 For the full changelog, please go to the [GitHub History][history] instead.
 
+### v0.5.0
+
+- Fixed smaller typos and untranslated text.
+- Added basic advancements.
+- Added mini cakes and mold with crafting recipes.
+- Added a new mold item for crafting mini cakes, allowing for additional recipes that utilize the
+  mold.
+
 ### v0.4.0
 
 - Fixed memory leak with Effect Manager by making sure effects are properly removed.
