@@ -22,6 +22,7 @@ package de.markusbordihn.cookiescandyandcakes;
 import de.markusbordihn.cookiescandyandcakes.block.FabricModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.entity.FabricModBlockEntities;
 import de.markusbordihn.cookiescandyandcakes.config.Config;
+import de.markusbordihn.cookiescandyandcakes.entity.FabricModEntityTypes;
 import de.markusbordihn.cookiescandyandcakes.event.FabricMonsterLootHandler;
 import de.markusbordihn.cookiescandyandcakes.event.FabricPlayerTickHandler;
 import de.markusbordihn.cookiescandyandcakes.item.FabricModBlockItems;
@@ -58,6 +59,9 @@ public class CookiesCandyAndCakes implements ModInitializer {
 
     log.info("{} Block Entities ...", Constants.LOG_REGISTER_PREFIX);
     FabricModBlockEntities.register();
+
+    log.info("{} Entity Types ...", Constants.LOG_REGISTER_PREFIX);
+    FabricModEntityTypes.register();
 
     log.info("{} Block Items ...", Constants.LOG_REGISTER_PREFIX);
     FabricModBlockItems.register();

@@ -20,6 +20,7 @@
 package de.markusbordihn.cookiescandyandcakes.item;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
@@ -101,6 +102,9 @@ public class ForgeModItems {
     ITEMS.register(MiniCakeType.MINI_CHOCOLATE_CAKE.getId(), () -> ModItems.MINI_CHOCOLATE_CAKE);
     ITEMS.register(MiniCakeType.MINI_MUSHROOM_CAKE.getId(), () -> ModItems.MINI_MUSHROOM_CAKE);
     ITEMS.register("mini_cake_mold", () -> ModItems.MINI_CAKE_MOLD);
+    ITEMS.register(CandyType.TEST_CANDY.getId(), () -> ModItems.TEST_CANDY);
+    ITEMS.register(CandyType.TEST_CANDY_MYSTIC.getId(), () -> ModItems.TEST_CANDY_MYSTIC);
+    ITEMS.register(CandyType.TEST_CANDY_CURSED.getId(), () -> ModItems.TEST_CANDY_CURSED);
   }
 
   private ForgeModItems() {}

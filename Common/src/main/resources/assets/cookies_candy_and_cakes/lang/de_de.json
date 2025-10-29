@@ -87,5 +87,7 @@
   "advancement.cookies_candy_and_cakes.cookie_jar_collector.title": "Keksdosen-Sammler",
   "advancement.cookies_candy_and_cakes.cookie_jar_collector.description": "Erhalte eine dekorative Keksdose",
   "advancement.cookies_candy_and_cakes.ultimate_cookie_master.title": "Ultimativer Keks-Meister",
-  "advancement.cookies_candy_and_cakes.ultimate_cookie_master.description": "Probiere jeden Keks-Typ in der Mod!"
+  "advancement.cookies_candy_and_cakes.ultimate_cookie_master.description": "Probiere jeden Keks-Typ in der Mod!",
+  "item.cookies_candy_and_cakes.candy.throw_weak": "Werfen...",
+  "item.cookies_candy_and_cakes.candy.throw_strong": "Kraftvoller Wurf! (Halten zum Essen)"
 }

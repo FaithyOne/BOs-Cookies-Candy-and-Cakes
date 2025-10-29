@@ -17,10 +17,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.data.cookies;
+package de.markusbordihn.cookiescandyandcakes.client;
 
-public final class CookieProperties {
-  public static final int STACK_SIZE = 64;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.client.renderer.CandyChargeOverlay;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.AddGuiOverlayLayersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-  private CookieProperties() {}
+@Mod.EventBusSubscriber(modid = Constants.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ForgeOverlayHandler {
+
+  private ForgeOverlayHandler() {}
+
+  @SubscribeEvent
+  @SuppressWarnings("deprecation")
+  public static void onAddGuiOverlayLayers(AddGuiOverlayLayersEvent event) {
+    event.getLayeredDraw().add(new CandyChargeOverlay());
+  }
 }

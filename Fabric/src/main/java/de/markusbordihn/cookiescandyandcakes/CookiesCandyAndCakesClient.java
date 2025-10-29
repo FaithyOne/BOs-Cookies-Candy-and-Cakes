@@ -21,7 +21,13 @@ package de.markusbordihn.cookiescandyandcakes;
 
 import de.markusbordihn.cookiescandyandcakes.client.ClientScreens;
 import de.markusbordihn.cookiescandyandcakes.client.FabricClientPlayerTickHandler;
+import de.markusbordihn.cookiescandyandcakes.client.renderer.CandyChargeOverlay;
+import de.markusbordihn.cookiescandyandcakes.entity.FabricModEntityTypes;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,5 +41,11 @@ public class CookiesCandyAndCakesClient implements ClientModInitializer {
 
     ClientScreens.registerScreens();
     FabricClientPlayerTickHandler.register();
+
+    EntityRendererRegistry.register(FabricModEntityTypes.THROWN_CANDY, ThrownItemRenderer::new);
+
+    HudRenderCallback.EVENT.register(
+        (guiGraphics, deltaTracker) ->
+            CandyChargeOverlay.renderCandyChargeBar(guiGraphics, Minecraft.getInstance()));
   }
 }

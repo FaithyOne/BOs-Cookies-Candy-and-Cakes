@@ -73,6 +73,16 @@
   "item.cookies_candy_and_cakes.mini_mushroom_cake.desc": "A savory mini cake with mushrooms. Earthy and delicious!",
   "item.cookies_candy_and_cakes.mini_cake_mold": "Mini Cake Mold",
   "item.cookies_candy_and_cakes.mini_cake_mold.desc": "A reusable mold for baking mini cakes. Makes 6 cakes per batch!",
+  "item.cookies_candy_and_cakes.test_candy": "Test Candy",
+  "item.cookies_candy_and_cakes.test_candy.desc": "A sweet throwable candy. Short click to throw weak, hold for powerful throw, or keep holding to eat!",
+  "item.cookies_candy_and_cakes.test_candy_mystic": "Mystic Test Candy",
+  "item.cookies_candy_and_cakes.test_candy_mystic.desc": "A mysterious candy with strange powers. Short click to throw weak, hold for powerful throw, or keep holding to eat!",
+  "item.cookies_candy_and_cakes.test_candy_cursed": "Cursed Test Candy",
+  "item.cookies_candy_and_cakes.test_candy_cursed.desc": "A sinister candy with dark effects. Short click to throw weak, hold for powerful throw, or keep holding to eat!",
+  "item.cookies_candy_and_cakes.unidentified_cursed_candy": "Unidentified Cursed Candy",
+  "item.cookies_candy_and_cakes.unidentified_cursed_candy.desc": "A sinister candy with an ominous aura. You need to taste it to reveal its dark secrets...",
+  "item.cookies_candy_and_cakes.unidentified_mystic_candy": "Unidentified Mystic Candy",
+  "item.cookies_candy_and_cakes.unidentified_mystic_candy.desc": "A mysterious candy radiating strange energy. You need to taste it to identify its true nature...",
   "item.cookies_candy_and_cakes.unidentified_cursed_cookie": "Unidentified Cursed Cookie",
   "item.cookies_candy_and_cakes.unidentified_cursed_cookie.desc": "A sinister cookie with an ominous aura. You need to taste it to reveal its dark secrets...",
   "item.cookies_candy_and_cakes.unidentified_mystic_cookie": "Unidentified Mystic Cookie",
@@ -117,5 +127,7 @@
   "advancement.cookies_candy_and_cakes.cookie_jar_collector.title": "Cookie Jar Collector",
   "advancement.cookies_candy_and_cakes.cookie_jar_collector.description": "Obtain a decorative Cookie Jar",
   "advancement.cookies_candy_and_cakes.ultimate_cookie_master.title": "Ultimate Cookie Master",
-  "advancement.cookies_candy_and_cakes.ultimate_cookie_master.description": "Taste every cookie type in the mod!"
+  "advancement.cookies_candy_and_cakes.ultimate_cookie_master.description": "Taste every cookie type in the mod!",
+  "item.cookies_candy_and_cakes.candy.throw_weak": "Throwing...",
+  "item.cookies_candy_and_cakes.candy.throw_strong": "Powerful Throw! (Hold to eat)"
 }

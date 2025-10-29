@@ -17,30 +17,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes;
+package de.markusbordihn.cookiescandyandcakes.entity;
 
-import de.markusbordihn.cookiescandyandcakes.client.ClientScreens;
-import de.markusbordihn.cookiescandyandcakes.entity.ForgeModEntityTypes;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.registry.ModEntityTypes;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 
-@SuppressWarnings("unused")
-public class CookiesCandyAndCakesClient {
+public class FabricModEntityTypes {
 
-  private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
+  public static final EntityType<ThrownCandy> THROWN_CANDY =
+      Registry.register(
+          BuiltInRegistries.ENTITY_TYPE,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "thrown_candy"),
+          EntityType.Builder.<ThrownCandy>of(ThrownCandy::new, MobCategory.MISC)
+              .sized(0.25F, 0.25F)
+              .clientTrackingRange(4)
+              .updateInterval(10)
+              .build("thrown_candy"));
 
-  @SuppressWarnings("java:S1118")
-  public CookiesCandyAndCakesClient(IEventBus modEventBus) {
-    log.info("Initializing {} (Forge-Client) ...", Constants.MOD_NAME);
+  private FabricModEntityTypes() {}
 
-    modEventBus.addListener(ClientScreens::registerScreens);
-    modEventBus.addListener(this::registerEntityRenderers);
-  }
-
-  private void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-    event.registerEntityRenderer(ForgeModEntityTypes.THROWN_CANDY.get(), ThrownItemRenderer::new);
+  public static void register() {
+    ModEntityTypes.THROWN_CANDY = () -> THROWN_CANDY;
   }
 }

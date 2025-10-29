@@ -19,7 +19,6 @@
 
 package de.markusbordihn.cookiescandyandcakes.item;
 
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieProperties;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import java.util.List;
 import net.minecraft.network.chat.Component;
@@ -31,13 +30,12 @@ import net.minecraft.world.item.TooltipFlag;
 
 public abstract class BaseCookie extends Item {
 
+  private static final int STACK_SIZE = 64;
+
   protected final CookieType cookieType;
 
   protected BaseCookie(CookieType cookieType) {
-    super(
-        new Item.Properties()
-            .food(buildFoodProperties(cookieType))
-            .stacksTo(CookieProperties.STACK_SIZE));
+    super(new Item.Properties().food(buildFoodProperties(cookieType)).stacksTo(STACK_SIZE));
     this.cookieType = cookieType;
   }
 

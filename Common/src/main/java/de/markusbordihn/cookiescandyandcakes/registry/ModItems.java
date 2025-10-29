@@ -19,9 +19,13 @@
 
 package de.markusbordihn.cookiescandyandcakes.registry;
 
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.item.MoldItem;
+import de.markusbordihn.cookiescandyandcakes.item.candies.CursedCandy;
+import de.markusbordihn.cookiescandyandcakes.item.candies.MysticCandy;
+import de.markusbordihn.cookiescandyandcakes.item.candies.NormalCandy;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCookie;
 import de.markusbordihn.cookiescandyandcakes.item.variants.MysticCookie;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCookie;
@@ -83,6 +87,9 @@ public class ModItems {
       createMiniCakeItem(MiniCakeType.MINI_CHOCOLATE_CAKE);
   public static final Item MINI_MUSHROOM_CAKE = createMiniCakeItem(MiniCakeType.MINI_MUSHROOM_CAKE);
   public static final Item MINI_CAKE_MOLD = new MoldItem();
+  public static final Item TEST_CANDY = createCandyItem(CandyType.TEST_CANDY);
+  public static final Item TEST_CANDY_MYSTIC = createCandyItem(CandyType.TEST_CANDY_MYSTIC);
+  public static final Item TEST_CANDY_CURSED = createCandyItem(CandyType.TEST_CANDY_CURSED);
 
   private ModItems() {}
 
@@ -91,6 +98,14 @@ public class ModItems {
       case NORMAL -> new NormalCookie(cookieType);
       case MYSTIC -> new MysticCookie(cookieType);
       case CURSED -> new CursedCookie(cookieType);
+    };
+  }
+
+  private static Item createCandyItem(final CandyType candyType) {
+    return switch (candyType.getVariant()) {
+      case NORMAL -> new NormalCandy(candyType);
+      case MYSTIC -> new MysticCandy(candyType);
+      case CURSED -> new CursedCandy(candyType);
     };
   }
 

@@ -17,30 +17,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes;
+package de.markusbordihn.cookiescandyandcakes.registry;
 
-import de.markusbordihn.cookiescandyandcakes.client.ClientScreens;
-import de.markusbordihn.cookiescandyandcakes.entity.ForgeModEntityTypes;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import de.markusbordihn.cookiescandyandcakes.entity.ThrownCandy;
+import java.util.function.Supplier;
+import net.minecraft.world.entity.EntityType;
 
-@SuppressWarnings("unused")
-public class CookiesCandyAndCakesClient {
+public class ModEntityTypes {
+  
+  public static Supplier<EntityType<ThrownCandy>> THROWN_CANDY;
 
-  private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
-
-  @SuppressWarnings("java:S1118")
-  public CookiesCandyAndCakesClient(IEventBus modEventBus) {
-    log.info("Initializing {} (Forge-Client) ...", Constants.MOD_NAME);
-
-    modEventBus.addListener(ClientScreens::registerScreens);
-    modEventBus.addListener(this::registerEntityRenderers);
-  }
-
-  private void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-    event.registerEntityRenderer(ForgeModEntityTypes.THROWN_CANDY.get(), ThrownItemRenderer::new);
-  }
+  private ModEntityTypes() {}
 }
