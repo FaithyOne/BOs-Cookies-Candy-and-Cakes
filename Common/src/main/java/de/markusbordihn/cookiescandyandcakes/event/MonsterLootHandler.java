@@ -79,6 +79,10 @@ public class MonsterLootHandler {
         () -> MonsterLootConfig.elderGuardianCookieCursedDropWeight)
   };
 
+  private static List<Item> cachedWeightedItems = null;
+  private static int callsSinceLastRefresh = 0;
+  private static final int REFRESH_INTERVAL = 100;
+
   private MonsterLootHandler() {}
 
   public static boolean shouldDropSpecialCookies(final Entity entity) {
@@ -90,8 +94,7 @@ public class MonsterLootHandler {
     return entity.level().getRandom().nextFloat() < dropChance;
   }
 
-  public static ItemStack getRandomSpecialCookie(final Entity entity) {
-    // Build weighted list of enabled items
+  private static List<Item> buildWeightedItemList() {
     List<Item> weightedItems = new ArrayList<>();
     for (ItemWeight itemWeight : SPECIAL_COOKIE_ITEMS_WITH_WEIGHTS) {
       int weight = itemWeight.weightSupplier().getAsInt();
@@ -99,14 +102,21 @@ public class MonsterLootHandler {
         weightedItems.add(itemWeight.item());
       }
     }
+    return weightedItems;
+  }
 
-    // If no items are enabled, return empty stack
-    if (weightedItems.isEmpty()) {
+  public static ItemStack getRandomSpecialCookie(final Entity entity) {
+    if (cachedWeightedItems == null || ++callsSinceLastRefresh >= REFRESH_INTERVAL) {
+      cachedWeightedItems = buildWeightedItemList();
+      callsSinceLastRefresh = 0;
+    }
+
+    if (cachedWeightedItems.isEmpty()) {
       return ItemStack.EMPTY;
     }
 
-    // Select random item from weighted list
-    Item item = weightedItems.get(entity.level().getRandom().nextInt(weightedItems.size()));
+    Item item =
+        cachedWeightedItems.get(entity.level().getRandom().nextInt(cachedWeightedItems.size()));
     return new ItemStack(item);
   }
 

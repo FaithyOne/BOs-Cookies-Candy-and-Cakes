@@ -20,9 +20,12 @@
 package de.markusbordihn.cookiescandyandcakes;
 
 import de.markusbordihn.cookiescandyandcakes.client.ClientScreens;
+import de.markusbordihn.cookiescandyandcakes.entity.NeoForgeModEntityTypes;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,5 +40,10 @@ public class CookiesCandyAndCakesClient {
     log.info("Initializing {} (NeoForge-Client) ...", Constants.MOD_NAME);
 
     modEventBus.addListener(ClientScreens::registerScreens);
+    modEventBus.addListener(this::registerEntityRenderers);
+  }
+
+  private void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+    event.registerEntityRenderer(NeoForgeModEntityTypes.THROWN_CANDY.get(), ThrownItemRenderer::new);
   }
 }

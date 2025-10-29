@@ -22,6 +22,7 @@ package de.markusbordihn.cookiescandyandcakes;
 import de.markusbordihn.cookiescandyandcakes.block.ForgeModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.entity.ForgeModBlockEntities;
 import de.markusbordihn.cookiescandyandcakes.config.Config;
+import de.markusbordihn.cookiescandyandcakes.entity.ForgeModEntityTypes;
 import de.markusbordihn.cookiescandyandcakes.item.ForgeModBlockItems;
 import de.markusbordihn.cookiescandyandcakes.item.ForgeModItems;
 import de.markusbordihn.cookiescandyandcakes.menu.ForgeMenuOpener;
@@ -63,6 +64,9 @@ public class CookiesCandyAndCakes {
 
     log.info("{} Block Entities ...", Constants.LOG_REGISTER_PREFIX);
     ForgeModBlockEntities.register(modEventBus);
+
+    log.info("{} Entity Types ...", Constants.LOG_REGISTER_PREFIX);
+    ForgeModEntityTypes.register(modEventBus);
 
     log.info("{} Block Items ...", Constants.LOG_REGISTER_PREFIX);
     ForgeModBlockItems.register(modEventBus);

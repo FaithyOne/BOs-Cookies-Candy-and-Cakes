@@ -21,6 +21,7 @@ package de.markusbordihn.cookiescandyandcakes;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import net.minecraft.resources.ResourceLocation;
 
 public final class Constants {
 
@@ -33,4 +34,8 @@ public final class Constants {
   public static Path CONFIG_DIR = GAME_DIR.resolve("config");
 
   private Constants() {}
+
+  public static ResourceLocation id(String path) {
+    return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+  }
 }

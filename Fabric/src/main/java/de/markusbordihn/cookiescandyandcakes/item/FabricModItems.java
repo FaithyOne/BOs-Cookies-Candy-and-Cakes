@@ -20,6 +20,7 @@
 package de.markusbordihn.cookiescandyandcakes.item;
 
 import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
@@ -86,6 +87,9 @@ public class FabricModItems {
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "mini_cake_mold"),
         ModItems.MINI_CAKE_MOLD);
+    registerCandy(CandyType.TEST_CANDY, ModItems.TEST_CANDY);
+    registerCandy(CandyType.TEST_CANDY_MYSTIC, ModItems.TEST_CANDY_MYSTIC);
+    registerCandy(CandyType.TEST_CANDY_CURSED, ModItems.TEST_CANDY_CURSED);
   }
 
   private FabricModItems() {}
@@ -105,6 +109,13 @@ public class FabricModItems {
     Registry.register(
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, miniCakeType.getId()),
+        item);
+  }
+
+  private static void registerCandy(final CandyType candyType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, candyType.getId()),
         item);
   }
 }
