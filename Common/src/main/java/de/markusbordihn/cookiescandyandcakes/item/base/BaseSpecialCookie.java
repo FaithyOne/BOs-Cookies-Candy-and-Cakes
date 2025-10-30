@@ -20,14 +20,22 @@
 package de.markusbordihn.cookiescandyandcakes.item.base;
 
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
+import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
 import de.markusbordihn.cookiescandyandcakes.item.BaseCookie;
+import java.util.List;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-public abstract class BaseSpecialCookie extends BaseCookie {
+public abstract class BaseSpecialCookie extends BaseCookie
+    implements BaseSpecialItem<IdentifiableCookie> {
 
   protected static final ParticleOptions[] SPECIAL_PARTICLES = {
     ParticleTypes.SOUL,
@@ -40,6 +48,25 @@ public abstract class BaseSpecialCookie extends BaseCookie {
 
   protected BaseSpecialCookie(final CookieType cookieType) {
     super(cookieType);
+  }
+
+  @Override
+  public IdentifiableCookie getIdentifiable() {
+    return (IdentifiableCookie) this;
+  }
+
+  @Override
+  public void applyEffects(Level level, LivingEntity entity) {
+    if (!level.isClientSide) {
+      spawnParticles(level, entity);
+      if (entity instanceof ServerPlayer serverPlayer) {
+        CookieServerEffectManager.applyCookieEffect(serverPlayer, cookieType);
+      }
+    } else {
+      if (entity instanceof LocalPlayer localPlayer) {
+        CookieClientEffectManager.applyCookieEffect(localPlayer, cookieType);
+      }
+    }
   }
 
   protected void spawnParticles(final Level level, final LivingEntity livingEntity) {
@@ -68,6 +95,26 @@ public abstract class BaseSpecialCookie extends BaseCookie {
           level.random.nextDouble() * 0.1,
           (level.random.nextDouble() - 0.5) * 0.1);
     }
+  }
+
+  @Override
+  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+    BaseSpecialItem.super.finishUsingItem(stack, level, entity);
+    return super.finishUsingItem(stack, level, entity);
+  }
+
+  @Override
+  public void appendHoverText(
+      ItemStack stack,
+      TooltipContext context,
+      List<Component> tooltipComponents,
+      TooltipFlag tooltipFlag) {
+    BaseSpecialItem.super.appendHoverText(stack, tooltipComponents, tooltipFlag);
+  }
+
+  @Override
+  public Component getName(ItemStack stack) {
+    return BaseSpecialItem.super.getName(stack);
   }
 
   @Override

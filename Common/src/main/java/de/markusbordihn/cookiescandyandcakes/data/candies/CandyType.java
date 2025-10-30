@@ -27,7 +27,10 @@ import net.minecraft.world.effect.MobEffects;
 public enum CandyType {
   TEST_CANDY(CandyVariant.NORMAL, null, 0),
   TEST_CANDY_MYSTIC(CandyVariant.MYSTIC, MobEffects.MOVEMENT_SPEED, 0),
-  TEST_CANDY_CURSED(CandyVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 0);
+  TEST_CANDY_CURSED(CandyVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 0),
+  CHORUS_CANDY(CandyVariant.NORMAL, null, 0),
+  CHORUS_CANDY_MYSTIC(CandyVariant.MYSTIC, MobEffects.LEVITATION, 0),
+  CHORUS_CANDY_CURSED(CandyVariant.CURSED, MobEffects.CONFUSION, 0);
 
   private static final int NUTRITION = 2;
   private static final int EFFECT_DURATION = 200;

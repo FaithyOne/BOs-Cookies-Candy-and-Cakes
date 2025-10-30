@@ -49,6 +49,7 @@
   "item.cookies_candy_and_cakes.unidentified_mystic_cookie.desc": "Ein mysteriöser Keks, der seltsame Energie ausstrahlt. Du musst ihn probieren, um seine wahre Natur zu erkennen...",
   "itemGroup.cookies_candy_and_cakes.cookies": "Cookies",
   "itemGroup.cookies_candy_and_cakes.special_cookies": "Besondere Kekse",
+  "itemGroup.cookies_candy_and_cakes.candies": "Bonbons",
   "block.cookies_candy_and_cakes.pumpkin_head_cookie_jar": "Kürbiskopf-Keksdose",
   "block.cookies_candy_and_cakes.pumpkin_head_cookie_jar.desc": "Ein verzaubertes Glas, das die Essenz von Keksen bewahrt. Kann als Block platziert oder in der Hand geöffnet werden.",
   "block.cookies_candy_and_cakes.skeleton_head_cookie_jar": "Skelett-Keksdose",
@@ -88,6 +89,12 @@
   "advancement.cookies_candy_and_cakes.cookie_jar_collector.description": "Erhalte eine dekorative Keksdose",
   "advancement.cookies_candy_and_cakes.ultimate_cookie_master.title": "Ultimativer Keks-Meister",
   "advancement.cookies_candy_and_cakes.ultimate_cookie_master.description": "Probiere jeden Keks-Typ in der Mod!",
+  "item.cookies_candy_and_cakes.chorus_candy": "Chorus-Bonbon",
+  "item.cookies_candy_and_cakes.chorus_candy.desc": "Ein süßes Bonbon aus Chorusfrüchten. Kurz klicken zum schwachen Werfen, halten für kräftigen Wurf oder weiter halten zum Essen!",
+  "item.cookies_candy_and_cakes.chorus_candy_mystic": "Mystisches Chorus-Bonbon",
+  "item.cookies_candy_and_cakes.chorus_candy_mystic.desc": "Ein mystisches Bonbon, das dich beim Verzehr zufällig teleportiert! Kurz klicken zum schwachen Werfen, halten für kräftigen Wurf oder weiter halten zum Essen!",
+  "item.cookies_candy_and_cakes.chorus_candy_cursed": "Verfluchtes Chorus-Bonbon",
+  "item.cookies_candy_and_cakes.chorus_candy_cursed.desc": "Ein verfluchtes Bonbon, das desorientiert und verwirrt. Kurz klicken zum schwachen Werfen, halten für kräftigen Wurf oder weiter halten zum Essen!",
   "item.cookies_candy_and_cakes.candy.throw_weak": "Werfen...",
   "item.cookies_candy_and_cakes.candy.throw_strong": "Kraftvoller Wurf! (Halten zum Essen)"
 }

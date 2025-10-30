@@ -23,11 +23,11 @@ import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.item.MoldItem;
-import de.markusbordihn.cookiescandyandcakes.item.candies.CursedCandy;
-import de.markusbordihn.cookiescandyandcakes.item.candies.MysticCandy;
-import de.markusbordihn.cookiescandyandcakes.item.candies.NormalCandy;
+import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCandy;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCookie;
+import de.markusbordihn.cookiescandyandcakes.item.variants.MysticCandy;
 import de.markusbordihn.cookiescandyandcakes.item.variants.MysticCookie;
+import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCandy;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCookie;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalMiniCake;
 import net.minecraft.world.item.Item;
@@ -90,6 +90,9 @@ public class ModItems {
   public static final Item TEST_CANDY = createCandyItem(CandyType.TEST_CANDY);
   public static final Item TEST_CANDY_MYSTIC = createCandyItem(CandyType.TEST_CANDY_MYSTIC);
   public static final Item TEST_CANDY_CURSED = createCandyItem(CandyType.TEST_CANDY_CURSED);
+  public static final Item CHORUS_CANDY = createCandyItem(CandyType.CHORUS_CANDY);
+  public static final Item CHORUS_CANDY_MYSTIC = createCandyItem(CandyType.CHORUS_CANDY_MYSTIC);
+  public static final Item CHORUS_CANDY_CURSED = createCandyItem(CandyType.CHORUS_CANDY_CURSED);
 
   private ModItems() {}
 

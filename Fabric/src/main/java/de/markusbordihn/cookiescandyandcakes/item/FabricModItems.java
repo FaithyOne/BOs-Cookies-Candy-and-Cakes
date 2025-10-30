@@ -90,6 +90,9 @@ public class FabricModItems {
     registerCandy(CandyType.TEST_CANDY, ModItems.TEST_CANDY);
     registerCandy(CandyType.TEST_CANDY_MYSTIC, ModItems.TEST_CANDY_MYSTIC);
     registerCandy(CandyType.TEST_CANDY_CURSED, ModItems.TEST_CANDY_CURSED);
+    registerCandy(CandyType.CHORUS_CANDY, ModItems.CHORUS_CANDY);
+    registerCandy(CandyType.CHORUS_CANDY_MYSTIC, ModItems.CHORUS_CANDY_MYSTIC);
+    registerCandy(CandyType.CHORUS_CANDY_CURSED, ModItems.CHORUS_CANDY_CURSED);
   }
 
   private FabricModItems() {}

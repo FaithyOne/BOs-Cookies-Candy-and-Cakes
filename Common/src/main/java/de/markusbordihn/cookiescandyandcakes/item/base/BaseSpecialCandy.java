@@ -17,59 +17,68 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item.candies;
+package de.markusbordihn.cookiescandyandcakes.item.base;
 
-import de.markusbordihn.cookiescandyandcakes.client.ClientCandyData;
 import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
+import de.markusbordihn.cookiescandyandcakes.effect.candy.CandyClientEffectManager;
+import de.markusbordihn.cookiescandyandcakes.effect.candy.CandyServerEffectManager;
 import de.markusbordihn.cookiescandyandcakes.item.BaseCandy;
-import de.markusbordihn.cookiescandyandcakes.item.base.IdentifiableCandy;
 import java.util.List;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-public class MysticCandy extends BaseCandy implements IdentifiableCandy {
+public abstract class BaseSpecialCandy extends BaseCandy
+    implements BaseSpecialItem<IdentifiableCandy> {
 
-  public MysticCandy(final CandyType candyType) {
+  protected BaseSpecialCandy(final CandyType candyType) {
     super(candyType);
   }
 
   @Override
-  public CandyType getCandyType() {
-    return candyType;
+  public IdentifiableCandy getIdentifiable() {
+    return (IdentifiableCandy) this;
+  }
+
+  @Override
+  public void applyEffects(Level level, LivingEntity entity) {
+    if (!level.isClientSide) {
+      if (entity instanceof ServerPlayer serverPlayer) {
+        CandyServerEffectManager.applyCandyEffect(serverPlayer, candyType);
+      }
+    } else {
+      if (entity instanceof LocalPlayer localPlayer) {
+        CandyClientEffectManager.applyCandyEffect(localPlayer, candyType);
+      }
+    }
   }
 
   @Override
   public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-    if (entity instanceof Player && entity.level().isClientSide) {
-      ClientCandyData.markAsIdentified(candyType);
-    }
+    BaseSpecialItem.super.finishUsingItem(stack, level, entity);
     return super.finishUsingItem(stack, level, entity);
   }
 
   @Override
   public void appendHoverText(
-      ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag flag) {
-    if (!ClientCandyData.hasIdentified(candyType)) {
-      tooltipComponents.add(
-          Component.translatable("item.cookies_candy_and_cakes.unidentified_mystic_candy")
-              .withStyle(net.minecraft.ChatFormatting.LIGHT_PURPLE));
-      tooltipComponents.add(
-          Component.translatable("item.cookies_candy_and_cakes.unidentified_mystic_candy.desc")
-              .withStyle(net.minecraft.ChatFormatting.DARK_GRAY));
-    } else {
-      super.appendHoverText(stack, context, tooltipComponents, flag);
-    }
+      ItemStack stack,
+      TooltipContext context,
+      List<Component> tooltipComponents,
+      TooltipFlag tooltipFlag) {
+    BaseSpecialItem.super.appendHoverText(stack, tooltipComponents, tooltipFlag);
   }
 
   @Override
   public Component getName(ItemStack stack) {
-    if (!ClientCandyData.hasIdentified(candyType)) {
-      return Component.translatable("item.cookies_candy_and_cakes.unidentified_mystic_candy");
-    }
-    return super.getName(stack);
+    return BaseSpecialItem.super.getName(stack);
+  }
+
+  @Override
+  public boolean isFoil(ItemStack itemStack) {
+    return true;
   }
 }

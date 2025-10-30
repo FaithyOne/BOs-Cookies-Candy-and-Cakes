@@ -104,6 +104,9 @@ public class NeoForgeModItems {
     ITEMS.register(CandyType.TEST_CANDY.getId(), () -> ModItems.TEST_CANDY);
     ITEMS.register(CandyType.TEST_CANDY_MYSTIC.getId(), () -> ModItems.TEST_CANDY_MYSTIC);
     ITEMS.register(CandyType.TEST_CANDY_CURSED.getId(), () -> ModItems.TEST_CANDY_CURSED);
+    ITEMS.register(CandyType.CHORUS_CANDY.getId(), () -> ModItems.CHORUS_CANDY);
+    ITEMS.register(CandyType.CHORUS_CANDY_MYSTIC.getId(), () -> ModItems.CHORUS_CANDY_MYSTIC);
+    ITEMS.register(CandyType.CHORUS_CANDY_CURSED.getId(), () -> ModItems.CHORUS_CANDY_CURSED);
   }
 
   private NeoForgeModItems() {}

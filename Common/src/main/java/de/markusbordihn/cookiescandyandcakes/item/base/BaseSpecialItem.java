@@ -17,14 +17,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item.candies;
+package de.markusbordihn.cookiescandyandcakes.item.base;
 
-import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
-import de.markusbordihn.cookiescandyandcakes.item.BaseCandy;
+import java.util.List;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
-public class NormalCandy extends BaseCandy {
+public interface BaseSpecialItem<T extends IdentifiableItem<?>> {
 
-  public NormalCandy(final CandyType candyType) {
-    super(candyType);
+  T getIdentifiable();
+
+  void applyEffects(Level level, LivingEntity entity);
+
+  default ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+    getIdentifiable().onConsume(entity);
+    applyEffects(level, entity);
+    return stack;
+  }
+
+  default void appendHoverText(
+      ItemStack stack,
+      List<Component> tooltipComponents,
+      TooltipFlag tooltipFlag) {
+    tooltipComponents.add(getIdentifiable().getIdentifiedTooltip());
+  }
+
+  default Component getName(ItemStack stack) {
+    return getIdentifiable().getUnidentifiedName();
   }
 }

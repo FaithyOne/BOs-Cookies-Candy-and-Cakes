@@ -19,8 +19,40 @@
 
 package de.markusbordihn.cookiescandyandcakes.item.base;
 
+import de.markusbordihn.cookiescandyandcakes.client.ClientCandyData;
 import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
+import net.minecraft.ChatFormatting;
 
-public interface IdentifiableCandy {
+public interface IdentifiableCandy extends IdentifiableItem<CandyType> {
+
   CandyType getCandyType();
+
+  @Override
+  default CandyType getItemType() {
+    return getCandyType();
+  }
+
+  @Override
+  default boolean hasIdentified(CandyType type) {
+    return ClientCandyData.hasIdentified(type);
+  }
+
+  @Override
+  default void markAsIdentified(CandyType type) {
+    ClientCandyData.markAsIdentified(type);
+  }
+
+  @Override
+  default ChatFormatting getVariantColor(CandyType type) {
+    return type.getVariant() == CandyType.CandyVariant.MYSTIC
+        ? ChatFormatting.LIGHT_PURPLE
+        : ChatFormatting.DARK_RED;
+  }
+
+  @Override
+  default String getUnidentifiedBaseKey() {
+    return getCandyType().getVariant() == CandyType.CandyVariant.MYSTIC
+        ? "item.cookies_candy_and_cakes.unidentified_mystic_candy"
+        : "item.cookies_candy_and_cakes.unidentified_cursed_candy";
+  }
 }

@@ -21,21 +21,14 @@ package de.markusbordihn.cookiescandyandcakes.item.variants;
 
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieSoundType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
-import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
-import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
 import de.markusbordihn.cookiescandyandcakes.item.base.BaseSpecialCookie;
 import de.markusbordihn.cookiescandyandcakes.item.base.IdentifiableCookie;
-import java.util.List;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 public class MysticCookie extends BaseSpecialCookie implements IdentifiableCookie {
@@ -50,89 +43,51 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   @Override
-  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-    onConsume(livingEntity);
-    applyCookieEffects(level, livingEntity);
-
+  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
     if (!level.isClientSide) {
-      applySpecialEffects(level, livingEntity);
+      applySpecialEffects(level, entity);
     }
-
-    return super.finishUsingItem(stack, level, livingEntity);
+    return super.finishUsingItem(stack, level, entity);
   }
 
-  private void applyCookieEffects(Level level, LivingEntity livingEntity) {
-    if (!level.isClientSide) {
-      spawnParticles(level, livingEntity);
-      if (livingEntity instanceof ServerPlayer serverPlayer) {
-        CookieServerEffectManager.applyCookieEffect(serverPlayer, cookieType);
-      }
-    } else {
-      if (livingEntity instanceof LocalPlayer localPlayer) {
-        CookieClientEffectManager.applyCookieEffect(localPlayer, cookieType);
-      }
-    }
-  }
-
-  private void applySpecialEffects(Level level, LivingEntity livingEntity) {
+  private void applySpecialEffects(Level level, LivingEntity entity) {
     CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
     if (!effect.hasEffects()) {
       return;
     }
 
-    spawnLightningIfNeeded(level, livingEntity, effect);
-    playSoundIfEnabled(level, livingEntity, effect);
+    spawnLightningIfNeeded(level, entity, effect);
+    playSoundIfEnabled(level, entity, effect);
   }
 
   private void spawnLightningIfNeeded(
-      Level level, LivingEntity livingEntity, CookieType.SpecialCookieEffect effect) {
+      Level level, LivingEntity entity, CookieType.SpecialCookieEffect effect) {
     if (level.random.nextFloat() < effect.lightningChance()) {
       LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
       if (lightning == null) {
         return;
       }
-      lightning.moveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
+      lightning.moveTo(entity.getX(), entity.getY(), entity.getZ());
       lightning.setVisualOnly(true);
       level.addFreshEntity(lightning);
     }
   }
 
   private void playSoundIfEnabled(
-      Level level, LivingEntity livingEntity, CookieType.SpecialCookieEffect effect) {
-    if (!effect.enableSounds()) {
-      return;
+      Level level, LivingEntity entity, CookieType.SpecialCookieEffect effect) {
+    if (effect.enableSounds()) {
+      SoundEvent sound = CookieSoundType.getMysticSound(effect.mysticSoundType());
+      if (sound != null) {
+        level.playSound(
+            null,
+            entity.getX(),
+            entity.getY(),
+            entity.getZ(),
+            sound,
+            SoundSource.PLAYERS,
+            effect.soundVolume(),
+            CookieSoundType.getPitch(effect.mysticSoundType(), level.random.nextFloat()));
+      }
     }
-    playMysticSound(level, livingEntity, effect);
-  }
-
-  private void playMysticSound(
-      Level level, LivingEntity livingEntity, CookieType.SpecialCookieEffect effect) {
-    SoundEvent sound = CookieSoundType.getMysticSound(effect.mysticSoundType());
-    if (sound == null) {
-      return;
-    }
-    level.playSound(
-        null,
-        livingEntity.getX(),
-        livingEntity.getY(),
-        livingEntity.getZ(),
-        sound,
-        SoundSource.PLAYERS,
-        effect.soundVolume(),
-        CookieSoundType.getPitch(effect.mysticSoundType(), level.random.nextFloat()));
-  }
-
-  @Override
-  public void appendHoverText(
-      ItemStack stack,
-      TooltipContext context,
-      List<Component> tooltipComponents,
-      TooltipFlag tooltipFlag) {
-    tooltipComponents.add(getIdentifiedTooltip());
-  }
-
-  @Override
-  public Component getName(ItemStack stack) {
-    return getUnidentifiedName();
   }
 }

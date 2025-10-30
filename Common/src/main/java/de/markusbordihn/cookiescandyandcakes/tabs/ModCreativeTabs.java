@@ -59,6 +59,8 @@ public final class ModCreativeTabs {
               output.accept(ModItems.MINI_CAKE_MOLD);
               output.accept(ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR.get());
               output.accept(ModBlockItems.SKELETON_HEAD_COOKIE_JAR.get());
+              output.accept(ModItems.CHORUS_CANDY);
+              output.accept(ModItems.TEST_CANDY);
             });
   }
 
@@ -86,6 +88,10 @@ public final class ModCreativeTabs {
               output.accept(ModItems.SWEET_BERRY_COOKIE_CURSED);
               output.accept(ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
               output.accept(ModItems.SLIME_SUGAR_COOKIE_CURSED);
+              output.accept(ModItems.CHORUS_CANDY_MYSTIC);
+              output.accept(ModItems.CHORUS_CANDY_CURSED);
+              output.accept(ModItems.TEST_CANDY_MYSTIC);
+              output.accept(ModItems.TEST_CANDY_CURSED);
             });
   }
 }
