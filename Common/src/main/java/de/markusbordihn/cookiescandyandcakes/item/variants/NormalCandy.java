@@ -17,30 +17,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.event;
+package de.markusbordihn.cookiescandyandcakes.item.variants;
 
-import de.markusbordihn.cookiescandyandcakes.effect.candy.CandyClientEffectManager;
-import de.markusbordihn.cookiescandyandcakes.effect.candy.CandyServerEffectManager;
-import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
-import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.server.level.ServerPlayer;
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
+import de.markusbordihn.cookiescandyandcakes.item.BaseCandy;
+import java.util.List;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 
-public class PlayerTickHandler {
+public class NormalCandy extends BaseCandy {
 
-  private PlayerTickHandler() {}
-
-  public static void onServerPlayerTick(ServerPlayer player) {
-    if (player != null && !player.level().isClientSide) {
-      CookieServerEffectManager.tickPlayer(player);
-      CandyServerEffectManager.tickPlayer(player);
-    }
+  public NormalCandy(final CandyType candyType) {
+    super(candyType);
   }
 
-  public static void onClientPlayerTick(LocalPlayer player) {
-    if (player != null && player.level().isClientSide) {
-      CookieClientEffectManager.tickPlayer(player);
-      CandyClientEffectManager.tickPlayer(player);
-    }
+  @Override
+  public Component getName(ItemStack stack) {
+    return Component.translatable(this.getDescriptionId(stack));
+  }
+
+  @Override
+  public void appendHoverText(
+      ItemStack itemStack,
+      TooltipContext context,
+      List<Component> tooltipComponents,
+      TooltipFlag tooltipFlag) {
+    tooltipComponents.add(
+        Component.translatable(this.getDescriptionId() + ".desc")
+            .withStyle(ChatFormatting.DARK_GRAY));
+  }
+
+  @Override
+  public boolean isFoil(ItemStack itemStack) {
+    return false;
   }
 }

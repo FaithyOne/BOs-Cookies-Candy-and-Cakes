@@ -101,9 +101,34 @@ public class NeoForgeModItems {
     ITEMS.register(MiniCakeType.MINI_CHOCOLATE_CAKE.getId(), () -> ModItems.MINI_CHOCOLATE_CAKE);
     ITEMS.register(MiniCakeType.MINI_MUSHROOM_CAKE.getId(), () -> ModItems.MINI_MUSHROOM_CAKE);
     ITEMS.register("mini_cake_mold", () -> ModItems.MINI_CAKE_MOLD);
+    ITEMS.register("candy_mold", () -> ModItems.CANDY_MOLD);
     ITEMS.register(CandyType.TEST_CANDY.getId(), () -> ModItems.TEST_CANDY);
     ITEMS.register(CandyType.TEST_CANDY_MYSTIC.getId(), () -> ModItems.TEST_CANDY_MYSTIC);
     ITEMS.register(CandyType.TEST_CANDY_CURSED.getId(), () -> ModItems.TEST_CANDY_CURSED);
+    ITEMS.register(CandyType.APPLE_CANDY.getId(), () -> ModItems.APPLE_CANDY);
+    ITEMS.register(CandyType.APPLE_CANDY_MYSTIC.getId(), () -> ModItems.APPLE_CANDY_MYSTIC);
+    ITEMS.register(CandyType.APPLE_CANDY_CURSED.getId(), () -> ModItems.APPLE_CANDY_CURSED);
+    ITEMS.register(CandyType.CHORUS_CANDY.getId(), () -> ModItems.CHORUS_CANDY);
+    ITEMS.register(CandyType.CHORUS_CANDY_MYSTIC.getId(), () -> ModItems.CHORUS_CANDY_MYSTIC);
+    ITEMS.register(CandyType.CHORUS_CANDY_CURSED.getId(), () -> ModItems.CHORUS_CANDY_CURSED);
+    ITEMS.register(CandyType.CHOCOLATE_CANDY.getId(), () -> ModItems.CHOCOLATE_CANDY);
+    ITEMS.register(CandyType.CHOCOLATE_CANDY_MYSTIC.getId(), () -> ModItems.CHOCOLATE_CANDY_MYSTIC);
+    ITEMS.register(CandyType.CHOCOLATE_CANDY_CURSED.getId(), () -> ModItems.CHOCOLATE_CANDY_CURSED);
+    ITEMS.register(CandyType.GLOW_BERRY_CANDY.getId(), () -> ModItems.GLOW_BERRY_CANDY);
+    ITEMS.register(CandyType.GLOW_BERRY_CANDY_MYSTIC.getId(), () -> ModItems.GLOW_BERRY_CANDY_MYSTIC);
+    ITEMS.register(CandyType.GLOW_BERRY_CANDY_CURSED.getId(), () -> ModItems.GLOW_BERRY_CANDY_CURSED);
+    ITEMS.register(CandyType.GOLDEN_CANDY.getId(), () -> ModItems.GOLDEN_CANDY);
+    ITEMS.register(CandyType.GOLDEN_CANDY_MYSTIC.getId(), () -> ModItems.GOLDEN_CANDY_MYSTIC);
+    ITEMS.register(CandyType.GOLDEN_CANDY_CURSED.getId(), () -> ModItems.GOLDEN_CANDY_CURSED);
+    ITEMS.register(CandyType.MELON_CANDY.getId(), () -> ModItems.MELON_CANDY);
+    ITEMS.register(CandyType.MELON_CANDY_MYSTIC.getId(), () -> ModItems.MELON_CANDY_MYSTIC);
+    ITEMS.register(CandyType.MELON_CANDY_CURSED.getId(), () -> ModItems.MELON_CANDY_CURSED);
+    ITEMS.register(CandyType.PUMPKIN_CANDY.getId(), () -> ModItems.PUMPKIN_CANDY);
+    ITEMS.register(CandyType.PUMPKIN_CANDY_MYSTIC.getId(), () -> ModItems.PUMPKIN_CANDY_MYSTIC);
+    ITEMS.register(CandyType.PUMPKIN_CANDY_CURSED.getId(), () -> ModItems.PUMPKIN_CANDY_CURSED);
+    ITEMS.register(CandyType.SWEET_BERRY_CANDY.getId(), () -> ModItems.SWEET_BERRY_CANDY);
+    ITEMS.register(CandyType.SWEET_BERRY_CANDY_MYSTIC.getId(), () -> ModItems.SWEET_BERRY_CANDY_MYSTIC);
+    ITEMS.register(CandyType.SWEET_BERRY_CANDY_CURSED.getId(), () -> ModItems.SWEET_BERRY_CANDY_CURSED);
   }
 
   private NeoForgeModItems() {}

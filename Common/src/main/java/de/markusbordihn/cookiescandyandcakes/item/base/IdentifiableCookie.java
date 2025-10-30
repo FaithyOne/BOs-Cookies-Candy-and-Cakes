@@ -22,51 +22,37 @@ package de.markusbordihn.cookiescandyandcakes.item.base;
 import de.markusbordihn.cookiescandyandcakes.client.ClientCookieData;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 
-public interface IdentifiableCookie {
+public interface IdentifiableCookie extends IdentifiableItem<CookieType> {
 
   CookieType getCookieType();
 
-  String getDescriptionId();
-
-  default Component getUnidentifiedName() {
-    if (ClientCookieData.hasIdentified(getCookieType())) {
-      ChatFormatting nameColor =
-          getCookieType().getVariant() == CookieType.CookieVariant.MYSTIC
-              ? ChatFormatting.LIGHT_PURPLE
-              : ChatFormatting.DARK_RED;
-      return Component.translatable(getDescriptionId()).withStyle(nameColor);
-    }
-    return Component.translatable(getUnidentifiedKey())
-        .withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withObfuscated(true));
+  @Override
+  default CookieType getItemType() {
+    return getCookieType();
   }
 
-  default Component getIdentifiedTooltip() {
-    if (ClientCookieData.hasIdentified(getCookieType())) {
-      return Component.translatable(getDescriptionId() + ".desc")
-          .withStyle(ChatFormatting.DARK_GRAY);
-    }
-    return Component.translatable(getUnidentifiedDescKey())
-        .withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withObfuscated(true));
+  @Override
+  default boolean hasIdentified(CookieType type) {
+    return ClientCookieData.hasIdentified(type);
   }
 
-  default void onConsume(final LivingEntity entity) {
-    if (entity instanceof Player && entity.level().isClientSide) {
-      ClientCookieData.markAsIdentified(getCookieType());
-    }
+  @Override
+  default void markAsIdentified(CookieType type) {
+    ClientCookieData.markAsIdentified(type);
   }
 
-  default String getUnidentifiedKey() {
+  @Override
+  default ChatFormatting getVariantColor(CookieType type) {
+    return type.getVariant() == CookieType.CookieVariant.MYSTIC
+        ? ChatFormatting.LIGHT_PURPLE
+        : ChatFormatting.DARK_RED;
+  }
+
+  @Override
+  default String getUnidentifiedBaseKey() {
     return getCookieType().getVariant() == CookieType.CookieVariant.MYSTIC
         ? "item.cookies_candy_and_cakes.unidentified_mystic_cookie"
         : "item.cookies_candy_and_cakes.unidentified_cursed_cookie";
-  }
-
-  default String getUnidentifiedDescKey() {
-    return getUnidentifiedKey() + ".desc";
   }
 }

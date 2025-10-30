@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " SW",
+    "SBS",
+    " M "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    },
+    "M": {
+      "item": "cookies_candy_and_cakes:candy_mold",
+      "components": {
+        "minecraft:use_remainder": {
+          "id": "cookies_candy_and_cakes:candy_mold"
+        }
+      }
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:chocolate_candy",
+    "count": 8
+  }
+}

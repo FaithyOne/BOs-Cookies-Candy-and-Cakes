@@ -17,30 +17,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.event;
+package de.markusbordihn.cookiescandyandcakes.item.variants;
 
-import de.markusbordihn.cookiescandyandcakes.effect.candy.CandyClientEffectManager;
-import de.markusbordihn.cookiescandyandcakes.effect.candy.CandyServerEffectManager;
-import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieClientEffectManager;
-import de.markusbordihn.cookiescandyandcakes.effect.cookie.CookieServerEffectManager;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.server.level.ServerPlayer;
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
+import de.markusbordihn.cookiescandyandcakes.item.base.BaseSpecialCandy;
+import de.markusbordihn.cookiescandyandcakes.item.base.IdentifiableCandy;
 
-public class PlayerTickHandler {
+public class CursedCandy extends BaseSpecialCandy implements IdentifiableCandy {
 
-  private PlayerTickHandler() {}
-
-  public static void onServerPlayerTick(ServerPlayer player) {
-    if (player != null && !player.level().isClientSide) {
-      CookieServerEffectManager.tickPlayer(player);
-      CandyServerEffectManager.tickPlayer(player);
-    }
+  public CursedCandy(final CandyType candyType) {
+    super(candyType);
   }
 
-  public static void onClientPlayerTick(LocalPlayer player) {
-    if (player != null && player.level().isClientSide) {
-      CookieClientEffectManager.tickPlayer(player);
-      CandyClientEffectManager.tickPlayer(player);
-    }
+  @Override
+  public CandyType getCandyType() {
+    return candyType;
   }
 }

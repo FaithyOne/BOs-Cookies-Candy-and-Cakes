@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " F ",
+    "SBS",
+    " R "
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:chorus_fruit"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:chorus_candy_cursed",
+    "count": 4
+  }
+}
