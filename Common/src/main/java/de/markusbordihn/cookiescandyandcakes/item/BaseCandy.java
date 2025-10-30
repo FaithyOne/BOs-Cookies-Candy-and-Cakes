@@ -49,9 +49,9 @@ public abstract class BaseCandy extends Item {
   private static final int THROW_MIN_TICKS = 2;
   private static final int SHOW_BAR_MIN_TICKS = 5;
   private static final int THROW_MAX_TICKS = 20;
-  private static final int PAUSE_TICKS = 25;
-  private static final int EAT_START_TICKS = 45;
-  private static final int USE_DURATION_TICKS = 75;
+  private static final int PAUSE_TICKS = 22;
+  private static final int EAT_START_TICKS = 27;
+  private static final int USE_DURATION_TICKS = 55;
   private static final float THROW_MIN_VELOCITY = 0.5F;
   private static final float THROW_MAX_VELOCITY = 1.5F;
   private static final float THROW_INACCURACY = 1.0F;

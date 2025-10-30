@@ -87,12 +87,34 @@ public class ModItems {
       createMiniCakeItem(MiniCakeType.MINI_CHOCOLATE_CAKE);
   public static final Item MINI_MUSHROOM_CAKE = createMiniCakeItem(MiniCakeType.MINI_MUSHROOM_CAKE);
   public static final Item MINI_CAKE_MOLD = new MoldItem();
+  public static final Item CANDY_MOLD = new MoldItem();
   public static final Item TEST_CANDY = createCandyItem(CandyType.TEST_CANDY);
   public static final Item TEST_CANDY_MYSTIC = createCandyItem(CandyType.TEST_CANDY_MYSTIC);
   public static final Item TEST_CANDY_CURSED = createCandyItem(CandyType.TEST_CANDY_CURSED);
+  public static final Item APPLE_CANDY = createCandyItem(CandyType.APPLE_CANDY);
+  public static final Item APPLE_CANDY_MYSTIC = createCandyItem(CandyType.APPLE_CANDY_MYSTIC);
+  public static final Item APPLE_CANDY_CURSED = createCandyItem(CandyType.APPLE_CANDY_CURSED);
   public static final Item CHORUS_CANDY = createCandyItem(CandyType.CHORUS_CANDY);
   public static final Item CHORUS_CANDY_MYSTIC = createCandyItem(CandyType.CHORUS_CANDY_MYSTIC);
   public static final Item CHORUS_CANDY_CURSED = createCandyItem(CandyType.CHORUS_CANDY_CURSED);
+  public static final Item CHOCOLATE_CANDY = createCandyItem(CandyType.CHOCOLATE_CANDY);
+  public static final Item CHOCOLATE_CANDY_MYSTIC = createCandyItem(CandyType.CHOCOLATE_CANDY_MYSTIC);
+  public static final Item CHOCOLATE_CANDY_CURSED = createCandyItem(CandyType.CHOCOLATE_CANDY_CURSED);
+  public static final Item GLOW_BERRY_CANDY = createCandyItem(CandyType.GLOW_BERRY_CANDY);
+  public static final Item GLOW_BERRY_CANDY_MYSTIC = createCandyItem(CandyType.GLOW_BERRY_CANDY_MYSTIC);
+  public static final Item GLOW_BERRY_CANDY_CURSED = createCandyItem(CandyType.GLOW_BERRY_CANDY_CURSED);
+  public static final Item GOLDEN_CANDY = createCandyItem(CandyType.GOLDEN_CANDY);
+  public static final Item GOLDEN_CANDY_MYSTIC = createCandyItem(CandyType.GOLDEN_CANDY_MYSTIC);
+  public static final Item GOLDEN_CANDY_CURSED = createCandyItem(CandyType.GOLDEN_CANDY_CURSED);
+  public static final Item MELON_CANDY = createCandyItem(CandyType.MELON_CANDY);
+  public static final Item MELON_CANDY_MYSTIC = createCandyItem(CandyType.MELON_CANDY_MYSTIC);
+  public static final Item MELON_CANDY_CURSED = createCandyItem(CandyType.MELON_CANDY_CURSED);
+  public static final Item PUMPKIN_CANDY = createCandyItem(CandyType.PUMPKIN_CANDY);
+  public static final Item PUMPKIN_CANDY_MYSTIC = createCandyItem(CandyType.PUMPKIN_CANDY_MYSTIC);
+  public static final Item PUMPKIN_CANDY_CURSED = createCandyItem(CandyType.PUMPKIN_CANDY_CURSED);
+  public static final Item SWEET_BERRY_CANDY = createCandyItem(CandyType.SWEET_BERRY_CANDY);
+  public static final Item SWEET_BERRY_CANDY_MYSTIC = createCandyItem(CandyType.SWEET_BERRY_CANDY_MYSTIC);
+  public static final Item SWEET_BERRY_CANDY_CURSED = createCandyItem(CandyType.SWEET_BERRY_CANDY_CURSED);
 
   private ModItems() {}
 

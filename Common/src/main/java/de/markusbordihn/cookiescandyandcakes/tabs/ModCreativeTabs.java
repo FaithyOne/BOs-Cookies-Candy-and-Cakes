@@ -59,7 +59,15 @@ public final class ModCreativeTabs {
               output.accept(ModItems.MINI_CAKE_MOLD);
               output.accept(ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR.get());
               output.accept(ModBlockItems.SKELETON_HEAD_COOKIE_JAR.get());
+              output.accept(ModItems.CANDY_MOLD);
+              output.accept(ModItems.APPLE_CANDY);
               output.accept(ModItems.CHORUS_CANDY);
+              output.accept(ModItems.CHOCOLATE_CANDY);
+              output.accept(ModItems.GLOW_BERRY_CANDY);
+              output.accept(ModItems.GOLDEN_CANDY);
+              output.accept(ModItems.MELON_CANDY);
+              output.accept(ModItems.PUMPKIN_CANDY);
+              output.accept(ModItems.SWEET_BERRY_CANDY);
               output.accept(ModItems.TEST_CANDY);
             });
   }
@@ -88,8 +96,22 @@ public final class ModCreativeTabs {
               output.accept(ModItems.SWEET_BERRY_COOKIE_CURSED);
               output.accept(ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
               output.accept(ModItems.SLIME_SUGAR_COOKIE_CURSED);
+              output.accept(ModItems.APPLE_CANDY_MYSTIC);
+              output.accept(ModItems.APPLE_CANDY_CURSED);
               output.accept(ModItems.CHORUS_CANDY_MYSTIC);
               output.accept(ModItems.CHORUS_CANDY_CURSED);
+              output.accept(ModItems.CHOCOLATE_CANDY_MYSTIC);
+              output.accept(ModItems.CHOCOLATE_CANDY_CURSED);
+              output.accept(ModItems.GLOW_BERRY_CANDY_MYSTIC);
+              output.accept(ModItems.GLOW_BERRY_CANDY_CURSED);
+              output.accept(ModItems.GOLDEN_CANDY_MYSTIC);
+              output.accept(ModItems.GOLDEN_CANDY_CURSED);
+              output.accept(ModItems.MELON_CANDY_MYSTIC);
+              output.accept(ModItems.MELON_CANDY_CURSED);
+              output.accept(ModItems.PUMPKIN_CANDY_MYSTIC);
+              output.accept(ModItems.PUMPKIN_CANDY_CURSED);
+              output.accept(ModItems.SWEET_BERRY_CANDY_MYSTIC);
+              output.accept(ModItems.SWEET_BERRY_CANDY_CURSED);
               output.accept(ModItems.TEST_CANDY_MYSTIC);
               output.accept(ModItems.TEST_CANDY_CURSED);
             });

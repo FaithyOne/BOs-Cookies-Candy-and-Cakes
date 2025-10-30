@@ -87,12 +87,37 @@ public class FabricModItems {
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "mini_cake_mold"),
         ModItems.MINI_CAKE_MOLD);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "candy_mold"),
+        ModItems.CANDY_MOLD);
     registerCandy(CandyType.TEST_CANDY, ModItems.TEST_CANDY);
     registerCandy(CandyType.TEST_CANDY_MYSTIC, ModItems.TEST_CANDY_MYSTIC);
     registerCandy(CandyType.TEST_CANDY_CURSED, ModItems.TEST_CANDY_CURSED);
+    registerCandy(CandyType.APPLE_CANDY, ModItems.APPLE_CANDY);
+    registerCandy(CandyType.APPLE_CANDY_MYSTIC, ModItems.APPLE_CANDY_MYSTIC);
+    registerCandy(CandyType.APPLE_CANDY_CURSED, ModItems.APPLE_CANDY_CURSED);
     registerCandy(CandyType.CHORUS_CANDY, ModItems.CHORUS_CANDY);
     registerCandy(CandyType.CHORUS_CANDY_MYSTIC, ModItems.CHORUS_CANDY_MYSTIC);
     registerCandy(CandyType.CHORUS_CANDY_CURSED, ModItems.CHORUS_CANDY_CURSED);
+    registerCandy(CandyType.CHOCOLATE_CANDY, ModItems.CHOCOLATE_CANDY);
+    registerCandy(CandyType.CHOCOLATE_CANDY_MYSTIC, ModItems.CHOCOLATE_CANDY_MYSTIC);
+    registerCandy(CandyType.CHOCOLATE_CANDY_CURSED, ModItems.CHOCOLATE_CANDY_CURSED);
+    registerCandy(CandyType.GLOW_BERRY_CANDY, ModItems.GLOW_BERRY_CANDY);
+    registerCandy(CandyType.GLOW_BERRY_CANDY_MYSTIC, ModItems.GLOW_BERRY_CANDY_MYSTIC);
+    registerCandy(CandyType.GLOW_BERRY_CANDY_CURSED, ModItems.GLOW_BERRY_CANDY_CURSED);
+    registerCandy(CandyType.GOLDEN_CANDY, ModItems.GOLDEN_CANDY);
+    registerCandy(CandyType.GOLDEN_CANDY_MYSTIC, ModItems.GOLDEN_CANDY_MYSTIC);
+    registerCandy(CandyType.GOLDEN_CANDY_CURSED, ModItems.GOLDEN_CANDY_CURSED);
+    registerCandy(CandyType.MELON_CANDY, ModItems.MELON_CANDY);
+    registerCandy(CandyType.MELON_CANDY_MYSTIC, ModItems.MELON_CANDY_MYSTIC);
+    registerCandy(CandyType.MELON_CANDY_CURSED, ModItems.MELON_CANDY_CURSED);
+    registerCandy(CandyType.PUMPKIN_CANDY, ModItems.PUMPKIN_CANDY);
+    registerCandy(CandyType.PUMPKIN_CANDY_MYSTIC, ModItems.PUMPKIN_CANDY_MYSTIC);
+    registerCandy(CandyType.PUMPKIN_CANDY_CURSED, ModItems.PUMPKIN_CANDY_CURSED);
+    registerCandy(CandyType.SWEET_BERRY_CANDY, ModItems.SWEET_BERRY_CANDY);
+    registerCandy(CandyType.SWEET_BERRY_CANDY_MYSTIC, ModItems.SWEET_BERRY_CANDY_MYSTIC);
+    registerCandy(CandyType.SWEET_BERRY_CANDY_CURSED, ModItems.SWEET_BERRY_CANDY_CURSED);
   }
 
   private FabricModItems() {}
