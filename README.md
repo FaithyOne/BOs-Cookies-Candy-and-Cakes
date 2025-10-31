@@ -33,12 +33,16 @@ with Halloween treats and sweets that can be crafted or found as rare mob drops.
 Every bite can be more than just a snack—sometimes, a little wonder is hidden inside!
 
 - Discover cookies in many flavors, from classic to mystic and cursed.
-  Some are harmless, others unleash spectacular effects and animations, 
+  Some are harmless, others unleash spectacular effects and animations,
   the Cursed Creeper Cookie is just the beginning!
 - Dare to explore the unknown: Some monsters drop rare, powerful cookies.
   Who knows what awaits you when you find them?
+- Throwable candies: A sweet weapon with dual functionality!
+  Eat them for a quick snack or throw them at other players and entities for fun or PvP combat.
+  Hold the button longer to throw them further—perfect for strategic gameplay or just having a blast
+  with friends!
 - Mini cakes: Small treats for a quick snack on the go, perfect for adventurers with little time.
-- Cookie Jar block: Your sweet treasures deserve a place of honor! 
+- Cookie Jar block: Your sweet treasures deserve a place of honor!
   Sort and display your collection in style.
 - Mold item: Become a baker and create mini cakes, let your imagination run wild.
 
@@ -48,6 +52,8 @@ It's not just about collecting, but about wonder and discovery.
 
 - Collect, snack, and experiment with a colorful variety of cookies, candies, and cakes, each type
   holds its own surprises.
+- Experience dynamic candy gameplay: Eat them for instant effects or charge up your throw to launch
+  them at enemies and friends—two ways to enjoy one treat!
 - Be amazed by mystic and cursed cookies: Sudden effects, animations, and even atmospheric changes
   make every bite exciting.
 - Hunt for rare monster drops and celebrate legendary finds!

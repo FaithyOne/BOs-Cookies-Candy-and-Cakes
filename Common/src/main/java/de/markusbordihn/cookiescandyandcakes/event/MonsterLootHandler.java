@@ -79,9 +79,9 @@ public class MonsterLootHandler {
         () -> MonsterLootConfig.elderGuardianCookieCursedDropWeight)
   };
 
+  private static final int REFRESH_INTERVAL = 100;
   private static List<Item> cachedWeightedItems = null;
   private static int callsSinceLastRefresh = 0;
-  private static final int REFRESH_INTERVAL = 100;
 
   private MonsterLootHandler() {}
 

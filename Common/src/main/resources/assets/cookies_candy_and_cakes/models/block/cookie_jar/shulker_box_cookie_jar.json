@@ -1,0 +1,9 @@
+{
+  "parent": "cookies_candy_and_cakes:block/cookie_jar/block_cookie_jar",
+  "textures": {
+    "top": "block/shulker_box",
+    "front": "block/shulker_box",
+    "particle": "block/shulker_box",
+    "side": "block/shulker_box"
+  }
+}

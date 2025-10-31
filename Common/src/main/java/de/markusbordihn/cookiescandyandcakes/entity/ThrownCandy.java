@@ -41,12 +41,14 @@ import net.minecraft.world.phys.Vec3;
 
 public class ThrownCandy extends ThrowableItemProjectile {
 
-  public ThrownCandy(EntityType<? extends ThrownCandy> entityType, Level level) {
+  public ThrownCandy(final EntityType<? extends ThrownCandy> entityType, final Level level) {
     super(entityType, level);
   }
 
   public ThrownCandy(
-      EntityType<? extends ThrownCandy> entityType, Level level, LivingEntity shooter) {
+      final EntityType<? extends ThrownCandy> entityType,
+      final Level level,
+      final LivingEntity shooter) {
     super(entityType, shooter, level);
   }
 
@@ -63,7 +65,8 @@ public class ThrownCandy extends ThrowableItemProjectile {
       Vec3 location = entityHitResult.getLocation();
       spawnImpactEffects(location);
       if (!hasEffect) {
-        dropDefaultItem(this.level(), new BlockPos((int) location.x, (int) location.y, (int) location.z));
+        dropDefaultItem(
+            this.level(), new BlockPos((int) location.x, (int) location.y, (int) location.z));
       }
     }
     this.discard();
@@ -75,8 +78,7 @@ public class ThrownCandy extends ThrowableItemProjectile {
     if (!this.level().isClientSide) {
       this.level().broadcastEntityEvent(this, (byte) 3);
       if (hitResult instanceof BlockHitResult blockHitResult) {
-        BlockPos blockPos = blockHitResult.getBlockPos();
-        BlockPos placePos = blockPos.relative(blockHitResult.getDirection());
+        BlockPos placePos = blockHitResult.getBlockPos().relative(blockHitResult.getDirection());
         spawnImpactEffects(hitResult.getLocation());
         dropDefaultItem(this.level(), placePos);
       }
@@ -84,7 +86,7 @@ public class ThrownCandy extends ThrowableItemProjectile {
     }
   }
 
-  private void spawnImpactEffects(Vec3 location) {
+  private void spawnImpactEffects(final Vec3 location) {
     Level level = this.level();
     ItemStack itemStack = this.getItem();
 
@@ -127,7 +129,7 @@ public class ThrownCandy extends ThrowableItemProjectile {
     level.addFreshEntity(droppedItem);
   }
 
-  private boolean applyCandyEffect(LivingEntity target) {
+  private boolean applyCandyEffect(final LivingEntity target) {
     ItemStack stack = this.getItem();
     if (stack.getItem() instanceof BaseCandy candy) {
       CandyType candyType = candy.getCandyType();

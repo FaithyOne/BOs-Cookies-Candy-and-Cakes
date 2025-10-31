@@ -26,14 +26,17 @@ import net.minecraftforge.client.event.AddGuiOverlayLayersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = Constants.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(
+    modid = Constants.MOD_ID,
+    value = Dist.CLIENT,
+    bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ForgeOverlayHandler {
 
   private ForgeOverlayHandler() {}
 
   @SubscribeEvent
   @SuppressWarnings("deprecation")
-  public static void onAddGuiOverlayLayers(AddGuiOverlayLayersEvent event) {
+  public static void onAddGuiOverlayLayers(final AddGuiOverlayLayersEvent event) {
     event.getLayeredDraw().add(new CandyChargeOverlay());
   }
 }

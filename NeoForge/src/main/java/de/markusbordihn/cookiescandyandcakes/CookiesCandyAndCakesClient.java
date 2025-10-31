@@ -36,14 +36,15 @@ public class CookiesCandyAndCakesClient {
   private static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
 
   @SuppressWarnings("java:S1118")
-  public CookiesCandyAndCakesClient(IEventBus modEventBus) {
+  public CookiesCandyAndCakesClient(final IEventBus modEventBus) {
     log.info("Initializing {} (NeoForge-Client) ...", Constants.MOD_NAME);
 
     modEventBus.addListener(ClientScreens::registerScreens);
     modEventBus.addListener(this::registerEntityRenderers);
   }
 
-  private void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-    event.registerEntityRenderer(NeoForgeModEntityTypes.THROWN_CANDY.get(), ThrownItemRenderer::new);
+  private void registerEntityRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+    event.registerEntityRenderer(
+        NeoForgeModEntityTypes.THROWN_CANDY.get(), ThrownItemRenderer::new);
   }
 }

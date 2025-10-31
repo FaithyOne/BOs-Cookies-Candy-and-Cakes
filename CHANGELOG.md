@@ -7,6 +7,16 @@ All notable changes to this project will be documented in this file.
 This change log includes the summarized changes.
 For the full changelog, please go to the [GitHub History][history] instead.
 
+### v1.0.0
+
+- First official release version for Cookies, Candy and Cakes for 1.21.1.
+- Added new candy types like normal candies, mystic candies and cursed candies.
+- Added candy mold with better candy recipes.
+- Added shulker head cookie jar and tnt cookie jar to store cookies.
+- Implemented client and server effect managers for handling candy effects.
+- Improved code by refactoring for better performance.
+- Updated documentation and README files.
+
 ### v0.5.0
 
 - Fixed smaller typos and untranslated text.

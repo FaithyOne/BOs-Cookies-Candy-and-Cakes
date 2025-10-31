@@ -46,11 +46,11 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   @Override
-  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+  public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
     if (!level.isClientSide) {
       applySpecialEffects(level, entity);
     }
-    return super.finishUsingItem(stack, level, entity);
+    return super.finishUsingItem(itemStack, level, entity);
   }
 
   private void applySpecialEffects(Level level, LivingEntity entity) {
@@ -65,7 +65,7 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void spawnLightningIfNeeded(
-      Level level, LivingEntity entity, CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
     if (level.random.nextFloat() < effect.lightningChance()) {
       LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
       if (lightning == null) {
@@ -78,7 +78,7 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void playSoundIfEnabled(
-      Level level, LivingEntity entity, CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
     if (effect.enableSounds()) {
       SoundEvent sound = CookieSoundType.getCursedSound(effect.cursedSoundType());
       if (sound != null) {
@@ -95,7 +95,8 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
     }
   }
 
-  private void applyDarknessIfNeeded(LivingEntity entity, CookieType.SpecialCookieEffect effect) {
+  private void applyDarknessIfNeeded(
+      final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
     if (entity instanceof Player player && effect.darknessEffectDuration() > 0) {
       player.addEffect(
           new MobEffectInstance(

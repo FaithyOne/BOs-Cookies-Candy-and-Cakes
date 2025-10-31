@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " W ",
+    "CSC",
+    " W "
+  ],
+  "key": {
+    "C": {
+      "tag": "cookies_candy_and_cakes:cookies"
+    },
+    "W": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "S": {
+      "item": "minecraft:shulker_box"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:shulker_box_cookie_jar",
+    "count": 1
+  }
+}

@@ -45,30 +45,34 @@ public final class ModCreativeTabs {
               output.accept(ModItems.GLOW_BERRY_COOKIE);
               output.accept(ModItems.MELON_COOKIE);
               output.accept(ModItems.PUMPKIN_COOKIE);
-              output.accept(ModItems.SWEET_BERRY_COOKIE);
               output.accept(ModItems.SLIME_SUGAR_COOKIE);
+              output.accept(ModItems.SWEET_BERRY_COOKIE);
+
               output.accept(ModItems.MINI_APPLE_CAKE);
-              output.accept(ModItems.MINI_MELON_CAKE);
-              output.accept(ModItems.MINI_PUMPKIN_CAKE);
-              output.accept(ModItems.MINI_CARROT_CAKE);
               output.accept(ModItems.MINI_BEETROOT_CAKE);
-              output.accept(ModItems.MINI_GLOW_BERRY_CAKE);
-              output.accept(ModItems.MINI_SWEET_BERRY_CAKE);
-              output.accept(ModItems.MINI_CHOCOLATE_CAKE);
-              output.accept(ModItems.MINI_MUSHROOM_CAKE);
               output.accept(ModItems.MINI_CAKE_MOLD);
+              output.accept(ModItems.MINI_CARROT_CAKE);
+              output.accept(ModItems.MINI_CHOCOLATE_CAKE);
+              output.accept(ModItems.MINI_GLOW_BERRY_CAKE);
+              output.accept(ModItems.MINI_MELON_CAKE);
+              output.accept(ModItems.MINI_MUSHROOM_CAKE);
+              output.accept(ModItems.MINI_PUMPKIN_CAKE);
+              output.accept(ModItems.MINI_SWEET_BERRY_CAKE);
+
               output.accept(ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR.get());
+              output.accept(ModBlockItems.SHULKER_BOX_COOKIE_JAR.get());
               output.accept(ModBlockItems.SKELETON_HEAD_COOKIE_JAR.get());
-              output.accept(ModItems.CANDY_MOLD);
+              output.accept(ModBlockItems.TNT_COOKIE_JAR.get());
+
               output.accept(ModItems.APPLE_CANDY);
-              output.accept(ModItems.CHORUS_CANDY);
+              output.accept(ModItems.CANDY_MOLD);
               output.accept(ModItems.CHOCOLATE_CANDY);
+              output.accept(ModItems.CHORUS_CANDY);
               output.accept(ModItems.GLOW_BERRY_CANDY);
               output.accept(ModItems.GOLDEN_CANDY);
               output.accept(ModItems.MELON_CANDY);
               output.accept(ModItems.PUMPKIN_CANDY);
               output.accept(ModItems.SWEET_BERRY_CANDY);
-              output.accept(ModItems.TEST_CANDY);
             });
   }
 
@@ -78,42 +82,41 @@ public final class ModCreativeTabs {
         .icon(() -> new ItemStack(ModItems.APPLE_COOKIE_MYSTIC))
         .displayItems(
             (parameters, output) -> {
-              output.accept(ModItems.APPLE_COOKIE_MYSTIC);
               output.accept(ModItems.APPLE_COOKIE_CURSED);
-              output.accept(ModItems.CARROT_COOKIE_MYSTIC);
+              output.accept(ModItems.APPLE_COOKIE_MYSTIC);
               output.accept(ModItems.CARROT_COOKIE_CURSED);
-              output.accept(ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC);
+              output.accept(ModItems.CARROT_COOKIE_MYSTIC);
               output.accept(ModItems.CREEPER_CRUNCH_COOKIE_CURSED);
-              output.accept(ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC);
+              output.accept(ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC);
               output.accept(ModItems.ELDER_GUARDIAN_COOKIE_CURSED);
-              output.accept(ModItems.GLOW_BERRY_COOKIE_MYSTIC);
+              output.accept(ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC);
               output.accept(ModItems.GLOW_BERRY_COOKIE_CURSED);
-              output.accept(ModItems.MELON_COOKIE_MYSTIC);
+              output.accept(ModItems.GLOW_BERRY_COOKIE_MYSTIC);
               output.accept(ModItems.MELON_COOKIE_CURSED);
-              output.accept(ModItems.PUMPKIN_COOKIE_MYSTIC);
+              output.accept(ModItems.MELON_COOKIE_MYSTIC);
               output.accept(ModItems.PUMPKIN_COOKIE_CURSED);
-              output.accept(ModItems.SWEET_BERRY_COOKIE_MYSTIC);
-              output.accept(ModItems.SWEET_BERRY_COOKIE_CURSED);
-              output.accept(ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
+              output.accept(ModItems.PUMPKIN_COOKIE_MYSTIC);
               output.accept(ModItems.SLIME_SUGAR_COOKIE_CURSED);
-              output.accept(ModItems.APPLE_CANDY_MYSTIC);
+              output.accept(ModItems.SLIME_SUGAR_COOKIE_MYSTIC);
+              output.accept(ModItems.SWEET_BERRY_COOKIE_CURSED);
+              output.accept(ModItems.SWEET_BERRY_COOKIE_MYSTIC);
+
               output.accept(ModItems.APPLE_CANDY_CURSED);
-              output.accept(ModItems.CHORUS_CANDY_MYSTIC);
-              output.accept(ModItems.CHORUS_CANDY_CURSED);
-              output.accept(ModItems.CHOCOLATE_CANDY_MYSTIC);
+              output.accept(ModItems.APPLE_CANDY_MYSTIC);
               output.accept(ModItems.CHOCOLATE_CANDY_CURSED);
-              output.accept(ModItems.GLOW_BERRY_CANDY_MYSTIC);
+              output.accept(ModItems.CHOCOLATE_CANDY_MYSTIC);
+              output.accept(ModItems.CHORUS_CANDY_CURSED);
+              output.accept(ModItems.CHORUS_CANDY_MYSTIC);
               output.accept(ModItems.GLOW_BERRY_CANDY_CURSED);
-              output.accept(ModItems.GOLDEN_CANDY_MYSTIC);
+              output.accept(ModItems.GLOW_BERRY_CANDY_MYSTIC);
               output.accept(ModItems.GOLDEN_CANDY_CURSED);
-              output.accept(ModItems.MELON_CANDY_MYSTIC);
+              output.accept(ModItems.GOLDEN_CANDY_MYSTIC);
               output.accept(ModItems.MELON_CANDY_CURSED);
-              output.accept(ModItems.PUMPKIN_CANDY_MYSTIC);
+              output.accept(ModItems.MELON_CANDY_MYSTIC);
               output.accept(ModItems.PUMPKIN_CANDY_CURSED);
-              output.accept(ModItems.SWEET_BERRY_CANDY_MYSTIC);
+              output.accept(ModItems.PUMPKIN_CANDY_MYSTIC);
               output.accept(ModItems.SWEET_BERRY_CANDY_CURSED);
-              output.accept(ModItems.TEST_CANDY_MYSTIC);
-              output.accept(ModItems.TEST_CANDY_CURSED);
+              output.accept(ModItems.SWEET_BERRY_CANDY_MYSTIC);
             });
   }
 }

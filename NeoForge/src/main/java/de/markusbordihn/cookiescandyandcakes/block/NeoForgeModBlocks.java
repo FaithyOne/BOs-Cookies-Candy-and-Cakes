@@ -35,8 +35,14 @@ public class NeoForgeModBlocks {
   public static final DeferredHolder<Block, Block> PUMPKIN_HEAD_COOKIE_JAR =
       BLOCKS.register(PumpkinHeadCookieJarBlock.ID, () -> ModBlocks.PUMPKIN_HEAD_COOKIE_JAR);
 
+  public static final DeferredHolder<Block, Block> SHULKER_BOX_COOKIE_JAR =
+      BLOCKS.register(ShulkerBoxCookieJarBlock.ID, () -> ModBlocks.SHULKER_BOX_COOKIE_JAR);
+
   public static final DeferredHolder<Block, Block> SKELETON_HEAD_COOKIE_JAR =
       BLOCKS.register(SkeletonHeadCookieJarBlock.ID, () -> ModBlocks.SKELETON_HEAD_COOKIE_JAR);
+
+  public static final DeferredHolder<Block, Block> TNT_COOKIE_JAR =
+      BLOCKS.register(TntCookieJarBlock.ID, () -> ModBlocks.TNT_COOKIE_JAR);
 
   private NeoForgeModBlocks() {}
 

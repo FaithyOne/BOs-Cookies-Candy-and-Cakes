@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/shulker_box_cookie_jar", "y": 0
+    },
+    "facing=south": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/shulker_box_cookie_jar", "y": 180
+    },
+    "facing=west": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/shulker_box_cookie_jar", "y": 270
+    },
+    "facing=east": {
+      "model": "cookies_candy_and_cakes:block/cookie_jar/shulker_box_cookie_jar", "y": 90
+    }
+  }
+}

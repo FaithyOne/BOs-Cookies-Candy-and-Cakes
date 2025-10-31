@@ -1,0 +1,9 @@
+{
+  "parent": "cookies_candy_and_cakes:block/cookie_jar/block_cookie_jar",
+  "textures": {
+    "top": "block/tnt_top",
+    "front": "block/tnt_side",
+    "particle": "block/tnt_side",
+    "side": "block/tnt_side"
+  }
+}

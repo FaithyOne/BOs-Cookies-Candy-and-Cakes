@@ -32,20 +32,21 @@ public interface BaseSpecialItem<T extends IdentifiableItem<?>> {
 
   void applyEffects(Level level, LivingEntity entity);
 
-  default ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+  default ItemStack finishUsingItem(
+      final ItemStack itemStack, final Level level, final LivingEntity entity) {
     getIdentifiable().onConsume(entity);
     applyEffects(level, entity);
-    return stack;
+    return itemStack;
   }
 
   default void appendHoverText(
-      ItemStack stack,
-      List<Component> tooltipComponents,
-      TooltipFlag tooltipFlag) {
+      final ItemStack itemStack,
+      final List<Component> tooltipComponents,
+      final TooltipFlag tooltipFlag) {
     tooltipComponents.add(getIdentifiable().getIdentifiedTooltip());
   }
 
-  default Component getName(ItemStack stack) {
+  default Component getName(final ItemStack itemStack) {
     return getIdentifiable().getUnidentifiedName();
   }
 }

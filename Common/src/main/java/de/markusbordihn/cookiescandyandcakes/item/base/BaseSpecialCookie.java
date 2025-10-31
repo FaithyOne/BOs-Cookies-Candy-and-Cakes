@@ -98,9 +98,9 @@ public abstract class BaseSpecialCookie extends BaseCookie
   }
 
   @Override
-  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-    BaseSpecialItem.super.finishUsingItem(stack, level, entity);
-    return super.finishUsingItem(stack, level, entity);
+  public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
+    BaseSpecialItem.super.finishUsingItem(itemStack, level, entity);
+    return super.finishUsingItem(itemStack, level, entity);
   }
 
   @Override
@@ -113,8 +113,8 @@ public abstract class BaseSpecialCookie extends BaseCookie
   }
 
   @Override
-  public Component getName(ItemStack stack) {
-    return BaseSpecialItem.super.getName(stack);
+  public Component getName(ItemStack itemStack) {
+    return BaseSpecialItem.super.getName(itemStack);
   }
 
   @Override

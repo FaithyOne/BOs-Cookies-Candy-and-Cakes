@@ -37,7 +37,9 @@ public class FabricModBlockEntities {
           BlockEntityType.Builder.of(
                   CookieJarBlockEntity::new,
                   FabricModBlocks.PUMPKIN_HEAD_COOKIE_JAR,
-                  FabricModBlocks.SKELETON_HEAD_COOKIE_JAR)
+                  FabricModBlocks.SHULKER_BOX_COOKIE_JAR,
+                  FabricModBlocks.SKELETON_HEAD_COOKIE_JAR,
+                  FabricModBlocks.TNT_COOKIE_JAR)
               .build(null));
 
   private FabricModBlockEntities() {}

@@ -20,7 +20,9 @@
 package de.markusbordihn.cookiescandyandcakes.registry;
 
 import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
+import de.markusbordihn.cookiescandyandcakes.block.ShulkerBoxCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.block.SkeletonHeadCookieJarBlock;
+import de.markusbordihn.cookiescandyandcakes.block.TntCookieJarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -34,7 +36,20 @@ public class ModBlocks {
               .strength(0.3F)
               .sound(SoundType.WOOD)
               .noOcclusion());
-
+  public static final ShulkerBoxCookieJarBlock SHULKER_BOX_COOKIE_JAR =
+      new ShulkerBoxCookieJarBlock(
+          BlockBehaviour.Properties.of()
+              .mapColor(MapColor.COLOR_PURPLE)
+              .strength(2.0F)
+              .sound(SoundType.STONE)
+              .noOcclusion());
+  public static final TntCookieJarBlock TNT_COOKIE_JAR =
+      new TntCookieJarBlock(
+          BlockBehaviour.Properties.of()
+              .mapColor(MapColor.FIRE)
+              .strength(0.3F)
+              .sound(SoundType.GRASS)
+              .noOcclusion());
   public static final SkeletonHeadCookieJarBlock SKELETON_HEAD_COOKIE_JAR =
       new SkeletonHeadCookieJarBlock(
           BlockBehaviour.Properties.of()

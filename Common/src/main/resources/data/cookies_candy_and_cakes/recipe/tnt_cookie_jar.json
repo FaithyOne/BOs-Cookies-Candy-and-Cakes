@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " W ",
+    "CTC",
+    " W "
+  ],
+  "key": {
+    "C": {
+      "tag": "cookies_candy_and_cakes:cookies"
+    },
+    "W": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "T": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:tnt_cookie_jar",
+    "count": 1
+  }
+}

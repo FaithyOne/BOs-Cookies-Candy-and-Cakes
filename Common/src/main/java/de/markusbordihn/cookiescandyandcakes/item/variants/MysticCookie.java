@@ -43,14 +43,15 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   @Override
-  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+  public ItemStack finishUsingItem(
+      final ItemStack itemStack, final Level level, final LivingEntity entity) {
     if (!level.isClientSide) {
       applySpecialEffects(level, entity);
     }
-    return super.finishUsingItem(stack, level, entity);
+    return super.finishUsingItem(itemStack, level, entity);
   }
 
-  private void applySpecialEffects(Level level, LivingEntity entity) {
+  private void applySpecialEffects(final Level level, final LivingEntity entity) {
     CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
     if (!effect.hasEffects()) {
       return;
@@ -61,7 +62,7 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void spawnLightningIfNeeded(
-      Level level, LivingEntity entity, CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
     if (level.random.nextFloat() < effect.lightningChance()) {
       LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
       if (lightning == null) {
@@ -74,7 +75,7 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void playSoundIfEnabled(
-      Level level, LivingEntity entity, CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
     if (effect.enableSounds()) {
       SoundEvent sound = CookieSoundType.getMysticSound(effect.mysticSoundType());
       if (sound != null) {

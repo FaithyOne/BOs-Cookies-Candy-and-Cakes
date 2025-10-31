@@ -58,23 +58,23 @@ public abstract class BaseSpecialCandy extends BaseCandy
   }
 
   @Override
-  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-    BaseSpecialItem.super.finishUsingItem(stack, level, entity);
-    return super.finishUsingItem(stack, level, entity);
+  public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
+    BaseSpecialItem.super.finishUsingItem(itemStack, level, entity);
+    return super.finishUsingItem(itemStack, level, entity);
   }
 
   @Override
   public void appendHoverText(
-      ItemStack stack,
+      ItemStack itemStack,
       TooltipContext context,
       List<Component> tooltipComponents,
       TooltipFlag tooltipFlag) {
-    BaseSpecialItem.super.appendHoverText(stack, tooltipComponents, tooltipFlag);
+    BaseSpecialItem.super.appendHoverText(itemStack, tooltipComponents, tooltipFlag);
   }
 
   @Override
-  public Component getName(ItemStack stack) {
-    return BaseSpecialItem.super.getName(stack);
+  public Component getName(ItemStack itemStack) {
+    return BaseSpecialItem.super.getName(itemStack);
   }
 
   @Override

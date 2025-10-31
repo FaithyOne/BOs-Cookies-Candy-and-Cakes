@@ -28,7 +28,9 @@ public class ModBlockItems {
 
   // Cookie Jar Block Items
   public static Supplier<BlockItem> PUMPKIN_HEAD_COOKIE_JAR;
+  public static Supplier<BlockItem> SHULKER_BOX_COOKIE_JAR;
   public static Supplier<BlockItem> SKELETON_HEAD_COOKIE_JAR;
+  public static Supplier<BlockItem> TNT_COOKIE_JAR;
 
   private ModBlockItems() {}
 

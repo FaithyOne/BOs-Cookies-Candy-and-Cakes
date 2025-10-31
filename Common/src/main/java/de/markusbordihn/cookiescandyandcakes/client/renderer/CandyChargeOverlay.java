@@ -27,6 +27,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.BlockHitResult;
@@ -46,7 +47,8 @@ public class CandyChargeOverlay implements LayeredDraw.Layer {
   private static final int TEXT_COLOR = 0xFFFFFFFF;
   private static final int TEXT_SHADOW_COLOR = 0x80000000;
 
-  public static void renderCandyChargeBar(GuiGraphics guiGraphics, Minecraft minecraft) {
+  public static void renderCandyChargeBar(
+      final GuiGraphics guiGraphics, final Minecraft minecraft) {
     if (minecraft.player == null || !minecraft.player.isUsingItem()) {
       return;
     }
@@ -56,7 +58,8 @@ public class CandyChargeOverlay implements LayeredDraw.Layer {
       return;
     }
 
-    int usedTicks = activeStack.getUseDuration(minecraft.player) - minecraft.player.getUseItemRemainingTicks();
+    int usedTicks =
+        activeStack.getUseDuration(minecraft.player) - minecraft.player.getUseItemRemainingTicks();
     if (usedTicks < BaseCandy.getShowBarMinTicks() || usedTicks >= BaseCandy.getEatStartTicks()) {
       return;
     }
@@ -64,9 +67,6 @@ public class CandyChargeOverlay implements LayeredDraw.Layer {
     if (shouldEatDirectly(minecraft.player)) {
       return;
     }
-
-    int x = (minecraft.getWindow().getGuiScaledWidth() - BAR_WIDTH) / 2;
-    int y = minecraft.getWindow().getGuiScaledHeight() - 80;
 
     RenderSystem.enableBlend();
     RenderSystem.defaultBlendFunc();
@@ -81,15 +81,26 @@ public class CandyChargeOverlay implements LayeredDraw.Layer {
       text = Component.translatable("item.cookies_candy_and_cakes.candy.throw_strong");
     } else if (usedTicks >= BaseCandy.getThrowMaxTicks()) {
       int maxChargeTicks = BaseCandy.getThrowMaxTicks() - BaseCandy.getThrowMinTicks();
-      progress = Math.min(1.0F, (float) (Math.min(usedTicks, BaseCandy.getThrowMaxTicks()) - BaseCandy.getThrowMinTicks()) / maxChargeTicks);
+      progress =
+          Math.min(
+              1.0F,
+              (float)
+                      (Math.min(usedTicks, BaseCandy.getThrowMaxTicks())
+                          - BaseCandy.getThrowMinTicks())
+                  / maxChargeTicks);
       text = Component.translatable("item.cookies_candy_and_cakes.candy.throw_strong");
     } else {
       int maxChargeTicks = BaseCandy.getThrowMaxTicks() - BaseCandy.getThrowMinTicks();
-      progress = Math.min(1.0F, (float) (usedTicks - BaseCandy.getThrowMinTicks()) / maxChargeTicks);
+      progress =
+          Math.min(1.0F, (float) (usedTicks - BaseCandy.getThrowMinTicks()) / maxChargeTicks);
       barColor = BAR_COLOR_WEAK;
       shineColor = BAR_COLOR_WEAK_SHINE;
       text = Component.translatable("item.cookies_candy_and_cakes.candy.throw_weak");
     }
+
+    // Calculate position and render bar
+    int x = (minecraft.getWindow().getGuiScaledWidth() - BAR_WIDTH) / 2;
+    int y = minecraft.getWindow().getGuiScaledHeight() - 80;
 
     guiGraphics.fill(x - 1, y - 1, x + BAR_WIDTH + 1, y + BAR_HEIGHT + 1, BAR_COLOR_BG_BORDER);
     guiGraphics.fill(x, y, x + BAR_WIDTH, y + BAR_HEIGHT, BAR_COLOR_BG);
@@ -109,7 +120,7 @@ public class CandyChargeOverlay implements LayeredDraw.Layer {
     RenderSystem.disableBlend();
   }
 
-  private static boolean shouldEatDirectly(net.minecraft.world.entity.player.Player player) {
+  private static boolean shouldEatDirectly(final Player player) {
     if (player.getXRot() < 45.0F) {
       return false;
     }
@@ -117,11 +128,14 @@ public class CandyChargeOverlay implements LayeredDraw.Layer {
     Vec3 eyePos = player.getEyePosition();
     Vec3 lookVec = player.getLookAngle();
     Vec3 endPos = eyePos.add(lookVec.scale(2.5));
+    BlockHitResult hitResult =
+        player
+            .level()
+            .clip(
+                new ClipContext(
+                    eyePos, endPos, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
 
-    BlockHitResult hitResult = player.level().clip(new ClipContext(
-        eyePos, endPos, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
-
-    return hitResult.getType() == HitResult.Type.BLOCK 
+    return hitResult.getType() == HitResult.Type.BLOCK
         && !player.level().getBlockState(hitResult.getBlockPos()).isAir();
   }
 

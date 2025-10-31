@@ -116,8 +116,10 @@ public class ForgeModItems {
     ITEMS.register(CandyType.CHOCOLATE_CANDY_MYSTIC.getId(), () -> ModItems.CHOCOLATE_CANDY_MYSTIC);
     ITEMS.register(CandyType.CHOCOLATE_CANDY_CURSED.getId(), () -> ModItems.CHOCOLATE_CANDY_CURSED);
     ITEMS.register(CandyType.GLOW_BERRY_CANDY.getId(), () -> ModItems.GLOW_BERRY_CANDY);
-    ITEMS.register(CandyType.GLOW_BERRY_CANDY_MYSTIC.getId(), () -> ModItems.GLOW_BERRY_CANDY_MYSTIC);
-    ITEMS.register(CandyType.GLOW_BERRY_CANDY_CURSED.getId(), () -> ModItems.GLOW_BERRY_CANDY_CURSED);
+    ITEMS.register(
+        CandyType.GLOW_BERRY_CANDY_MYSTIC.getId(), () -> ModItems.GLOW_BERRY_CANDY_MYSTIC);
+    ITEMS.register(
+        CandyType.GLOW_BERRY_CANDY_CURSED.getId(), () -> ModItems.GLOW_BERRY_CANDY_CURSED);
     ITEMS.register(CandyType.GOLDEN_CANDY.getId(), () -> ModItems.GOLDEN_CANDY);
     ITEMS.register(CandyType.GOLDEN_CANDY_MYSTIC.getId(), () -> ModItems.GOLDEN_CANDY_MYSTIC);
     ITEMS.register(CandyType.GOLDEN_CANDY_CURSED.getId(), () -> ModItems.GOLDEN_CANDY_CURSED);
@@ -128,8 +130,10 @@ public class ForgeModItems {
     ITEMS.register(CandyType.PUMPKIN_CANDY_MYSTIC.getId(), () -> ModItems.PUMPKIN_CANDY_MYSTIC);
     ITEMS.register(CandyType.PUMPKIN_CANDY_CURSED.getId(), () -> ModItems.PUMPKIN_CANDY_CURSED);
     ITEMS.register(CandyType.SWEET_BERRY_CANDY.getId(), () -> ModItems.SWEET_BERRY_CANDY);
-    ITEMS.register(CandyType.SWEET_BERRY_CANDY_MYSTIC.getId(), () -> ModItems.SWEET_BERRY_CANDY_MYSTIC);
-    ITEMS.register(CandyType.SWEET_BERRY_CANDY_CURSED.getId(), () -> ModItems.SWEET_BERRY_CANDY_CURSED);
+    ITEMS.register(
+        CandyType.SWEET_BERRY_CANDY_MYSTIC.getId(), () -> ModItems.SWEET_BERRY_CANDY_MYSTIC);
+    ITEMS.register(
+        CandyType.SWEET_BERRY_CANDY_CURSED.getId(), () -> ModItems.SWEET_BERRY_CANDY_CURSED);
   }
 
   private ForgeModItems() {}

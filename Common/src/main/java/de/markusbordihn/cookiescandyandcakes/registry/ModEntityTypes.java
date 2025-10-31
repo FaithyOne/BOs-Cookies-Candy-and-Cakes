@@ -24,7 +24,7 @@ import java.util.function.Supplier;
 import net.minecraft.world.entity.EntityType;
 
 public class ModEntityTypes {
-  
+
   public static Supplier<EntityType<ThrownCandy>> THROWN_CANDY;
 
   private ModEntityTypes() {}

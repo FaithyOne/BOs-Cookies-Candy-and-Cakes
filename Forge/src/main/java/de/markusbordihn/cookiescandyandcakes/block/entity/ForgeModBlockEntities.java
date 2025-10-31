@@ -44,7 +44,9 @@ public class ForgeModBlockEntities {
                   BlockEntityType.Builder.of(
                           CookieJarBlockEntity::new,
                           ForgeModBlocks.PUMPKIN_HEAD_COOKIE_JAR.get(),
-                          ForgeModBlocks.SKELETON_HEAD_COOKIE_JAR.get())
+                          ForgeModBlocks.SHULKER_BOX_COOKIE_JAR.get(),
+                          ForgeModBlocks.SKELETON_HEAD_COOKIE_JAR.get(),
+                          ForgeModBlocks.TNT_COOKIE_JAR.get())
                       .build(null));
 
   private ForgeModBlockEntities() {}

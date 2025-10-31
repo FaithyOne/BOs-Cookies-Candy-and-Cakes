@@ -29,11 +29,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
@@ -59,12 +59,12 @@ public abstract class BaseCandy extends Item {
 
   protected final CandyType candyType;
 
-  protected BaseCandy(CandyType candyType) {
+  protected BaseCandy(final CandyType candyType) {
     super(new Item.Properties().food(buildFoodProperties(candyType)).stacksTo(STACK_SIZE));
     this.candyType = candyType;
   }
 
-  protected static FoodProperties buildFoodProperties(CandyType candyType) {
+  protected static FoodProperties buildFoodProperties(final CandyType candyType) {
     FoodProperties.Builder builder =
         new FoodProperties.Builder().nutrition(candyType.getNutrition()).fast();
     if (candyType.hasEffect()) {
@@ -74,123 +74,6 @@ public abstract class BaseCandy extends Item {
           candyType.getEffectChance());
     }
     return builder.build();
-  }
-
-  public CandyType getCandyType() {
-    return candyType;
-  }
-
-  @Override
-  public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-    ItemStack itemStack = player.getItemInHand(hand);
-    player.startUsingItem(hand);
-    return InteractionResultHolder.consume(itemStack);
-  }
-
-  private boolean shouldEatDirectly(Player player) {
-    if (player.getXRot() < LOOK_DOWN_ANGLE) {
-      return false;
-    }
-
-    Vec3 eyePos = player.getEyePosition();
-    Vec3 lookVec = player.getLookAngle();
-    Vec3 endPos = eyePos.add(lookVec.scale(2.5));
-
-    BlockHitResult hitResult = player.level().clip(new ClipContext(
-        eyePos, endPos, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
-
-    return hitResult.getType() == HitResult.Type.BLOCK 
-        && !player.level().getBlockState(hitResult.getBlockPos()).isAir();
-  }
-
-  @Override
-  public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
-    if (!(entity instanceof Player player)) {
-      return;
-    }
-
-    int useDuration = this.getUseDuration(stack, entity);
-    int usedTicks = useDuration - timeLeft;
-
-    if (usedTicks < THROW_MIN_TICKS || usedTicks >= EAT_START_TICKS) {
-      return;
-    }
-
-    if (!shouldEatDirectly(player)) {
-      float velocity = calculateThrowVelocity(usedTicks);
-      throwCandy(level, player, stack, velocity);
-    }
-  }
-
-  private float calculateThrowVelocity(int usedTicks) {
-    if (usedTicks < THROW_MIN_TICKS) {
-      return THROW_MIN_VELOCITY;
-    }
-    if (usedTicks >= THROW_MAX_TICKS) {
-      return THROW_MAX_VELOCITY;
-    }
-
-    int chargeTicks = usedTicks - THROW_MIN_TICKS;
-    int maxChargeTicks = THROW_MAX_TICKS - THROW_MIN_TICKS;
-    float chargeProgress = (float) chargeTicks / maxChargeTicks;
-
-    return THROW_MIN_VELOCITY + (THROW_MAX_VELOCITY - THROW_MIN_VELOCITY) * chargeProgress;
-  }
-
-  private void throwCandy(Level level, Player player, ItemStack stack, float velocity) {
-    level.playSound(
-        null,
-        player.getX(),
-        player.getY(),
-        player.getZ(),
-        SoundEvents.SNOWBALL_THROW,
-        SoundSource.PLAYERS,
-        0.5F,
-        0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
-
-    if (!level.isClientSide) {
-      ThrownCandy thrownCandy = new ThrownCandy(ModEntityTypes.THROWN_CANDY.get(), level, player);
-      thrownCandy.setItem(stack.copyWithCount(1));
-      thrownCandy.shootFromRotation(
-          player, player.getXRot(), player.getYRot(), 0.0F, velocity, THROW_INACCURACY);
-      level.addFreshEntity(thrownCandy);
-    }
-
-    player.awardStat(Stats.ITEM_USED.get(this));
-    if (!player.getAbilities().instabuild) {
-      stack.shrink(1);
-    }
-  }
-
-  @Override
-  public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-    if (entity instanceof Player player) {
-      player.awardStat(Stats.ITEM_USED.get(this));
-    }
-    return super.finishUsingItem(stack, level, entity);
-  }
-
-  @Override
-  public int getUseDuration(ItemStack stack, LivingEntity entity) {
-    return USE_DURATION_TICKS;
-  }
-
-  @Override
-  public UseAnim getUseAnimation(ItemStack stack) {
-    return UseAnim.EAT;
-  }
-
-  @Override
-  public void appendHoverText(
-      ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag flag) {
-    tooltipComponents.add(
-        Component.translatable(this.getDescriptionId() + ".desc")
-            .withStyle(net.minecraft.ChatFormatting.DARK_GRAY));
-  }
-
-  @Override
-  public boolean isFoil(ItemStack stack) {
-    return candyType.getVariant() == CandyType.CandyVariant.MYSTIC;
   }
 
   public static int getThrowMinTicks() {
@@ -211,5 +94,131 @@ public abstract class BaseCandy extends Item {
 
   public static int getEatStartTicks() {
     return EAT_START_TICKS;
+  }
+
+  public CandyType getCandyType() {
+    return candyType;
+  }
+
+  @Override
+  public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    ItemStack itemStack = player.getItemInHand(hand);
+    player.startUsingItem(hand);
+    return InteractionResultHolder.consume(itemStack);
+  }
+
+  private boolean shouldEatDirectly(final Player player) {
+    if (player.getXRot() < LOOK_DOWN_ANGLE) {
+      return false;
+    }
+
+    Vec3 eyePos = player.getEyePosition();
+    BlockHitResult hitResult =
+        player
+            .level()
+            .clip(
+                new ClipContext(
+                    eyePos,
+                    eyePos.add(player.getLookAngle().scale(2.5)),
+                    ClipContext.Block.COLLIDER,
+                    ClipContext.Fluid.NONE,
+                    player));
+
+    return hitResult.getType() == HitResult.Type.BLOCK
+        && !player.level().getBlockState(hitResult.getBlockPos()).isAir();
+  }
+
+  @Override
+  public void releaseUsing(ItemStack itemStack, Level level, LivingEntity entity, int timeLeft) {
+    if (!(entity instanceof Player player)) {
+      return;
+    }
+
+    int useDuration = this.getUseDuration(itemStack, entity);
+    int usedTicks = useDuration - timeLeft;
+
+    if (usedTicks < THROW_MIN_TICKS || usedTicks >= EAT_START_TICKS) {
+      return;
+    }
+
+    if (!shouldEatDirectly(player)) {
+      float velocity = calculateThrowVelocity(usedTicks);
+      throwCandy(level, player, itemStack, velocity);
+    }
+  }
+
+  private float calculateThrowVelocity(final int usedTicks) {
+    if (usedTicks < THROW_MIN_TICKS) {
+      return THROW_MIN_VELOCITY;
+    }
+    if (usedTicks >= THROW_MAX_TICKS) {
+      return THROW_MAX_VELOCITY;
+    }
+
+    int chargeTicks = usedTicks - THROW_MIN_TICKS;
+    int maxChargeTicks = THROW_MAX_TICKS - THROW_MIN_TICKS;
+    float chargeProgress = (float) chargeTicks / maxChargeTicks;
+
+    return THROW_MIN_VELOCITY + (THROW_MAX_VELOCITY - THROW_MIN_VELOCITY) * chargeProgress;
+  }
+
+  private void throwCandy(
+      final Level level, final Player player, final ItemStack itemStack, final float velocity) {
+    level.playSound(
+        null,
+        player.getX(),
+        player.getY(),
+        player.getZ(),
+        SoundEvents.SNOWBALL_THROW,
+        SoundSource.PLAYERS,
+        0.5F,
+        0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+
+    if (!level.isClientSide) {
+      ThrownCandy thrownCandy = new ThrownCandy(ModEntityTypes.THROWN_CANDY.get(), level, player);
+      thrownCandy.setItem(itemStack.copyWithCount(1));
+      thrownCandy.shootFromRotation(
+          player, player.getXRot(), player.getYRot(), 0.0F, velocity, THROW_INACCURACY);
+      level.addFreshEntity(thrownCandy);
+    }
+
+    player.awardStat(Stats.ITEM_USED.get(this));
+    if (!player.getAbilities().instabuild) {
+      itemStack.shrink(1);
+    }
+  }
+
+  @Override
+  public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
+    if (entity instanceof Player player) {
+      player.awardStat(Stats.ITEM_USED.get(this));
+    }
+    return super.finishUsingItem(itemStack, level, entity);
+  }
+
+  @Override
+  public int getUseDuration(ItemStack itemStack, LivingEntity entity) {
+    return USE_DURATION_TICKS;
+  }
+
+  @Override
+  public UseAnim getUseAnimation(ItemStack itemStack) {
+    return UseAnim.EAT;
+  }
+
+  @Override
+  public void appendHoverText(
+      ItemStack itemStack,
+      TooltipContext context,
+      List<Component> tooltipComponents,
+      TooltipFlag flag) {
+    tooltipComponents.add(
+        Component.translatable(this.getDescriptionId() + ".desc")
+            .withStyle(net.minecraft.ChatFormatting.DARK_GRAY));
+  }
+
+  @Override
+  public boolean isFoil(ItemStack itemStack) {
+    return candyType.getVariant() == CandyType.CandyVariant.MYSTIC;
   }
 }

@@ -31,8 +31,6 @@ public class CandyClientEffectManager extends ClientEffectManager {
   private static final Map<CandyType, ClientEffectInterface> CANDY_EFFECTS = new HashMap<>();
   private static final CandyClientEffectManager INSTANCE = new CandyClientEffectManager();
 
-  static {}
-
   private CandyClientEffectManager() {}
 
   public static CandyClientEffectManager getInstance() {

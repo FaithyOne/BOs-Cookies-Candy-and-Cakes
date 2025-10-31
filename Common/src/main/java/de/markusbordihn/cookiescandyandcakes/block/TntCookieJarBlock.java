@@ -21,6 +21,7 @@ package de.markusbordihn.cookiescandyandcakes.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -28,13 +29,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class PumpkinHeadCookieJarBlock extends CookieJarBlock {
+public class TntCookieJarBlock extends CookieJarBlock {
 
-  public static final String ID = "pumpkin_head_cookie_jar";
-  public static final MapCodec<PumpkinHeadCookieJarBlock> CODEC =
-      simpleCodec(PumpkinHeadCookieJarBlock::new);
+  public static final String ID = "tnt_cookie_jar";
+  public static final MapCodec<TntCookieJarBlock> CODEC = simpleCodec(TntCookieJarBlock::new);
 
-  public PumpkinHeadCookieJarBlock(final BlockBehaviour.Properties properties) {
+  public TntCookieJarBlock(final BlockBehaviour.Properties properties) {
     super(properties);
   }
 
@@ -45,16 +45,26 @@ public class PumpkinHeadCookieJarBlock extends CookieJarBlock {
 
   @Override
   public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-    if (random.nextInt(200) == 0) {
+    if (random.nextInt(80) == 0) {
       level.playLocalSound(
           pos.getX() + 0.5,
           pos.getY() + 0.5,
           pos.getZ() + 0.5,
-          SoundEvents.AMBIENT_CAVE.value(),
+          SoundEvents.TNT_PRIMED,
           SoundSource.BLOCKS,
-          0.3F,
-          random.nextFloat() * 0.4F + 0.8F,
+          0.2F,
+          random.nextFloat() * 0.2F + 0.9F,
           false);
+    }
+    if (random.nextInt(20) == 0) {
+      level.addParticle(
+          ParticleTypes.SMOKE,
+          pos.getX() + 0.3 + random.nextDouble() * 0.4,
+          pos.getY() + 0.9,
+          pos.getZ() + 0.3 + random.nextDouble() * 0.4,
+          0.0,
+          0.05,
+          0.0);
     }
   }
 }

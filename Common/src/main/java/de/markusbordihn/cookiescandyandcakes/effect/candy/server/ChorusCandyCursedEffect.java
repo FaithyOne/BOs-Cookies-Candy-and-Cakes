@@ -45,7 +45,8 @@ public class ChorusCandyCursedEffect implements ServerEffectInterface {
 
   @Override
   public void tick(ServerPlayer player, int elapsedTicks) {
-    if (elapsedTicks % TELEPORT_INTERVAL == 0 && player.level() instanceof ServerLevel serverLevel) {
+    if (elapsedTicks % TELEPORT_INTERVAL == 0
+        && player.level() instanceof ServerLevel serverLevel) {
       teleportRandomly(serverLevel, player);
     }
   }
@@ -116,7 +117,7 @@ public class ChorusCandyCursedEffect implements ServerEffectInterface {
   private boolean teleportTo(ServerLevel level, ServerPlayer player, double x, double y, double z) {
     BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos(x, y, z);
 
-    while (mutablePos.getY() > level.getMinBuildHeight() 
+    while (mutablePos.getY() > level.getMinBuildHeight()
         && level.getBlockState(mutablePos).isAir()) {
       mutablePos.move(0, -1, 0);
     }
@@ -125,8 +126,8 @@ public class ChorusCandyCursedEffect implements ServerEffectInterface {
     BlockPos abovePos = targetPos.above();
     BlockPos abovePos2 = abovePos.above();
 
-    if (level.getBlockState(targetPos).isAir() 
-        || !level.getBlockState(abovePos).isAir() 
+    if (level.getBlockState(targetPos).isAir()
+        || !level.getBlockState(abovePos).isAir()
         || !level.getBlockState(abovePos2).isAir()) {
       return false;
     }
