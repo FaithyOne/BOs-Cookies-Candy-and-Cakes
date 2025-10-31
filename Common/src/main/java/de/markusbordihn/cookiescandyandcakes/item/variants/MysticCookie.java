@@ -19,6 +19,7 @@
 
 package de.markusbordihn.cookiescandyandcakes.item.variants;
 
+import de.markusbordihn.cookiescandyandcakes.data.SpecialItemEffect;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieSoundType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.item.base.BaseSpecialCookie;
@@ -52,7 +53,7 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void applySpecialEffects(final Level level, final LivingEntity entity) {
-    CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
+    SpecialItemEffect effect = cookieType.getSpecialCookieEffect();
     if (!effect.hasEffects()) {
       return;
     }
@@ -62,7 +63,7 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void spawnLightningIfNeeded(
-      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final SpecialItemEffect effect) {
     if (level.random.nextFloat() < effect.lightningChance()) {
       LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
       if (lightning == null) {
@@ -75,7 +76,7 @@ public class MysticCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void playSoundIfEnabled(
-      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final SpecialItemEffect effect) {
     if (effect.enableSounds()) {
       SoundEvent sound = CookieSoundType.getMysticSound(effect.mysticSoundType());
       if (sound != null) {

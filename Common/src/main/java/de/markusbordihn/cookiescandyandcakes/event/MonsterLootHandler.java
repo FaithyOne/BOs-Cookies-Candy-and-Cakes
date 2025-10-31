@@ -20,8 +20,10 @@
 package de.markusbordihn.cookiescandyandcakes.event;
 
 import de.markusbordihn.cookiescandyandcakes.config.MonsterLootConfig;
-import de.markusbordihn.cookiescandyandcakes.data.loot.ItemWeight;
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
+import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.world.entity.Entity;
@@ -31,53 +33,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class MonsterLootHandler {
-
-  private static final ItemWeight[] SPECIAL_COOKIE_ITEMS_WITH_WEIGHTS = {
-    new ItemWeight(
-        ModItems.APPLE_COOKIE_MYSTIC, () -> MonsterLootConfig.appleCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.APPLE_COOKIE_CURSED, () -> MonsterLootConfig.appleCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.CARROT_COOKIE_MYSTIC, () -> MonsterLootConfig.carrotCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.CARROT_COOKIE_CURSED, () -> MonsterLootConfig.carrotCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.GLOW_BERRY_COOKIE_MYSTIC, () -> MonsterLootConfig.glowBerryCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.GLOW_BERRY_COOKIE_CURSED, () -> MonsterLootConfig.glowBerryCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.MELON_COOKIE_MYSTIC, () -> MonsterLootConfig.melonCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.MELON_COOKIE_CURSED, () -> MonsterLootConfig.melonCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.PUMPKIN_COOKIE_MYSTIC, () -> MonsterLootConfig.pumpkinCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.PUMPKIN_COOKIE_CURSED, () -> MonsterLootConfig.pumpkinCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.SWEET_BERRY_COOKIE_MYSTIC,
-        () -> MonsterLootConfig.sweetBerryCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.SWEET_BERRY_COOKIE_CURSED,
-        () -> MonsterLootConfig.sweetBerryCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.SLIME_SUGAR_COOKIE_MYSTIC,
-        () -> MonsterLootConfig.slimeSugarCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.SLIME_SUGAR_COOKIE_CURSED,
-        () -> MonsterLootConfig.slimeSugarCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.CREEPER_CRUNCH_COOKIE_MYSTIC,
-        () -> MonsterLootConfig.creeperCrunchCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.CREEPER_CRUNCH_COOKIE_CURSED,
-        () -> MonsterLootConfig.creeperCrunchCookieCursedDropWeight),
-    new ItemWeight(
-        ModItems.ELDER_GUARDIAN_COOKIE_MYSTIC,
-        () -> MonsterLootConfig.elderGuardianCookieMysticDropWeight),
-    new ItemWeight(
-        ModItems.ELDER_GUARDIAN_COOKIE_CURSED,
-        () -> MonsterLootConfig.elderGuardianCookieCursedDropWeight)
-  };
 
   private static final int REFRESH_INTERVAL = 100;
   private static List<Item> cachedWeightedItems = null;
@@ -96,13 +51,56 @@ public class MonsterLootHandler {
 
   private static List<Item> buildWeightedItemList() {
     List<Item> weightedItems = new ArrayList<>();
-    for (ItemWeight itemWeight : SPECIAL_COOKIE_ITEMS_WITH_WEIGHTS) {
-      int weight = itemWeight.weightSupplier().getAsInt();
-      for (int i = 0; i < weight; i++) {
-        weightedItems.add(itemWeight.item());
+
+    // Add cookies (only MYSTIC and CURSED)
+    for (CookieType cookieType : CookieType.values()) {
+      if (cookieType.getVariant() == CookieType.CookieVariant.MYSTIC
+          || cookieType.getVariant() == CookieType.CookieVariant.CURSED) {
+        int weight = MonsterLootConfig.getCookieDropWeight(cookieType);
+        Item item = getCookieItem(cookieType);
+        if (item != null) {
+          for (int i = 0; i < weight; i++) {
+            weightedItems.add(item);
+          }
+        }
       }
     }
+
+    // Add candies (only MYSTIC and CURSED)
+    for (CandyType candyType : CandyType.values()) {
+      if (candyType.getVariant() == CandyType.CandyVariant.MYSTIC
+          || candyType.getVariant() == CandyType.CandyVariant.CURSED) {
+        int weight = MonsterLootConfig.getCandyDropWeight(candyType);
+        Item item = getCandyItem(candyType);
+        if (item != null) {
+          for (int i = 0; i < weight; i++) {
+            weightedItems.add(item);
+          }
+        }
+      }
+    }
+
     return weightedItems;
+  }
+
+  private static Item getCookieItem(final CookieType cookieType) {
+    try {
+      String fieldName = cookieType.name();
+      Field field = ModItems.class.getDeclaredField(fieldName);
+      return (Item) field.get(null);
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  private static Item getCandyItem(final CandyType candyType) {
+    try {
+      String fieldName = candyType.name();
+      Field field = ModItems.class.getDeclaredField(fieldName);
+      return (Item) field.get(null);
+    } catch (Exception e) {
+      return null;
+    }
   }
 
   public static ItemStack getRandomSpecialCookie(final Entity entity) {

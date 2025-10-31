@@ -20,6 +20,7 @@
 package de.markusbordihn.cookiescandyandcakes.data.cookies;
 
 import de.markusbordihn.cookiescandyandcakes.config.CookieConfig;
+import de.markusbordihn.cookiescandyandcakes.data.SpecialItemEffect;
 import java.util.Locale;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
@@ -108,7 +109,7 @@ public enum CookieType {
     return CookieConfig.getEffectChance(this);
   }
 
-  public SpecialCookieEffect getSpecialCookieEffect() {
+  public SpecialItemEffect getSpecialCookieEffect() {
     return CookieConfig.getSpecialCookieEffect(this);
   }
 
@@ -116,27 +117,5 @@ public enum CookieType {
     NORMAL,
     MYSTIC,
     CURSED
-  }
-
-  public record SpecialCookieEffect(
-      float lightningChance,
-      boolean enableSounds,
-      float soundVolume,
-      int darknessEffectDuration,
-      String mysticSoundType,
-      String cursedSoundType) {
-
-    public static final SpecialCookieEffect NONE =
-        new SpecialCookieEffect(0.0f, false, 0.0f, 0, "none", "none");
-
-    public static final SpecialCookieEffect DEFAULT_MYSTIC =
-        new SpecialCookieEffect(0.5f, true, 1.0f, 0, "levelup", "none");
-
-    public static final SpecialCookieEffect DEFAULT_CURSED =
-        new SpecialCookieEffect(0.5f, true, 4.0f, 60, "none", "ender_dragon");
-
-    public boolean hasEffects() {
-      return lightningChance > 0.0f || enableSounds;
-    }
   }
 }

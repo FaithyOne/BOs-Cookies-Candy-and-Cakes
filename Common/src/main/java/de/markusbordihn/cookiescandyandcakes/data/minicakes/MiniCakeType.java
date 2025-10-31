@@ -19,6 +19,7 @@
 
 package de.markusbordihn.cookiescandyandcakes.data.minicakes;
 
+import de.markusbordihn.cookiescandyandcakes.config.MiniCakeConfig;
 import java.util.Locale;
 
 public enum MiniCakeType {
@@ -32,11 +33,11 @@ public enum MiniCakeType {
   MINI_CHOCOLATE_CAKE(3),
   MINI_MUSHROOM_CAKE(3);
 
-  private final int nutrition;
+  private final int defaultNutrition;
   private final String id;
 
-  MiniCakeType(final int nutrition) {
-    this.nutrition = nutrition;
+  MiniCakeType(final int defaultNutrition) {
+    this.defaultNutrition = defaultNutrition;
     this.id = name().toLowerCase(Locale.ROOT);
   }
 
@@ -44,7 +45,11 @@ public enum MiniCakeType {
     return id;
   }
 
+  public int getDefaultNutrition() {
+    return defaultNutrition;
+  }
+
   public int getNutrition() {
-    return nutrition;
+    return MiniCakeConfig.getNutrition(this);
   }
 }

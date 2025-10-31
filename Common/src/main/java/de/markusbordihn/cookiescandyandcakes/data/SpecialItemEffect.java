@@ -17,9 +17,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.data.loot;
+package de.markusbordihn.cookiescandyandcakes.data;
 
-import java.util.function.IntSupplier;
-import net.minecraft.world.item.Item;
+public record SpecialItemEffect(
+    float lightningChance,
+    boolean enableSounds,
+    float soundVolume,
+    int darknessEffectDuration,
+    String mysticSoundType,
+    String cursedSoundType) {
 
-public record ItemWeight(Item item, IntSupplier weightSupplier) {}
+  public static final SpecialItemEffect NONE =
+      new SpecialItemEffect(0.0f, false, 0.0f, 0, "none", "none");
+
+  public static final SpecialItemEffect DEFAULT_MYSTIC =
+      new SpecialItemEffect(0.5f, true, 1.0f, 0, "levelup", "none");
+
+  public static final SpecialItemEffect DEFAULT_CURSED =
+      new SpecialItemEffect(0.5f, true, 4.0f, 60, "none", "ender_dragon");
+
+  public boolean hasEffects() {
+    return lightningChance > 0.0f || enableSounds;
+  }
+}

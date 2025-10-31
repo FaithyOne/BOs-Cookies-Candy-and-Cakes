@@ -19,7 +19,11 @@
 
 package de.markusbordihn.cookiescandyandcakes.config;
 
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
+import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import java.io.File;
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class MonsterLootConfig extends Config {
@@ -29,34 +33,22 @@ public class MonsterLootConfig extends Config {
 """
  Monster Loot Configuration
 
- This configuration file allows you to define drop chances for candy crumbs from monsters.
+ This configuration file allows you to define drop chances for special cookies and candies from monsters.
  Drop chances are in percentage (0-100). Set to 0 to disable drops for that item.
- The global drop chance determines if ANY candy crumb will drop (25% default).
+ The global drop chance determines if ANY special item will drop (25% default).
+
+ Cookie Drops: Special MYSTIC and CURSED cookie variants
+ Candy Drops: Special MYSTIC and CURSED candy variants
+
+ Drop weights determine the relative probability of each item dropping.
+ Higher weight = more likely to drop. Set to 0 to disable that specific item.
 
 """;
-
+  // Maps to store drop weights for each type
+  private static final Map<CookieType, Integer> cookieDropWeights = new EnumMap<>(CookieType.class);
+  private static final Map<CandyType, Integer> candyDropWeights = new EnumMap<>(CandyType.class);
   // Global drop chance (percentage 0-100)
   public static int globalDropChance = 25;
-
-  // Individual item drop weights (0 = disabled, higher = more likely)
-  public static int appleCookieMysticDropWeight = 1;
-  public static int appleCookieCursedDropWeight = 1;
-  public static int carrotCookieMysticDropWeight = 1;
-  public static int carrotCookieCursedDropWeight = 1;
-  public static int glowBerryCookieMysticDropWeight = 1;
-  public static int glowBerryCookieCursedDropWeight = 1;
-  public static int melonCookieMysticDropWeight = 1;
-  public static int melonCookieCursedDropWeight = 1;
-  public static int pumpkinCookieMysticDropWeight = 1;
-  public static int pumpkinCookieCursedDropWeight = 1;
-  public static int sweetBerryCookieMysticDropWeight = 1;
-  public static int sweetBerryCookieCursedDropWeight = 1;
-  public static int slimeSugarCookieMysticDropWeight = 1;
-  public static int slimeSugarCookieCursedDropWeight = 1;
-  public static int creeperCrunchCookieMysticDropWeight = 1;
-  public static int creeperCrunchCookieCursedDropWeight = 1;
-  public static int elderGuardianCookieMysticDropWeight = 1;
-  public static int elderGuardianCookieCursedDropWeight = 1;
 
   public static void registerConfig() {
     registerConfigFile(CONFIG_FILE_NAME, CONFIG_FILE_HEADER);
@@ -71,57 +63,45 @@ public class MonsterLootConfig extends Config {
     // Global settings
     globalDropChance = parseConfigValue(properties, "globalDropChance", globalDropChance);
 
-    // Individual item drop weights
-    appleCookieMysticDropWeight =
-        parseConfigValue(properties, "appleCookieMysticDropWeight", appleCookieMysticDropWeight);
-    appleCookieCursedDropWeight =
-        parseConfigValue(properties, "appleCookieCursedDropWeight", appleCookieCursedDropWeight);
-    carrotCookieMysticDropWeight =
-        parseConfigValue(properties, "carrotCookieMysticDropWeight", carrotCookieMysticDropWeight);
-    carrotCookieCursedDropWeight =
-        parseConfigValue(properties, "carrotCookieCursedDropWeight", carrotCookieCursedDropWeight);
-    glowBerryCookieMysticDropWeight =
-        parseConfigValue(
-            properties, "glowBerryCookieMysticDropWeight", glowBerryCookieMysticDropWeight);
-    glowBerryCookieCursedDropWeight =
-        parseConfigValue(
-            properties, "glowBerryCookieCursedDropWeight", glowBerryCookieCursedDropWeight);
-    melonCookieMysticDropWeight =
-        parseConfigValue(properties, "melonCookieMysticDropWeight", melonCookieMysticDropWeight);
-    melonCookieCursedDropWeight =
-        parseConfigValue(properties, "melonCookieCursedDropWeight", melonCookieCursedDropWeight);
-    pumpkinCookieMysticDropWeight =
-        parseConfigValue(
-            properties, "pumpkinCookieMysticDropWeight", pumpkinCookieMysticDropWeight);
-    pumpkinCookieCursedDropWeight =
-        parseConfigValue(
-            properties, "pumpkinCookieCursedDropWeight", pumpkinCookieCursedDropWeight);
-    sweetBerryCookieMysticDropWeight =
-        parseConfigValue(
-            properties, "sweetBerryCookieMysticDropWeight", sweetBerryCookieMysticDropWeight);
-    sweetBerryCookieCursedDropWeight =
-        parseConfigValue(
-            properties, "sweetBerryCookieCursedDropWeight", sweetBerryCookieCursedDropWeight);
-    slimeSugarCookieMysticDropWeight =
-        parseConfigValue(
-            properties, "slimeSugarCookieMysticDropWeight", slimeSugarCookieMysticDropWeight);
-    slimeSugarCookieCursedDropWeight =
-        parseConfigValue(
-            properties, "slimeSugarCookieCursedDropWeight", slimeSugarCookieCursedDropWeight);
-    creeperCrunchCookieMysticDropWeight =
-        parseConfigValue(
-            properties, "creeperCrunchCookieMysticDropWeight", creeperCrunchCookieMysticDropWeight);
-    creeperCrunchCookieCursedDropWeight =
-        parseConfigValue(
-            properties, "creeperCrunchCookieCursedDropWeight", creeperCrunchCookieCursedDropWeight);
-    elderGuardianCookieMysticDropWeight =
-        parseConfigValue(
-            properties, "elderGuardianCookieMysticDropWeight", elderGuardianCookieMysticDropWeight);
-    elderGuardianCookieCursedDropWeight =
-        parseConfigValue(
-            properties, "elderGuardianCookieCursedDropWeight", elderGuardianCookieCursedDropWeight);
+    // Clear existing weights
+    cookieDropWeights.clear();
+    candyDropWeights.clear();
+
+    // Parse cookie drop weights - only for MYSTIC and CURSED variants
+    for (CookieType type : CookieType.values()) {
+      if (type.getVariant() == CookieType.CookieVariant.MYSTIC
+          || type.getVariant() == CookieType.CookieVariant.CURSED) {
+        // Convert apple_cookie_mystic -> appleCookieMystic
+        String camelCaseName = toCamelCase(type.getId());
+        String key = "cookie." + camelCaseName + ".dropWeight";
+        int defaultWeight = 1;
+        int weight = parseConfigValue(properties, key, defaultWeight);
+        cookieDropWeights.put(type, weight);
+      }
+    }
+
+    // Parse candy drop weights - only for MYSTIC and CURSED variants
+    for (CandyType type : CandyType.values()) {
+      if (type.getVariant() == CandyType.CandyVariant.MYSTIC
+          || type.getVariant() == CandyType.CandyVariant.CURSED) {
+        // Convert apple_candy_cursed -> appleCandyCursed
+        String camelCaseName = toCamelCase(type.getId());
+        String key = "candy." + camelCaseName + ".dropWeight";
+        int defaultWeight = 1;
+        int weight = parseConfigValue(properties, key, defaultWeight);
+        candyDropWeights.put(type, weight);
+      }
+    }
 
     // Update config file if needed
     updateConfigFileIfChanged(configFile, CONFIG_FILE_HEADER, properties, unmodifiedProperties);
+  }
+
+  public static int getCookieDropWeight(final CookieType type) {
+    return cookieDropWeights.getOrDefault(type, 0);
+  }
+
+  public static int getCandyDropWeight(final CandyType type) {
+    return candyDropWeights.getOrDefault(type, 0);
   }
 }

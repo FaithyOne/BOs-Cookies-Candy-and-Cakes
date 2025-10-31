@@ -62,6 +62,8 @@ public class Config {
   public static void registerCommonConfig() {
     log.info("{} Registering common configuration ...", LOG_PREFIX);
     CookieConfig.registerConfig();
+    CandyConfig.registerConfig();
+    MiniCakeConfig.registerConfig();
     MonsterLootConfig.registerConfig();
   }
 
@@ -243,5 +245,25 @@ public class Config {
     }
     properties.setProperty(key, String.join(",", defaultValue));
     return defaultValue;
+  }
+
+  protected static String toCamelCase(final String snakeCase) {
+    if (snakeCase == null || snakeCase.isEmpty()) {
+      return snakeCase;
+    }
+
+    StringBuilder result = new StringBuilder(snakeCase.length());
+    boolean capitalizeNext = false;
+    for (int i = 0; i < snakeCase.length(); i++) {
+      char currentChar = snakeCase.charAt(i);
+      if (currentChar == '_') {
+        capitalizeNext = true;
+      } else {
+        result.append(capitalizeNext ? Character.toUpperCase(currentChar) : currentChar);
+        capitalizeNext = false;
+      }
+    }
+
+    return result.toString();
   }
 }

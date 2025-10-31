@@ -20,34 +20,34 @@
 package de.markusbordihn.cookiescandyandcakes.config;
 
 import de.markusbordihn.cookiescandyandcakes.data.SpecialItemEffect;
-import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import java.io.File;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class CookieConfig extends Config {
+public class CandyConfig extends Config {
 
-  public static final String CONFIG_FILE_NAME = "cookies.cfg";
+  public static final String CONFIG_FILE_NAME = "candies.cfg";
   public static final String CONFIG_FILE_HEADER =
 """
- Cookie Configuration
+ Candy Configuration
 
- This configuration file allows you to customize cookie properties per type.
+ This configuration file allows you to customize candy properties per type.
 
  General Settings:
  - nutrition: Food points restored (default: 2)
- - effectDuration: Duration of potion effects in ticks (default: 600 = 30 seconds, 20 ticks = 1 second)
+ - effectDuration: Duration of potion effects in ticks (default: 200 = 10 seconds, 20 ticks = 1 second)
  - effectChance: Chance for potion effects to apply (0.0-1.0, default: 1.0 = 100%)
 
- Special Cookie Effects (for MYSTIC and CURSED variants):
+ Special Candy Effects (for MYSTIC and CURSED variants):
  - specialEffect.lightningChance: Chance for lightning effect (0.0-1.0, default: 0.5 = 50%)
  - specialEffect.enableSounds: Enable dramatic sound effects (default: true)
  - specialEffect.soundVolume: Volume of sound effects (MYSTIC default: 1.0, CURSED default: 4.0)
- - specialEffect.enableDarknessEffect: Enable darkness effect for CURSED cookies (default: true, disable for epilepsy/photosensitivity)
- - specialEffect.darknessEffectDuration: Duration of darkness effect in ticks for CURSED cookies (default: 60 = 3 seconds)
- - specialEffect.mysticSoundType: Sound type for MYSTIC cookies (levelup, enchant, amethyst, bell, none; default: levelup)
- - specialEffect.cursedSoundType: Sound type for CURSED cookies (ender_dragon, wither, ambient_cave, sculk, none; default: ender_dragon)
+ - specialEffect.enableDarknessEffect: Enable darkness effect for CURSED candies (default: true, disable for epilepsy/photosensitivity)
+ - specialEffect.darknessEffectDuration: Duration of darkness effect in ticks for CURSED candies (default: 60 = 3 seconds)
+ - specialEffect.mysticSoundType: Sound type for MYSTIC candies (levelup, enchant, amethyst, bell, none; default: levelup)
+ - specialEffect.cursedSoundType: Sound type for CURSED candies (ender_dragon, wither, ambient_cave, sculk, none; default: ender_dragon)
 
  Available Sound Types:
  - MYSTIC: levelup, enchant, amethyst, bell, none
@@ -56,19 +56,17 @@ public class CookieConfig extends Config {
  Accessibility Note:
  - Set specialEffect.enableDarknessEffect to false if you have epilepsy or are sensitive to screen flashing/darkening effects
 
- You can configure these values globally or per cookie type by prefixing with the cookie type ID.
- Example: apple_cookie_mystic.nutrition = 3
+ You can configure these values globally or per candy type by prefixing with the candy type ID.
+ Example: apple_candy_mystic.nutrition = 3
 
 """;
-  private static final Map<CookieType, Integer> nutritionOverrides =
-      new EnumMap<>(CookieType.class);
-  private static final Map<CookieType, Integer> effectDurationOverrides =
-      new EnumMap<>(CookieType.class);
-  private static final Map<CookieType, Float> effectChanceOverrides =
-      new EnumMap<>(CookieType.class);
+  private static final Map<CandyType, Integer> nutritionOverrides = new EnumMap<>(CandyType.class);
+  private static final Map<CandyType, Integer> effectDurationOverrides =
+      new EnumMap<>(CandyType.class);
+  private static final Map<CandyType, Float> effectChanceOverrides = new EnumMap<>(CandyType.class);
 
   private static int defaultNutrition = 2;
-  private static int defaultEffectDuration = 600;
+  private static int defaultEffectDuration = 200;
   private static float defaultEffectChance = 1.0f;
 
   private static float specialEffectLightningChance = 0.5f;
@@ -121,9 +119,9 @@ public class CookieConfig extends Config {
     effectDurationOverrides.clear();
     effectChanceOverrides.clear();
 
-    for (CookieType type : CookieType.values()) {
+    for (CandyType type : CandyType.values()) {
       String camelCaseName = toCamelCase(type.getId());
-      String prefix = "cookie." + camelCaseName + ".";
+      String prefix = "candy." + camelCaseName + ".";
 
       nutritionOverrides.put(
           type, parseConfigValue(properties, prefix + "nutrition", defaultNutrition));
@@ -136,20 +134,20 @@ public class CookieConfig extends Config {
     updateConfigFileIfChanged(configFile, CONFIG_FILE_HEADER, properties, unmodifiedProperties);
   }
 
-  public static int getNutrition(final CookieType type) {
+  public static int getNutrition(final CandyType type) {
     return nutritionOverrides.getOrDefault(type, defaultNutrition);
   }
 
-  public static int getEffectDuration(final CookieType type) {
+  public static int getEffectDuration(final CandyType type) {
     return effectDurationOverrides.getOrDefault(type, defaultEffectDuration);
   }
 
-  public static float getEffectChance(final CookieType type) {
+  public static float getEffectChance(final CandyType type) {
     return effectChanceOverrides.getOrDefault(type, defaultEffectChance);
   }
 
-  public static SpecialItemEffect getSpecialCookieEffect(final CookieType type) {
-    if (type.getVariant() == CookieType.CookieVariant.MYSTIC) {
+  public static SpecialItemEffect getSpecialCandyEffect(final CandyType type) {
+    if (type.getVariant() == CandyType.CandyVariant.MYSTIC) {
       return new SpecialItemEffect(
           specialEffectLightningChance,
           specialEffectEnableSounds,
@@ -157,7 +155,7 @@ public class CookieConfig extends Config {
           0,
           specialEffectMysticSoundType,
           "none");
-    } else if (type.getVariant() == CookieType.CookieVariant.CURSED) {
+    } else if (type.getVariant() == CandyType.CandyVariant.CURSED) {
       return new SpecialItemEffect(
           specialEffectLightningChance,
           specialEffectEnableSounds,

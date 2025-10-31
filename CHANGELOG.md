@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 This change log includes the summarized changes.
 For the full changelog, please go to the [GitHub History][history] instead.
 
+### v1.1.0
+
+- Added missing config files for candies and mini cakes.
+- Optimized config and added default values for better user experience.
+
 ### v1.0.0
 
 - First official release version for Cookies, Candy and Cakes for 1.21.1.

@@ -19,6 +19,8 @@
 
 package de.markusbordihn.cookiescandyandcakes.data.candies;
 
+import de.markusbordihn.cookiescandyandcakes.config.CandyConfig;
+import de.markusbordihn.cookiescandyandcakes.data.SpecialItemEffect;
 import java.util.Locale;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
@@ -53,10 +55,6 @@ public enum CandyType {
   SWEET_BERRY_CANDY_MYSTIC(CandyVariant.MYSTIC, MobEffects.MOVEMENT_SPEED, 1),
   SWEET_BERRY_CANDY_CURSED(CandyVariant.CURSED, MobEffects.MOVEMENT_SLOWDOWN, 1);
 
-  private static final int NUTRITION = 2;
-  private static final int EFFECT_DURATION = 200;
-  private static final float EFFECT_CHANCE = 1.0F;
-
   private final CandyVariant variant;
   private final Holder<MobEffect> effect;
   private final int amplifier;
@@ -90,15 +88,19 @@ public enum CandyType {
   }
 
   public int getNutrition() {
-    return NUTRITION;
+    return CandyConfig.getNutrition(this);
   }
 
   public int getEffectDuration() {
-    return EFFECT_DURATION;
+    return CandyConfig.getEffectDuration(this);
   }
 
   public float getEffectChance() {
-    return EFFECT_CHANCE;
+    return CandyConfig.getEffectChance(this);
+  }
+
+  public SpecialItemEffect getSpecialCandyEffect() {
+    return CandyConfig.getSpecialCandyEffect(this);
   }
 
   public enum CandyVariant {

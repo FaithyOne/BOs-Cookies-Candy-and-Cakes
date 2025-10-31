@@ -19,6 +19,7 @@
 
 package de.markusbordihn.cookiescandyandcakes.item.variants;
 
+import de.markusbordihn.cookiescandyandcakes.data.SpecialItemEffect;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieSoundType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.item.base.BaseSpecialCookie;
@@ -54,7 +55,7 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void applySpecialEffects(Level level, LivingEntity entity) {
-    CookieType.SpecialCookieEffect effect = cookieType.getSpecialCookieEffect();
+    SpecialItemEffect effect = cookieType.getSpecialCookieEffect();
     if (!effect.hasEffects()) {
       return;
     }
@@ -65,7 +66,7 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void spawnLightningIfNeeded(
-      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final SpecialItemEffect effect) {
     if (level.random.nextFloat() < effect.lightningChance()) {
       LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
       if (lightning == null) {
@@ -78,7 +79,7 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
   }
 
   private void playSoundIfEnabled(
-      final Level level, final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
+      final Level level, final LivingEntity entity, final SpecialItemEffect effect) {
     if (effect.enableSounds()) {
       SoundEvent sound = CookieSoundType.getCursedSound(effect.cursedSoundType());
       if (sound != null) {
@@ -95,8 +96,7 @@ public class CursedCookie extends BaseSpecialCookie implements IdentifiableCooki
     }
   }
 
-  private void applyDarknessIfNeeded(
-      final LivingEntity entity, final CookieType.SpecialCookieEffect effect) {
+  private void applyDarknessIfNeeded(final LivingEntity entity, final SpecialItemEffect effect) {
     if (entity instanceof Player player && effect.darknessEffectDuration() > 0) {
       player.addEffect(
           new MobEffectInstance(

@@ -16,21 +16,21 @@
 
 ![Cookies, Candy and Cakes][logo]
 
-⚠️ **Beta**: Use on copies / backups of your worlds. Balancing and internals can still shift during
-the ModJam.
+⚠️ **Beta**: Use on copies / backups of your worlds.
+Balancing and internals can still shift during the ModJam.
 
 Welcome to a sweet journey full of secrets and adventure!
-Dive into a world where cookies, candy, and cakes are not just delicious, but also full of
-surprises.
-Whether it's Halloween, a holiday, or you just crave a little magic, your next adventure starts
-here!
+Dive into a world where cookies, candy, and cakes are not just delicious,
+but also full of surprises.
+Whether it's Halloween, a holiday, or you just crave a little magic,
+your next adventure starts here!
 
 Created for the [SpookyJam 2025][spookyjam], it brings a cheerful and seasonal touch to your world
 with Halloween treats and sweets that can be crafted or found as rare mob drops.
 
 ## What awaits you? 🍪✨
 
-Every bite can be more than just a snack—sometimes, a little wonder is hidden inside!
+Every bite can be more than just a snack, sometimes, a little wonder is hidden inside!
 
 - Discover cookies in many flavors, from classic to mystic and cursed.
   Some are harmless, others unleash spectacular effects and animations,
@@ -39,8 +39,8 @@ Every bite can be more than just a snack—sometimes, a little wonder is hidden 
   Who knows what awaits you when you find them?
 - Throwable candies: A sweet weapon with dual functionality!
   Eat them for a quick snack or throw them at other players and entities for fun or PvP combat.
-  Hold the button longer to throw them further—perfect for strategic gameplay or just having a blast
-  with friends!
+  Hold the button longer to throw them further,
+  perfect for strategic gameplay or just having a blast with friends!
 - Mini cakes: Small treats for a quick snack on the go, perfect for adventurers with little time.
 - Cookie Jar block: Your sweet treasures deserve a place of honor!
   Sort and display your collection in style.
@@ -53,7 +53,7 @@ It's not just about collecting, but about wonder and discovery.
 - Collect, snack, and experiment with a colorful variety of cookies, candies, and cakes, each type
   holds its own surprises.
 - Experience dynamic candy gameplay: Eat them for instant effects or charge up your throw to launch
-  them at enemies and friends—two ways to enjoy one treat!
+  them at enemies and friends, two ways to enjoy one treat!
 - Be amazed by mystic and cursed cookies: Sudden effects, animations, and even atmospheric changes
   make every bite exciting.
 - Hunt for rare monster drops and celebrate legendary finds!
