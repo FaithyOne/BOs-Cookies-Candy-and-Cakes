@@ -44,6 +44,12 @@ public class NeoForgeModBlocks {
   public static final DeferredHolder<Block, Block> TNT_COOKIE_JAR =
       BLOCKS.register(TntCookieJarBlock.ID, () -> ModBlocks.TNT_COOKIE_JAR);
 
+  public static final DeferredHolder<Block, Block> VANILLA_BEAN_CROP =
+      BLOCKS.register("vanilla_bean_crop", () -> ModBlocks.VANILLA_BEAN_CROP);
+
+  public static final DeferredHolder<Block, Block> GINGER_CROP =
+      BLOCKS.register("ginger_crop", () -> ModBlocks.GINGER_CROP);
+
   private NeoForgeModBlocks() {}
 
   public static void register(final IEventBus eventBus) {

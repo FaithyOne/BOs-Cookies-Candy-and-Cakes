@@ -17,27 +17,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.menu;
+package de.markusbordihn.cookiescandyandcakes.data.molds;
 
-import de.markusbordihn.cookiescandyandcakes.Constants;
-import de.markusbordihn.cookiescandyandcakes.registry.ModMenuTypes;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.inventory.MenuType;
+import java.util.Locale;
 
-public class FabricModMenus {
+public enum MoldType {
+  MINI_CAKE_MOLD,
+  CANDY_MOLD,
+  CHOCOLATE_MOLD;
 
-  public static final MenuType<CookieJarMenu> COOKIE_JAR_MENU =
-      Registry.register(
-          BuiltInRegistries.MENU,
-          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cookie_jar"),
-          new MenuType<>(CookieJarMenu::new, FeatureFlagSet.of()));
+  private final String id;
 
-  private FabricModMenus() {}
+  MoldType() {
+    this.id = name().toLowerCase(Locale.ROOT);
+  }
 
-  public static void register() {
-    ModMenuTypes.setCookieJar(COOKIE_JAR_MENU);
+  public String getId() {
+    return id;
   }
 }

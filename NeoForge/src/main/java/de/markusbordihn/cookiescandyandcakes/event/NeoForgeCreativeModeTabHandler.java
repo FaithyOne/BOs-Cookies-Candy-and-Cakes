@@ -26,12 +26,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
-@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID)
 public class NeoForgeCreativeModeTabHandler {
 
   @SubscribeEvent
-  public static void onBuildCreativeModeTabContents(
-      final BuildCreativeModeTabContentsEvent event) {
+  public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event) {
     if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
       // Add basic ingredients
       event.accept(ModItems.CINNAMON_STICK);

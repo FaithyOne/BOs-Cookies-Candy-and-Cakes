@@ -57,16 +57,12 @@ public class CinnamonKnifeItem extends Item {
 
     if (strippedState.isPresent()) {
       level.playSound(
-          context.getPlayer(),
-          blockPos,
-          SoundEvents.AXE_STRIP,
-          SoundSource.BLOCKS,
-          1.0F,
-          1.0F);
+          context.getPlayer(), blockPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
       if (!level.isClientSide) {
         level.setBlock(blockPos, strippedState.get(), 11);
         if (context.getPlayer() instanceof ServerPlayer serverPlayer) {
-          CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, context.getItemInHand());
+          CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(
+              serverPlayer, blockPos, context.getItemInHand());
         }
 
         // Drop cinnamon sticks only from birch logs
@@ -74,20 +70,29 @@ public class CinnamonKnifeItem extends Item {
           int drops = level.random.nextInt(4) + 1; // 1-4 drops
           if (level.random.nextFloat() < 0.25f) { // 25% chance
             for (int i = 0; i < drops; i++) {
-              ItemEntity itemEntity = new ItemEntity(
-                  level,
-                  blockPos.getX() + 0.5,
-                  blockPos.getY() + 0.5,
-                  blockPos.getZ() + 0.5,
-                  new ItemStack(ModItems.CINNAMON_STICK));
+              ItemEntity itemEntity =
+                  new ItemEntity(
+                      level,
+                      blockPos.getX() + 0.5,
+                      blockPos.getY() + 0.5,
+                      blockPos.getZ() + 0.5,
+                      new ItemStack(ModItems.CINNAMON_STICK));
               level.addFreshEntity(itemEntity);
             }
           }
         }
 
-        context.getItemInHand().hurtAndBreak(1, context.getPlayer(), context.getPlayer().getEquipmentSlotForItem(context.getItemInHand()));
+        context
+            .getItemInHand()
+            .hurtAndBreak(
+                1,
+                context.getPlayer(),
+                context.getPlayer().getEquipmentSlotForItem(context.getItemInHand()));
       }
-      level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(context.getPlayer(), strippedState.get()));
+      level.gameEvent(
+          GameEvent.BLOCK_CHANGE,
+          blockPos,
+          GameEvent.Context.of(context.getPlayer(), strippedState.get()));
       return InteractionResult.sidedSuccess(level.isClientSide);
     }
     return InteractionResult.PASS;
@@ -104,8 +109,10 @@ public class CinnamonKnifeItem extends Item {
     }
 
     if (strippedBlock != null) {
-      return Optional.of(strippedBlock.defaultBlockState()
-          .setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS)));
+      return Optional.of(
+          strippedBlock
+              .defaultBlockState()
+              .setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS)));
     }
     return Optional.empty();
   }

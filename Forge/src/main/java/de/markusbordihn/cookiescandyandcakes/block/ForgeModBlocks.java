@@ -44,6 +44,12 @@ public class ForgeModBlocks {
   public static final RegistryObject<Block> TNT_COOKIE_JAR =
       BLOCKS.register(TntCookieJarBlock.ID, () -> ModBlocks.TNT_COOKIE_JAR);
 
+  public static final RegistryObject<Block> VANILLA_BEAN_CROP =
+      BLOCKS.register("vanilla_bean_crop", () -> ModBlocks.VANILLA_BEAN_CROP);
+
+  public static final RegistryObject<Block> GINGER_CROP =
+      BLOCKS.register("ginger_crop", () -> ModBlocks.GINGER_CROP);
+
   private ForgeModBlocks() {}
 
   public static void register(final IEventBus eventBus) {

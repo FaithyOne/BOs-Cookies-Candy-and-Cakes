@@ -52,6 +52,18 @@ public class FabricModBlocks {
           ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, TntCookieJarBlock.ID),
           ModBlocks.TNT_COOKIE_JAR);
 
+  public static final Block VANILLA_BEAN_CROP =
+      Registry.register(
+          BuiltInRegistries.BLOCK,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "vanilla_bean_crop"),
+          ModBlocks.VANILLA_BEAN_CROP);
+
+  public static final Block GINGER_CROP =
+      Registry.register(
+          BuiltInRegistries.BLOCK,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ginger_crop"),
+          ModBlocks.GINGER_CROP);
+
   private FabricModBlocks() {}
 
   public static void register() {

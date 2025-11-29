@@ -22,7 +22,10 @@ package de.markusbordihn.cookiescandyandcakes.item;
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.data.ingredients.IngredientType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
+import de.markusbordihn.cookiescandyandcakes.data.molds.MoldType;
+import de.markusbordihn.cookiescandyandcakes.data.tools.ToolType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
 import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
 import net.minecraft.core.Registry;
@@ -83,50 +86,17 @@ public class FabricModItems {
     registerMiniCake(MiniCakeType.MINI_SWEET_BERRY_CAKE, ModItems.MINI_SWEET_BERRY_CAKE);
     registerMiniCake(MiniCakeType.MINI_CHOCOLATE_CAKE, ModItems.MINI_CHOCOLATE_CAKE);
     registerMiniCake(MiniCakeType.MINI_MUSHROOM_CAKE, ModItems.MINI_MUSHROOM_CAKE);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "mini_cake_mold"),
-        ModItems.MINI_CAKE_MOLD);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "candy_mold"),
-        ModItems.CANDY_MOLD);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chocolate_mold"),
-        ModItems.CHOCOLATE_MOLD);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "flour"),
-        ModItems.FLOUR);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "butter_churn"),
-        ModItems.BUTTER_CHURN);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "butter"),
-        ModItems.BUTTER);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chocolate"),
-        ModItems.CHOCOLATE);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cinnamon_stick"),
-        ModItems.CINNAMON_STICK);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cinnamon_knife"),
-        ModItems.CINNAMON_KNIFE);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "vanilla_bean"),
-        ModItems.VANILLA_BEAN);
-    Registry.register(
-        BuiltInRegistries.ITEM,
-        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ginger"),
-        ModItems.GINGER);
+    registerMold(MoldType.MINI_CAKE_MOLD, ModItems.MINI_CAKE_MOLD);
+    registerMold(MoldType.CANDY_MOLD, ModItems.CANDY_MOLD);
+    registerMold(MoldType.CHOCOLATE_MOLD, ModItems.CHOCOLATE_MOLD);
+    registerTool(ToolType.BUTTER_CHURN, ModItems.BUTTER_CHURN);
+    registerTool(ToolType.CINNAMON_KNIFE, ModItems.CINNAMON_KNIFE);
+    registerIngredient(IngredientType.FLOUR, ModItems.FLOUR);
+    registerIngredient(IngredientType.BUTTER, ModItems.BUTTER);
+    registerIngredient(IngredientType.CHOCOLATE, ModItems.CHOCOLATE);
+    registerIngredient(IngredientType.CINNAMON_STICK, ModItems.CINNAMON_STICK);
+    registerIngredient(IngredientType.VANILLA_BEAN, ModItems.VANILLA_BEAN);
+    registerIngredient(IngredientType.GINGER, ModItems.GINGER);
     registerCandy(CandyType.TEST_CANDY, ModItems.TEST_CANDY);
     registerCandy(CandyType.TEST_CANDY_MYSTIC, ModItems.TEST_CANDY_MYSTIC);
     registerCandy(CandyType.TEST_CANDY_CURSED, ModItems.TEST_CANDY_CURSED);
@@ -180,6 +150,27 @@ public class FabricModItems {
     Registry.register(
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, candyType.getId()),
+        item);
+  }
+
+  private static void registerMold(final MoldType moldType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, moldType.getId()),
+        item);
+  }
+
+  private static void registerTool(final ToolType toolType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, toolType.getId()),
+        item);
+  }
+
+  private static void registerIngredient(final IngredientType ingredientType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ingredientType.getId()),
         item);
   }
 }

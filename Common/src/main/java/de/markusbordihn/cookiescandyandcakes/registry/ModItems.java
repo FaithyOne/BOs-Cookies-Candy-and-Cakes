@@ -22,6 +22,7 @@ package de.markusbordihn.cookiescandyandcakes.registry;
 import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
+import de.markusbordihn.cookiescandyandcakes.item.CinnamonKnifeItem;
 import de.markusbordihn.cookiescandyandcakes.item.MoldItem;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCandy;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCookie;
@@ -30,7 +31,9 @@ import de.markusbordihn.cookiescandyandcakes.item.variants.MysticCookie;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCandy;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalCookie;
 import de.markusbordihn.cookiescandyandcakes.item.variants.NormalMiniCake;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 
 public class ModItems {
   public static final Item APPLE_COOKIE = createCookieItem(CookieType.APPLE_COOKIE);
@@ -93,11 +96,15 @@ public class ModItems {
   public static final Item BUTTER_CHURN = new MoldItem();
   public static final Item BUTTER = new Item(new Item.Properties());
   public static final Item CHOCOLATE =
-      new Item(new Item.Properties().food(new net.minecraft.world.food.FoodProperties.Builder().nutrition(1).saturationModifier(0.1F).build()));
+      new Item(
+          new Item.Properties()
+              .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.1F).build()));
   public static final Item CINNAMON_STICK = new Item(new Item.Properties());
-  public static final Item CINNAMON_KNIFE = new de.markusbordihn.cookiescandyandcakes.item.CinnamonKnifeItem();
-  public static final Item VANILLA_BEAN = new Item(new Item.Properties());
-  public static final Item GINGER = new Item(new Item.Properties());
+  public static final Item CINNAMON_KNIFE = new CinnamonKnifeItem();
+  public static final Item VANILLA_BEAN =
+      new ItemNameBlockItem(ModBlocks.VANILLA_BEAN_CROP, new Item.Properties());
+  public static final Item GINGER =
+      new ItemNameBlockItem(ModBlocks.GINGER_CROP, new Item.Properties());
   public static final Item TEST_CANDY = createCandyItem(CandyType.TEST_CANDY);
   public static final Item TEST_CANDY_MYSTIC = createCandyItem(CandyType.TEST_CANDY_MYSTIC);
   public static final Item TEST_CANDY_CURSED = createCandyItem(CandyType.TEST_CANDY_CURSED);

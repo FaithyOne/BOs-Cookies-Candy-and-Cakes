@@ -22,9 +22,13 @@ package de.markusbordihn.cookiescandyandcakes.item;
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.data.ingredients.IngredientType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
+import de.markusbordihn.cookiescandyandcakes.data.molds.MoldType;
+import de.markusbordihn.cookiescandyandcakes.data.tools.ToolType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
 import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -38,8 +42,7 @@ public class ForgeModItems {
       DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MOD_ID);
 
   public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-      DeferredRegister.create(
-          net.minecraft.core.registries.Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
+      DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
 
   public static final RegistryObject<CreativeModeTab> COOKIES_TAB =
       CREATIVE_MODE_TABS.register(
@@ -101,17 +104,17 @@ public class ForgeModItems {
         MiniCakeType.MINI_SWEET_BERRY_CAKE.getId(), () -> ModItems.MINI_SWEET_BERRY_CAKE);
     ITEMS.register(MiniCakeType.MINI_CHOCOLATE_CAKE.getId(), () -> ModItems.MINI_CHOCOLATE_CAKE);
     ITEMS.register(MiniCakeType.MINI_MUSHROOM_CAKE.getId(), () -> ModItems.MINI_MUSHROOM_CAKE);
-    ITEMS.register("mini_cake_mold", () -> ModItems.MINI_CAKE_MOLD);
-    ITEMS.register("candy_mold", () -> ModItems.CANDY_MOLD);
-    ITEMS.register("chocolate_mold", () -> ModItems.CHOCOLATE_MOLD);
-    ITEMS.register("flour", () -> ModItems.FLOUR);
-    ITEMS.register("butter_churn", () -> ModItems.BUTTER_CHURN);
-    ITEMS.register("butter", () -> ModItems.BUTTER);
-    ITEMS.register("chocolate", () -> ModItems.CHOCOLATE);
-    ITEMS.register("cinnamon_stick", () -> ModItems.CINNAMON_STICK);
-    ITEMS.register("cinnamon_knife", () -> ModItems.CINNAMON_KNIFE);
-    ITEMS.register("vanilla_bean", () -> ModItems.VANILLA_BEAN);
-    ITEMS.register("ginger", () -> ModItems.GINGER);
+    ITEMS.register(MoldType.MINI_CAKE_MOLD.getId(), () -> ModItems.MINI_CAKE_MOLD);
+    ITEMS.register(MoldType.CANDY_MOLD.getId(), () -> ModItems.CANDY_MOLD);
+    ITEMS.register(MoldType.CHOCOLATE_MOLD.getId(), () -> ModItems.CHOCOLATE_MOLD);
+    ITEMS.register(ToolType.BUTTER_CHURN.getId(), () -> ModItems.BUTTER_CHURN);
+    ITEMS.register(ToolType.CINNAMON_KNIFE.getId(), () -> ModItems.CINNAMON_KNIFE);
+    ITEMS.register(IngredientType.FLOUR.getId(), () -> ModItems.FLOUR);
+    ITEMS.register(IngredientType.BUTTER.getId(), () -> ModItems.BUTTER);
+    ITEMS.register(IngredientType.CHOCOLATE.getId(), () -> ModItems.CHOCOLATE);
+    ITEMS.register(IngredientType.CINNAMON_STICK.getId(), () -> ModItems.CINNAMON_STICK);
+    ITEMS.register(IngredientType.VANILLA_BEAN.getId(), () -> ModItems.VANILLA_BEAN);
+    ITEMS.register(IngredientType.GINGER.getId(), () -> ModItems.GINGER);
     ITEMS.register(CandyType.TEST_CANDY.getId(), () -> ModItems.TEST_CANDY);
     ITEMS.register(CandyType.TEST_CANDY_MYSTIC.getId(), () -> ModItems.TEST_CANDY_MYSTIC);
     ITEMS.register(CandyType.TEST_CANDY_CURSED.getId(), () -> ModItems.TEST_CANDY_CURSED);

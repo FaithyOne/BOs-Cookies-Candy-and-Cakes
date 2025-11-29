@@ -45,15 +45,15 @@ public class FabricModBlockItems {
         registerBlockItem(
             ShulkerBoxCookieJarBlock.ID,
             () -> new CookieJarItem(FabricModBlocks.SHULKER_BOX_COOKIE_JAR, new Item.Properties()));
-    ModBlockItems.TNT_COOKIE_JAR =
-        registerBlockItem(
-            TntCookieJarBlock.ID,
-            () -> new CookieJarItem(FabricModBlocks.TNT_COOKIE_JAR, new Item.Properties()));
     ModBlockItems.SKELETON_HEAD_COOKIE_JAR =
         registerBlockItem(
             SkeletonHeadCookieJarBlock.ID,
             () ->
                 new CookieJarItem(FabricModBlocks.SKELETON_HEAD_COOKIE_JAR, new Item.Properties()));
+    ModBlockItems.TNT_COOKIE_JAR =
+        registerBlockItem(
+            TntCookieJarBlock.ID,
+            () -> new CookieJarItem(FabricModBlocks.TNT_COOKIE_JAR, new Item.Properties()));
   }
 
   private static Supplier<BlockItem> registerBlockItem(

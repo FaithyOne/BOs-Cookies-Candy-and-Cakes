@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cookies_candy_and_cakes:item/ingredients/chocolate_bar"
+    "layer0": "cookies_candy_and_cakes:item/food/chocolate_bar"
   }
 }

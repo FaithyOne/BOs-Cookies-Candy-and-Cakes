@@ -19,13 +19,17 @@
 
 package de.markusbordihn.cookiescandyandcakes.registry;
 
+import de.markusbordihn.cookiescandyandcakes.block.GingerCropBlock;
 import de.markusbordihn.cookiescandyandcakes.block.PumpkinHeadCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.block.ShulkerBoxCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.block.SkeletonHeadCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.block.TntCookieJarBlock;
+import de.markusbordihn.cookiescandyandcakes.block.VanillaBeanCropBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 public class ModBlocks {
 
@@ -57,6 +61,24 @@ public class ModBlocks {
               .strength(0.3F)
               .sound(SoundType.BONE_BLOCK)
               .noOcclusion());
+  public static final VanillaBeanCropBlock VANILLA_BEAN_CROP =
+      new VanillaBeanCropBlock(
+          BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)
+              .mapColor(MapColor.PLANT)
+              .noCollission()
+              .randomTicks()
+              .instabreak()
+              .sound(SoundType.CROP)
+              .pushReaction(PushReaction.DESTROY));
+  public static final GingerCropBlock GINGER_CROP =
+      new GingerCropBlock(
+          BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)
+              .mapColor(MapColor.PLANT)
+              .noCollission()
+              .randomTicks()
+              .instabreak()
+              .sound(SoundType.CROP)
+              .pushReaction(PushReaction.DESTROY));
 
   private ModBlocks() {}
 }

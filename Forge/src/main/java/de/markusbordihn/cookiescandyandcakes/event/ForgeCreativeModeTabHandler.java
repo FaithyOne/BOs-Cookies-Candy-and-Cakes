@@ -30,8 +30,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ForgeCreativeModeTabHandler {
 
   @SubscribeEvent
-  public static void onBuildCreativeModeTabContents(
-      final BuildCreativeModeTabContentsEvent event) {
+  public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event) {
     if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
       // Add basic ingredients
       event.accept(ModItems.CINNAMON_STICK);

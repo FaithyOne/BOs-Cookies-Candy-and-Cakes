@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/crop",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "crop": "cookies_candy_and_cakes:block/ginger_crop_stage1"
+  }
+}

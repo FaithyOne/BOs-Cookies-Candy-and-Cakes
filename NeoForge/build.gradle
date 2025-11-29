@@ -64,7 +64,6 @@ dependencies {
   }
 
   if (project.hasProperty('neoforge_xaeros_minimap_mod') && project.neoforge_xaeros_minimap_mod) {
-    compileOnly "curse.maven:xaeros_minimap-263420:${project.neoforge_xaeros_minimap_mod}"
     runtimeOnly "curse.maven:xaeros_minimap-263420:${project.neoforge_xaeros_minimap_mod}"
   }
 }

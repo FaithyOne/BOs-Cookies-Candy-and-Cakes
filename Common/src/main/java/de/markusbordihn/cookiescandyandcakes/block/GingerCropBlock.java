@@ -17,27 +17,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.menu;
+package de.markusbordihn.cookiescandyandcakes.block;
 
-import de.markusbordihn.cookiescandyandcakes.Constants;
-import de.markusbordihn.cookiescandyandcakes.registry.ModMenuTypes;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.inventory.MenuType;
+import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-public class FabricModMenus {
+public class GingerCropBlock extends CropBlock {
 
-  public static final MenuType<CookieJarMenu> COOKIE_JAR_MENU =
-      Registry.register(
-          BuiltInRegistries.MENU,
-          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cookie_jar"),
-          new MenuType<>(CookieJarMenu::new, FeatureFlagSet.of()));
+  public static final int MAX_AGE = 7;
+  public static final IntegerProperty AGE = IntegerProperty.create("age", 0, MAX_AGE);
 
-  private FabricModMenus() {}
+  public GingerCropBlock(Properties properties) {
+    super(properties);
+  }
 
-  public static void register() {
-    ModMenuTypes.setCookieJar(COOKIE_JAR_MENU);
+  @Override
+  protected ItemLike getBaseSeedId() {
+    return ModItems.GINGER;
+  }
+
+  @Override
+  public IntegerProperty getAgeProperty() {
+    return AGE;
+  }
+
+  @Override
+  public int getMaxAge() {
+    return MAX_AGE;
+  }
+
+  @Override
+  protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    builder.add(AGE);
   }
 }
