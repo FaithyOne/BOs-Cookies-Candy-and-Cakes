@@ -88,6 +88,16 @@ public class ModItems {
   public static final Item MINI_MUSHROOM_CAKE = createMiniCakeItem(MiniCakeType.MINI_MUSHROOM_CAKE);
   public static final Item MINI_CAKE_MOLD = new MoldItem();
   public static final Item CANDY_MOLD = new MoldItem();
+  public static final Item CHOCOLATE_MOLD = new MoldItem();
+  public static final Item FLOUR = new Item(new Item.Properties());
+  public static final Item BUTTER_CHURN = new MoldItem();
+  public static final Item BUTTER = new Item(new Item.Properties());
+  public static final Item CHOCOLATE =
+      new Item(new Item.Properties().food(new net.minecraft.world.food.FoodProperties.Builder().nutrition(1).saturationModifier(0.1F).build()));
+  public static final Item CINNAMON_STICK = new Item(new Item.Properties());
+  public static final Item CINNAMON_KNIFE = new de.markusbordihn.cookiescandyandcakes.item.CinnamonKnifeItem();
+  public static final Item VANILLA_BEAN = new Item(new Item.Properties());
+  public static final Item GINGER = new Item(new Item.Properties());
   public static final Item TEST_CANDY = createCandyItem(CandyType.TEST_CANDY);
   public static final Item TEST_CANDY_MYSTIC = createCandyItem(CandyType.TEST_CANDY_MYSTIC);
   public static final Item TEST_CANDY_CURSED = createCandyItem(CandyType.TEST_CANDY_CURSED);

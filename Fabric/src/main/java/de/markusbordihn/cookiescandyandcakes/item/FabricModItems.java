@@ -91,6 +91,42 @@ public class FabricModItems {
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "candy_mold"),
         ModItems.CANDY_MOLD);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chocolate_mold"),
+        ModItems.CHOCOLATE_MOLD);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "flour"),
+        ModItems.FLOUR);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "butter_churn"),
+        ModItems.BUTTER_CHURN);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "butter"),
+        ModItems.BUTTER);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chocolate"),
+        ModItems.CHOCOLATE);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cinnamon_stick"),
+        ModItems.CINNAMON_STICK);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cinnamon_knife"),
+        ModItems.CINNAMON_KNIFE);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "vanilla_bean"),
+        ModItems.VANILLA_BEAN);
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ginger"),
+        ModItems.GINGER);
     registerCandy(CandyType.TEST_CANDY, ModItems.TEST_CANDY);
     registerCandy(CandyType.TEST_CANDY_MYSTIC, ModItems.TEST_CANDY_MYSTIC);
     registerCandy(CandyType.TEST_CANDY_CURSED, ModItems.TEST_CANDY_CURSED);

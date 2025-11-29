@@ -17,36 +17,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item;
+package de.markusbordihn.cookiescandyandcakes.event;
 
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import de.markusbordihn.cookiescandyandcakes.Constants;
+import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-public class MoldItem extends Item {
+@Mod.EventBusSubscriber(modid = Constants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ForgeCreativeModeTabHandler {
 
-  public MoldItem() {
-    super(new Item.Properties().stacksTo(1));
-  }
-
-  public boolean hasCraftingRemainingItem(ItemStack stack) {
-    return true;
-  }
-
-  public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
-    return itemStack.copy();
-  }
-
-  @Override
-  public void appendHoverText(
-      ItemStack itemStack,
-      TooltipContext context,
-      List<Component> tooltipComponents,
-      TooltipFlag tooltipFlag) {
-    tooltipComponents.add(
-        Component.translatable(this.getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
+  @SubscribeEvent
+  public static void onBuildCreativeModeTabContents(
+      final BuildCreativeModeTabContentsEvent event) {
+    if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+      // Add basic ingredients
+      event.accept(ModItems.CINNAMON_STICK);
+      event.accept(ModItems.VANILLA_BEAN);
+      event.accept(ModItems.GINGER);
+    } else if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+      // Add tools
+      event.accept(ModItems.BUTTER_CHURN);
+      event.accept(ModItems.CINNAMON_KNIFE);
+    }
   }
 }

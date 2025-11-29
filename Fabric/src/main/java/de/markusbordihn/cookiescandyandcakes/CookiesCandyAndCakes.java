@@ -23,6 +23,7 @@ import de.markusbordihn.cookiescandyandcakes.block.FabricModBlocks;
 import de.markusbordihn.cookiescandyandcakes.block.entity.FabricModBlockEntities;
 import de.markusbordihn.cookiescandyandcakes.config.Config;
 import de.markusbordihn.cookiescandyandcakes.entity.FabricModEntityTypes;
+import de.markusbordihn.cookiescandyandcakes.event.FabricCreativeModeTabHandler;
 import de.markusbordihn.cookiescandyandcakes.event.FabricMonsterLootHandler;
 import de.markusbordihn.cookiescandyandcakes.event.FabricPlayerTickHandler;
 import de.markusbordihn.cookiescandyandcakes.item.FabricModBlockItems;
@@ -75,5 +76,6 @@ public class CookiesCandyAndCakes implements ModInitializer {
     log.info("{} Events ...", Constants.LOG_REGISTER_PREFIX);
     FabricMonsterLootHandler.register();
     FabricPlayerTickHandler.register();
+    FabricCreativeModeTabHandler.register();
   }
 }

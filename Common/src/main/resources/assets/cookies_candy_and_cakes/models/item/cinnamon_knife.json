@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cookies_candy_and_cakes:item/ingredients/cinnamon_knife"
+  }
+}

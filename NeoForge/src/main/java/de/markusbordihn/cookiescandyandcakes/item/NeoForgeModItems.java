@@ -102,6 +102,15 @@ public class NeoForgeModItems {
     ITEMS.register(MiniCakeType.MINI_MUSHROOM_CAKE.getId(), () -> ModItems.MINI_MUSHROOM_CAKE);
     ITEMS.register("mini_cake_mold", () -> ModItems.MINI_CAKE_MOLD);
     ITEMS.register("candy_mold", () -> ModItems.CANDY_MOLD);
+    ITEMS.register("chocolate_mold", () -> ModItems.CHOCOLATE_MOLD);
+    ITEMS.register("flour", () -> ModItems.FLOUR);
+    ITEMS.register("butter_churn", () -> ModItems.BUTTER_CHURN);
+    ITEMS.register("butter", () -> ModItems.BUTTER);
+    ITEMS.register("chocolate", () -> ModItems.CHOCOLATE);
+    ITEMS.register("cinnamon_stick", () -> ModItems.CINNAMON_STICK);
+    ITEMS.register("cinnamon_knife", () -> ModItems.CINNAMON_KNIFE);
+    ITEMS.register("vanilla_bean", () -> ModItems.VANILLA_BEAN);
+    ITEMS.register("ginger", () -> ModItems.GINGER);
     ITEMS.register(CandyType.TEST_CANDY.getId(), () -> ModItems.TEST_CANDY);
     ITEMS.register(CandyType.TEST_CANDY_MYSTIC.getId(), () -> ModItems.TEST_CANDY_MYSTIC);
     ITEMS.register(CandyType.TEST_CANDY_CURSED.getId(), () -> ModItems.TEST_CANDY_CURSED);

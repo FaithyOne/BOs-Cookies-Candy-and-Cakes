@@ -17,36 +17,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.cookiescandyandcakes.item;
+package de.markusbordihn.cookiescandyandcakes.event;
 
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.world.item.CreativeModeTabs;
 
-public class MoldItem extends Item {
+public class FabricCreativeModeTabHandler {
 
-  public MoldItem() {
-    super(new Item.Properties().stacksTo(1));
-  }
+  private FabricCreativeModeTabHandler() {}
 
-  public boolean hasCraftingRemainingItem(ItemStack stack) {
-    return true;
-  }
+  public static void register() {
+    ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+        .register(
+            entries -> {
+              // Add basic ingredients
+              entries.accept(ModItems.CINNAMON_STICK);
+              entries.accept(ModItems.VANILLA_BEAN);
+              entries.accept(ModItems.GINGER);
+            });
 
-  public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
-    return itemStack.copy();
-  }
-
-  @Override
-  public void appendHoverText(
-      ItemStack itemStack,
-      TooltipContext context,
-      List<Component> tooltipComponents,
-      TooltipFlag tooltipFlag) {
-    tooltipComponents.add(
-        Component.translatable(this.getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
+    ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+        .register(
+            entries -> {
+              // Add tools
+              entries.accept(ModItems.BUTTER_CHURN);
+              entries.accept(ModItems.CINNAMON_KNIFE);
+            });
   }
 }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "cookies_candy_and_cakes:butter_churn"
+    }
+  ],
+  "result": {
+    "id": "cookies_candy_and_cakes:butter",
+    "count": 2
+  },
+  "remainder": {
+    "cookies_candy_and_cakes:butter_churn": {
+      "item": "cookies_candy_and_cakes:butter_churn"
+    },
+    "minecraft:milk_bucket": {
+      "item": "minecraft:bucket"
+    }
+  }
+}
