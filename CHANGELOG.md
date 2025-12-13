@@ -7,9 +7,11 @@ All notable changes to this project will be documented in this file.
 This change log includes the summarized changes.
 For the full changelog, please go to the [GitHub History][history] instead.
 
-### v1.2.0
+### v1.1.1
 
-
+- Added new crops blocks and texture for vanilla bean.
+- Improved item registrations.
+- Improved texture folder structure and texture files.
 
 ### v1.1.0
 
