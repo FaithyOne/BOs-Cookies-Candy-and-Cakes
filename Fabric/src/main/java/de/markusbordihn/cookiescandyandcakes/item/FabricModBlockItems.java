@@ -54,6 +54,10 @@ public class FabricModBlockItems {
         registerBlockItem(
             TntCookieJarBlock.ID,
             () -> new CookieJarItem(FabricModBlocks.TNT_COOKIE_JAR, new Item.Properties()));
+    ModBlockItems.GINGERBREAD_BLOCK =
+        registerBlockItem(
+            "gingerbread_block",
+            () -> new BlockItem(FabricModBlocks.GINGERBREAD_BLOCK, new Item.Properties()));
   }
 
   private static Supplier<BlockItem> registerBlockItem(

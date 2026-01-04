@@ -36,10 +36,16 @@ public class NeoForgeCreativeModeTabHandler {
       event.accept(ModItems.CINNAMON_STICK);
       event.accept(ModItems.VANILLA_BEAN);
       event.accept(ModItems.GINGER);
+      event.accept(ModItems.VANILLA_POWDER);
+      event.accept(ModItems.GINGER_POWDER);
+      event.accept(ModItems.CINNAMON_POWDER);
+      event.accept(ModItems.GINGERBREAD_SPICE);
+      event.accept(ModItems.GINGERBREAD_DOUGH);
     } else if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
       // Add tools
       event.accept(ModItems.BUTTER_CHURN);
       event.accept(ModItems.CINNAMON_KNIFE);
+      event.accept(ModItems.MORTAR);
     }
   }
 }

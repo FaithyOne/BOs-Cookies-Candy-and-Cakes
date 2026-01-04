@@ -64,6 +64,12 @@ public class FabricModBlocks {
           ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "ginger_crop"),
           ModBlocks.GINGER_CROP);
 
+  public static final Block GINGERBREAD_BLOCK =
+      Registry.register(
+          BuiltInRegistries.BLOCK,
+          ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "gingerbread_block"),
+          ModBlocks.GINGERBREAD_BLOCK);
+
   private FabricModBlocks() {}
 
   public static void register() {

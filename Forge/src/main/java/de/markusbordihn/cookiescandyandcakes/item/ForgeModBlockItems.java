@@ -64,6 +64,10 @@ public class ForgeModBlockItems {
         registerBlockItem(
             TntCookieJarBlock.ID,
             () -> new CookieJarItem(ForgeModBlocks.TNT_COOKIE_JAR.get(), new Item.Properties()));
+    ModBlockItems.GINGERBREAD_BLOCK =
+        registerBlockItem(
+            "gingerbread_block",
+            () -> new BlockItem(ForgeModBlocks.GINGERBREAD_BLOCK.get(), new Item.Properties()));
   }
 
   private static Supplier<BlockItem> registerBlockItem(

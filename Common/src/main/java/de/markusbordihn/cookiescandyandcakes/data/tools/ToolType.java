@@ -22,8 +22,14 @@ package de.markusbordihn.cookiescandyandcakes.data.tools;
 import java.util.Locale;
 
 public enum ToolType {
+  MINI_CAKE_MOLD,
+  CANDY_MOLD,
+  CHOCOLATE_MOLD,
   BUTTER_CHURN,
-  CINNAMON_KNIFE;
+  CINNAMON_KNIFE,
+  MORTAR,
+  BAKING_TRAY,
+  ROLLING_PIN;
 
   private final String id;
 

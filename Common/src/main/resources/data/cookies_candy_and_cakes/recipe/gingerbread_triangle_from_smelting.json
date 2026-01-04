@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "cookies_candy_and_cakes:gingerbread_dough_tray_triangle"
+  },
+  "result": {
+    "count": 4,
+    "id": "cookies_candy_and_cakes:gingerbread_triangle"
+  }
+}

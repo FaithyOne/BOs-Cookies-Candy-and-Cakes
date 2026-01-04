@@ -22,9 +22,12 @@ package de.markusbordihn.cookiescandyandcakes.item;
 import de.markusbordihn.cookiescandyandcakes.Constants;
 import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
+import de.markusbordihn.cookiescandyandcakes.data.gingerbread.BakingTrayType;
+import de.markusbordihn.cookiescandyandcakes.data.gingerbread.GingerbreadType;
 import de.markusbordihn.cookiescandyandcakes.data.ingredients.IngredientType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
 import de.markusbordihn.cookiescandyandcakes.data.molds.MoldType;
+import de.markusbordihn.cookiescandyandcakes.data.tools.FormCutterType;
 import de.markusbordihn.cookiescandyandcakes.data.tools.ToolType;
 import de.markusbordihn.cookiescandyandcakes.registry.ModItems;
 import de.markusbordihn.cookiescandyandcakes.tabs.ModCreativeTabs;
@@ -89,14 +92,38 @@ public class FabricModItems {
     registerMold(MoldType.MINI_CAKE_MOLD, ModItems.MINI_CAKE_MOLD);
     registerMold(MoldType.CANDY_MOLD, ModItems.CANDY_MOLD);
     registerMold(MoldType.CHOCOLATE_MOLD, ModItems.CHOCOLATE_MOLD);
+    registerFormCutter(FormCutterType.SQUARE_CUTTER, ModItems.SQUARE_CUTTER);
+    registerFormCutter(FormCutterType.TRIANGLE_CUTTER, ModItems.TRIANGLE_CUTTER);
+    registerFormCutter(FormCutterType.CIRCLE_CUTTER, ModItems.CIRCLE_CUTTER);
+    registerFormCutter(FormCutterType.HEART_CUTTER, ModItems.HEART_CUTTER);
+    registerFormCutter(FormCutterType.GINGERBREAD_MAN_CUTTER, ModItems.GINGERBREAD_MAN_CUTTER);
     registerTool(ToolType.BUTTER_CHURN, ModItems.BUTTER_CHURN);
     registerTool(ToolType.CINNAMON_KNIFE, ModItems.CINNAMON_KNIFE);
+    registerTool(ToolType.MORTAR, ModItems.MORTAR);
+    registerTool(ToolType.BAKING_TRAY, ModItems.BAKING_TRAY);
+    registerTool(ToolType.ROLLING_PIN, ModItems.ROLLING_PIN);
     registerIngredient(IngredientType.FLOUR, ModItems.FLOUR);
     registerIngredient(IngredientType.BUTTER, ModItems.BUTTER);
     registerIngredient(IngredientType.CHOCOLATE, ModItems.CHOCOLATE);
     registerIngredient(IngredientType.CINNAMON_STICK, ModItems.CINNAMON_STICK);
     registerIngredient(IngredientType.VANILLA_BEAN, ModItems.VANILLA_BEAN);
     registerIngredient(IngredientType.GINGER, ModItems.GINGER);
+    registerIngredient(IngredientType.VANILLA_POWDER, ModItems.VANILLA_POWDER);
+    registerIngredient(IngredientType.GINGER_POWDER, ModItems.GINGER_POWDER);
+    registerIngredient(IngredientType.CINNAMON_POWDER, ModItems.CINNAMON_POWDER);
+    registerIngredient(IngredientType.GINGERBREAD_SPICE, ModItems.GINGERBREAD_SPICE);
+    registerIngredient(IngredientType.GINGERBREAD_DOUGH, ModItems.GINGERBREAD_DOUGH);
+    registerIngredient(IngredientType.GINGERBREAD_TILE, ModItems.GINGERBREAD_TILE);
+    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY, ModItems.GINGERBREAD_DOUGH_TRAY);
+    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_TRIANGLE, ModItems.GINGERBREAD_DOUGH_TRAY_TRIANGLE);
+    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_HEART, ModItems.GINGERBREAD_DOUGH_TRAY_HEART);
+    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_SQUARE, ModItems.GINGERBREAD_DOUGH_TRAY_SQUARE);
+    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN, ModItems.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN);
+    registerGingerbread(GingerbreadType.GINGERBREAD_CIRCLE, ModItems.GINGERBREAD_CIRCLE);
+    registerGingerbread(GingerbreadType.GINGERBREAD_TRIANGLE, ModItems.GINGERBREAD_TRIANGLE);
+    registerGingerbread(GingerbreadType.GINGERBREAD_HEART, ModItems.GINGERBREAD_HEART);
+    registerGingerbread(GingerbreadType.GINGERBREAD_SQUARE, ModItems.GINGERBREAD_SQUARE);
+    registerGingerbread(GingerbreadType.GINGERBREAD_MAN, ModItems.GINGERBREAD_MAN);
     registerCandy(CandyType.TEST_CANDY, ModItems.TEST_CANDY);
     registerCandy(CandyType.TEST_CANDY_MYSTIC, ModItems.TEST_CANDY_MYSTIC);
     registerCandy(CandyType.TEST_CANDY_CURSED, ModItems.TEST_CANDY_CURSED);
@@ -171,6 +198,27 @@ public class FabricModItems {
     Registry.register(
         BuiltInRegistries.ITEM,
         ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ingredientType.getId()),
+        item);
+  }
+
+  private static void registerFormCutter(final FormCutterType formCutterType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, formCutterType.getId()),
+        item);
+  }
+
+  private static void registerBakingTray(final BakingTrayType bakingTrayType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, bakingTrayType.getId()),
+        item);
+  }
+
+  private static void registerGingerbread(final GingerbreadType gingerbreadType, final Item item) {
+    Registry.register(
+        BuiltInRegistries.ITEM,
+        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, gingerbreadType.getId()),
         item);
   }
 }

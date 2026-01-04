@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "cookies_candy_and_cakes:gingerbread_dough"
+    },
+    "C": {
+      "item": "cookies_candy_and_cakes:square_cutter"
+    }
+  },
+  "pattern": [
+    "D",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cookies_candy_and_cakes:gingerbread_tile",
+    "components": {
+      "minecraft:use_remainder": {
+        "id": "cookies_candy_and_cakes:square_cutter"
+      }
+    }
+  }
+}

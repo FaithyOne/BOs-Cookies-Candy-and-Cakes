@@ -50,6 +50,9 @@ public class NeoForgeModBlocks {
   public static final DeferredHolder<Block, Block> GINGER_CROP =
       BLOCKS.register("ginger_crop", () -> ModBlocks.GINGER_CROP);
 
+  public static final DeferredHolder<Block, Block> GINGERBREAD_BLOCK =
+      BLOCKS.register("gingerbread_block", () -> ModBlocks.GINGERBREAD_BLOCK);
+
   private NeoForgeModBlocks() {}
 
   public static void register(final IEventBus eventBus) {

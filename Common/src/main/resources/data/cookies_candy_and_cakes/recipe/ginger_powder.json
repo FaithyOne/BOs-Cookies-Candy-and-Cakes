@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cookies_candy_and_cakes:ginger"
+    },
+    {
+      "item": "cookies_candy_and_cakes:mortar"
+    }
+  ],
+  "result": {
+    "id": "cookies_candy_and_cakes:ginger_powder",
+    "count": 2
+  },
+  "remainder": {
+    "cookies_candy_and_cakes:mortar": {
+      "item": "cookies_candy_and_cakes:mortar"
+    }
+  }
+}

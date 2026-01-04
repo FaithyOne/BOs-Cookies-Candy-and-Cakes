@@ -35,6 +35,11 @@ public class FabricCreativeModeTabHandler {
               entries.accept(ModItems.CINNAMON_STICK);
               entries.accept(ModItems.VANILLA_BEAN);
               entries.accept(ModItems.GINGER);
+              entries.accept(ModItems.VANILLA_POWDER);
+              entries.accept(ModItems.GINGER_POWDER);
+              entries.accept(ModItems.CINNAMON_POWDER);
+              entries.accept(ModItems.GINGERBREAD_SPICE);
+              entries.accept(ModItems.GINGERBREAD_DOUGH);
             });
 
     ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
@@ -43,6 +48,7 @@ public class FabricCreativeModeTabHandler {
               // Add tools
               entries.accept(ModItems.BUTTER_CHURN);
               entries.accept(ModItems.CINNAMON_KNIFE);
+              entries.accept(ModItems.MORTAR);
             });
   }
 }

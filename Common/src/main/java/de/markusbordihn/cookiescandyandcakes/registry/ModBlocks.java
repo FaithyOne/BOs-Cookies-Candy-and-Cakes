@@ -25,6 +25,7 @@ import de.markusbordihn.cookiescandyandcakes.block.ShulkerBoxCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.block.SkeletonHeadCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.block.TntCookieJarBlock;
 import de.markusbordihn.cookiescandyandcakes.block.VanillaBeanCropBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -79,6 +80,12 @@ public class ModBlocks {
               .instabreak()
               .sound(SoundType.CROP)
               .pushReaction(PushReaction.DESTROY));
+  public static final Block GINGERBREAD_BLOCK =
+      new Block(
+          BlockBehaviour.Properties.of()
+              .mapColor(MapColor.COLOR_BROWN)
+              .strength(0.5F)
+              .sound(SoundType.WOOL));
 
   private ModBlocks() {}
 }

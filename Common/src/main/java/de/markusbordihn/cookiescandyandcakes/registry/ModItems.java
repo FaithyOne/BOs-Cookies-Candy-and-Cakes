@@ -22,7 +22,11 @@ package de.markusbordihn.cookiescandyandcakes.registry;
 import de.markusbordihn.cookiescandyandcakes.data.candies.CandyType;
 import de.markusbordihn.cookiescandyandcakes.data.cookies.CookieType;
 import de.markusbordihn.cookiescandyandcakes.data.minicakes.MiniCakeType;
+import de.markusbordihn.cookiescandyandcakes.item.BakingTrayItem;
 import de.markusbordihn.cookiescandyandcakes.item.CinnamonKnifeItem;
+import de.markusbordihn.cookiescandyandcakes.item.FormCutterItem;
+import de.markusbordihn.cookiescandyandcakes.item.GingerbreadItem;
+import de.markusbordihn.cookiescandyandcakes.item.IngredientItem;
 import de.markusbordihn.cookiescandyandcakes.item.MoldItem;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCandy;
 import de.markusbordihn.cookiescandyandcakes.item.variants.CursedCookie;
@@ -92,19 +96,43 @@ public class ModItems {
   public static final Item MINI_CAKE_MOLD = new MoldItem();
   public static final Item CANDY_MOLD = new MoldItem();
   public static final Item CHOCOLATE_MOLD = new MoldItem();
-  public static final Item FLOUR = new Item(new Item.Properties());
+  public static final Item SQUARE_CUTTER = new FormCutterItem();
+  public static final Item TRIANGLE_CUTTER = new FormCutterItem();
+  public static final Item CIRCLE_CUTTER = new FormCutterItem();
+  public static final Item HEART_CUTTER = new FormCutterItem();
+  public static final Item GINGERBREAD_MAN_CUTTER = new FormCutterItem();
+  public static final Item FLOUR = new IngredientItem();
   public static final Item BUTTER_CHURN = new MoldItem();
-  public static final Item BUTTER = new Item(new Item.Properties());
+  public static final Item BUTTER = new IngredientItem();
   public static final Item CHOCOLATE =
-      new Item(
+      new IngredientItem(
           new Item.Properties()
               .food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.1F).build()));
-  public static final Item CINNAMON_STICK = new Item(new Item.Properties());
+  public static final Item CINNAMON_STICK = new IngredientItem();
   public static final Item CINNAMON_KNIFE = new CinnamonKnifeItem();
   public static final Item VANILLA_BEAN =
       new ItemNameBlockItem(ModBlocks.VANILLA_BEAN_CROP, new Item.Properties());
   public static final Item GINGER =
       new ItemNameBlockItem(ModBlocks.GINGER_CROP, new Item.Properties());
+  public static final Item MORTAR = new MoldItem();
+  public static final Item BAKING_TRAY = new MoldItem();
+  public static final Item ROLLING_PIN = new MoldItem();
+  public static final Item VANILLA_POWDER = new IngredientItem();
+  public static final Item GINGER_POWDER = new IngredientItem();
+  public static final Item CINNAMON_POWDER = new IngredientItem();
+  public static final Item GINGERBREAD_SPICE = new IngredientItem();
+  public static final Item GINGERBREAD_DOUGH = new IngredientItem();
+  public static final Item GINGERBREAD_TILE = new GingerbreadItem();
+  public static final Item GINGERBREAD_DOUGH_TRAY = new BakingTrayItem();
+  public static final Item GINGERBREAD_DOUGH_TRAY_TRIANGLE = new BakingTrayItem();
+  public static final Item GINGERBREAD_DOUGH_TRAY_HEART = new BakingTrayItem();
+  public static final Item GINGERBREAD_DOUGH_TRAY_SQUARE = new BakingTrayItem();
+  public static final Item GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN = new BakingTrayItem();
+  public static final Item GINGERBREAD_CIRCLE = new GingerbreadItem();
+  public static final Item GINGERBREAD_TRIANGLE = new GingerbreadItem();
+  public static final Item GINGERBREAD_HEART = new GingerbreadItem();
+  public static final Item GINGERBREAD_SQUARE = new GingerbreadItem();
+  public static final Item GINGERBREAD_MAN = new GingerbreadItem();
   public static final Item TEST_CANDY = createCandyItem(CandyType.TEST_CANDY);
   public static final Item TEST_CANDY_MYSTIC = createCandyItem(CandyType.TEST_CANDY_MYSTIC);
   public static final Item TEST_CANDY_CURSED = createCandyItem(CandyType.TEST_CANDY_CURSED);

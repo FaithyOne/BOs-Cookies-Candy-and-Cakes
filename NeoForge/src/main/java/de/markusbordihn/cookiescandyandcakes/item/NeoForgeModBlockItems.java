@@ -58,6 +58,10 @@ public class NeoForgeModBlockItems {
         registerBlockItem(
             TntCookieJarBlock.ID,
             () -> new CookieJarItem(NeoForgeModBlocks.TNT_COOKIE_JAR.get(), new Item.Properties()));
+    ModBlockItems.GINGERBREAD_BLOCK =
+        registerBlockItem(
+            "gingerbread_block",
+            () -> new BlockItem(NeoForgeModBlocks.GINGERBREAD_BLOCK.get(), new Item.Properties()));
     ModBlockItems.SKELETON_HEAD_COOKIE_JAR =
         registerBlockItem(
             SkeletonHeadCookieJarBlock.ID,
