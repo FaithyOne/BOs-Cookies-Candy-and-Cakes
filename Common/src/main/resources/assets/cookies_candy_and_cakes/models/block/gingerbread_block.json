@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cookies_candy_and_cakes:block/gingerbread_block"
+  }
+}

@@ -50,6 +50,9 @@ public class ForgeModBlocks {
   public static final RegistryObject<Block> GINGER_CROP =
       BLOCKS.register("ginger_crop", () -> ModBlocks.GINGER_CROP);
 
+  public static final RegistryObject<Block> GINGERBREAD_BLOCK =
+      BLOCKS.register("gingerbread_block", () -> ModBlocks.GINGERBREAD_BLOCK);
+
   private ForgeModBlocks() {}
 
   public static void register(final IEventBus eventBus) {

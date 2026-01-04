@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    " S ",
+    "SSS",
+    " B "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "B": {
+      "item": "minecraft:bowl"
+    }
+  },
+  "result": {
+    "id": "cookies_candy_and_cakes:mortar",
+    "count": 1
+  }
+}

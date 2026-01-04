@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cookies_candy_and_cakes:gingerbread_spice"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "cookies_candy_and_cakes:flour"
+    }
+  ],
+  "result": {
+    "id": "cookies_candy_and_cakes:gingerbread_dough",
+    "count": 1
+  },
+  "remainder": {
+    "minecraft:honey_bottle": {
+      "item": "minecraft:glass_bottle"
+    }
+  }
+}

@@ -70,13 +70,55 @@ public final class ModCreativeTabs {
               output.accept(ModItems.PUMPKIN_CANDY);
               output.accept(ModItems.SWEET_BERRY_CANDY);
 
-              // Ingredients & Molds
+              // Ingredients
               output.accept(ModItems.FLOUR);
               output.accept(ModItems.BUTTER);
               output.accept(ModItems.CHOCOLATE);
+              output.accept(ModItems.CINNAMON_STICK);
+              output.accept(ModItems.VANILLA_BEAN);
+              output.accept(ModItems.GINGER);
+              output.accept(ModItems.VANILLA_POWDER);
+              output.accept(ModItems.GINGER_POWDER);
+              output.accept(ModItems.CINNAMON_POWDER);
+              output.accept(ModItems.GINGERBREAD_SPICE);
+              output.accept(ModItems.GINGERBREAD_DOUGH);
+              output.accept(ModItems.GINGERBREAD_TILE);
+
+              // Gingerbread Baking Trays (raw)
+              output.accept(ModItems.GINGERBREAD_DOUGH_TRAY);
+              output.accept(ModItems.GINGERBREAD_DOUGH_TRAY_TRIANGLE);
+              output.accept(ModItems.GINGERBREAD_DOUGH_TRAY_HEART);
+              output.accept(ModItems.GINGERBREAD_DOUGH_TRAY_SQUARE);
+              output.accept(ModItems.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN);
+
+              // Gingerbread (baked)
+              output.accept(ModItems.GINGERBREAD_CIRCLE);
+              output.accept(ModItems.GINGERBREAD_TRIANGLE);
+              output.accept(ModItems.GINGERBREAD_HEART);
+              output.accept(ModItems.GINGERBREAD_SQUARE);
+              output.accept(ModItems.GINGERBREAD_MAN);
+
+              // Tools
+              output.accept(ModItems.BUTTER_CHURN);
+              output.accept(ModItems.CINNAMON_KNIFE);
+              output.accept(ModItems.MORTAR);
+              output.accept(ModItems.BAKING_TRAY);
+              output.accept(ModItems.ROLLING_PIN);
+
+              // Molds
               output.accept(ModItems.MINI_CAKE_MOLD);
               output.accept(ModItems.CANDY_MOLD);
               output.accept(ModItems.CHOCOLATE_MOLD);
+
+              // Cookie Cutters
+              output.accept(ModItems.SQUARE_CUTTER);
+              output.accept(ModItems.TRIANGLE_CUTTER);
+              output.accept(ModItems.CIRCLE_CUTTER);
+              output.accept(ModItems.HEART_CUTTER);
+              output.accept(ModItems.GINGERBREAD_MAN_CUTTER);
+              
+              // Blocks
+              output.accept(ModBlockItems.GINGERBREAD_BLOCK.get());
 
               // Cookie Jars
               output.accept(ModBlockItems.PUMPKIN_HEAD_COOKIE_JAR.get());

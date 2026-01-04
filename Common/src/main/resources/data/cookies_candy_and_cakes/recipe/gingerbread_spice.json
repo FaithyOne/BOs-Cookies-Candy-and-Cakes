@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cookies_candy_and_cakes:ginger_powder"
+    },
+    {
+      "item": "cookies_candy_and_cakes:cinnamon_powder"
+    }
+  ],
+  "result": {
+    "id": "cookies_candy_and_cakes:gingerbread_spice",
+    "count": 2
+  }
+}

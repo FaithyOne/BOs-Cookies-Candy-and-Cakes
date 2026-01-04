@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 This change log includes the summarized changes.
 For the full changelog, please go to the [GitHub History][history] instead.
 
+### v1.2.0
+
+- Added gingerbread system with cookie cutters, dough trays and baked gingerbread items.
+- Added new item types: FormCutterItem, IngredientItem, BakingTrayItem and GingerbreadItem.
+- Added tooltips for all tools, ingredients and new items.
+- Improved recipe system with copper-based cookie cutters and reusable tools.
+- Reorganized item type structure for better code clarity.
+
 ### v1.1.1
 
 - Added new crops blocks and texture for vanilla bean.

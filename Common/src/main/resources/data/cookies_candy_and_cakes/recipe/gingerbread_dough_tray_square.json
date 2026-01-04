@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cookies_candy_and_cakes:gingerbread_dough"
+    },
+    {
+      "item": "cookies_candy_and_cakes:rolling_pin",
+      "components": {
+        "minecraft:use_remainder": {
+          "id": "cookies_candy_and_cakes:rolling_pin"
+        }
+      }
+    },
+    {
+      "item": "cookies_candy_and_cakes:square_cutter",
+      "components": {
+        "minecraft:use_remainder": {
+          "id": "cookies_candy_and_cakes:square_cutter"
+        }
+      }
+    },
+    {
+      "item": "cookies_candy_and_cakes:baking_tray",
+      "components": {
+        "minecraft:use_remainder": {
+          "id": "cookies_candy_and_cakes:baking_tray"
+        }
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cookies_candy_and_cakes:gingerbread_dough_tray_square"
+  }
+}
