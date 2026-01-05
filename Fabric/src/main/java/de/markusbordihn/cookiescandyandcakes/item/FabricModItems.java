@@ -115,10 +115,15 @@ public class FabricModItems {
     registerIngredient(IngredientType.GINGERBREAD_DOUGH, ModItems.GINGERBREAD_DOUGH);
     registerIngredient(IngredientType.GINGERBREAD_TILE, ModItems.GINGERBREAD_TILE);
     registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY, ModItems.GINGERBREAD_DOUGH_TRAY);
-    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_TRIANGLE, ModItems.GINGERBREAD_DOUGH_TRAY_TRIANGLE);
-    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_HEART, ModItems.GINGERBREAD_DOUGH_TRAY_HEART);
-    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_SQUARE, ModItems.GINGERBREAD_DOUGH_TRAY_SQUARE);
-    registerBakingTray(BakingTrayType.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN, ModItems.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN);
+    registerBakingTray(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_TRIANGLE, ModItems.GINGERBREAD_DOUGH_TRAY_TRIANGLE);
+    registerBakingTray(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_HEART, ModItems.GINGERBREAD_DOUGH_TRAY_HEART);
+    registerBakingTray(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_SQUARE, ModItems.GINGERBREAD_DOUGH_TRAY_SQUARE);
+    registerBakingTray(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN,
+        ModItems.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN);
     registerGingerbread(GingerbreadType.GINGERBREAD_CIRCLE, ModItems.GINGERBREAD_CIRCLE);
     registerGingerbread(GingerbreadType.GINGERBREAD_TRIANGLE, ModItems.GINGERBREAD_TRIANGLE);
     registerGingerbread(GingerbreadType.GINGERBREAD_HEART, ModItems.GINGERBREAD_HEART);

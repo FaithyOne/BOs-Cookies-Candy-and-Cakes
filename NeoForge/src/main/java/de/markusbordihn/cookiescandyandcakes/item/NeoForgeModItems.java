@@ -113,7 +113,8 @@ public class NeoForgeModItems {
     ITEMS.register(FormCutterType.TRIANGLE_CUTTER.getId(), () -> ModItems.TRIANGLE_CUTTER);
     ITEMS.register(FormCutterType.CIRCLE_CUTTER.getId(), () -> ModItems.CIRCLE_CUTTER);
     ITEMS.register(FormCutterType.HEART_CUTTER.getId(), () -> ModItems.HEART_CUTTER);
-    ITEMS.register(FormCutterType.GINGERBREAD_MAN_CUTTER.getId(), () -> ModItems.GINGERBREAD_MAN_CUTTER);
+    ITEMS.register(
+        FormCutterType.GINGERBREAD_MAN_CUTTER.getId(), () -> ModItems.GINGERBREAD_MAN_CUTTER);
     ITEMS.register(ToolType.BUTTER_CHURN.getId(), () -> ModItems.BUTTER_CHURN);
     ITEMS.register(ToolType.CINNAMON_KNIFE.getId(), () -> ModItems.CINNAMON_KNIFE);
     ITEMS.register(ToolType.MORTAR.getId(), () -> ModItems.MORTAR);
@@ -131,13 +132,23 @@ public class NeoForgeModItems {
     ITEMS.register(IngredientType.GINGERBREAD_SPICE.getId(), () -> ModItems.GINGERBREAD_SPICE);
     ITEMS.register(IngredientType.GINGERBREAD_DOUGH.getId(), () -> ModItems.GINGERBREAD_DOUGH);
     ITEMS.register(IngredientType.GINGERBREAD_TILE.getId(), () -> ModItems.GINGERBREAD_TILE);
-    ITEMS.register(BakingTrayType.GINGERBREAD_DOUGH_TRAY.getId(), () -> ModItems.GINGERBREAD_DOUGH_TRAY);
-    ITEMS.register(BakingTrayType.GINGERBREAD_DOUGH_TRAY_TRIANGLE.getId(), () -> ModItems.GINGERBREAD_DOUGH_TRAY_TRIANGLE);
-    ITEMS.register(BakingTrayType.GINGERBREAD_DOUGH_TRAY_HEART.getId(), () -> ModItems.GINGERBREAD_DOUGH_TRAY_HEART);
-    ITEMS.register(BakingTrayType.GINGERBREAD_DOUGH_TRAY_SQUARE.getId(), () -> ModItems.GINGERBREAD_DOUGH_TRAY_SQUARE);
-    ITEMS.register(BakingTrayType.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN.getId(), () -> ModItems.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN);
+    ITEMS.register(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY.getId(), () -> ModItems.GINGERBREAD_DOUGH_TRAY);
+    ITEMS.register(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_TRIANGLE.getId(),
+        () -> ModItems.GINGERBREAD_DOUGH_TRAY_TRIANGLE);
+    ITEMS.register(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_HEART.getId(),
+        () -> ModItems.GINGERBREAD_DOUGH_TRAY_HEART);
+    ITEMS.register(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_SQUARE.getId(),
+        () -> ModItems.GINGERBREAD_DOUGH_TRAY_SQUARE);
+    ITEMS.register(
+        BakingTrayType.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN.getId(),
+        () -> ModItems.GINGERBREAD_DOUGH_TRAY_GINGERBREAD_MAN);
     ITEMS.register(GingerbreadType.GINGERBREAD_CIRCLE.getId(), () -> ModItems.GINGERBREAD_CIRCLE);
-    ITEMS.register(GingerbreadType.GINGERBREAD_TRIANGLE.getId(), () -> ModItems.GINGERBREAD_TRIANGLE);
+    ITEMS.register(
+        GingerbreadType.GINGERBREAD_TRIANGLE.getId(), () -> ModItems.GINGERBREAD_TRIANGLE);
     ITEMS.register(GingerbreadType.GINGERBREAD_HEART.getId(), () -> ModItems.GINGERBREAD_HEART);
     ITEMS.register(GingerbreadType.GINGERBREAD_SQUARE.getId(), () -> ModItems.GINGERBREAD_SQUARE);
     ITEMS.register(GingerbreadType.GINGERBREAD_MAN.getId(), () -> ModItems.GINGERBREAD_MAN);

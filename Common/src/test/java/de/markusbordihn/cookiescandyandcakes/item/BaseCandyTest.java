@@ -63,24 +63,26 @@ class BaseCandyTest {
 
   @ParameterizedTest
   @CsvSource({
-    "0, false",   // Below THROW_MIN_TICKS
-    "1, false",   // Below THROW_MIN_TICKS
-    "2, true",    // At THROW_MIN_TICKS
-    "5, true",    // Between min and max
-    "20, true",   // At THROW_MAX_TICKS
-    "21, false",  // In PAUSE window
-    "26, false",  // Just before EAT_START
-    "27, false",  // At EAT_START_TICKS
-    "30, false"   // After EAT_START
+    "0, false", // Below THROW_MIN_TICKS
+    "1, false", // Below THROW_MIN_TICKS
+    "2, true", // At THROW_MIN_TICKS
+    "5, true", // Between min and max
+    "20, true", // At THROW_MAX_TICKS
+    "21, false", // In PAUSE window
+    "26, false", // Just before EAT_START
+    "27, false", // At EAT_START_TICKS
+    "30, false" // After EAT_START
   })
   @DisplayName("Used ticks should determine valid throw window")
   void testThrowWindowValidation(int usedTicks, boolean shouldBeValid) {
-    boolean isInThrowWindow = usedTicks >= BaseCandy.getThrowMinTicks() 
-        && usedTicks < BaseCandy.getEatStartTicks();
-    
-    assertEquals(shouldBeValid, isInThrowWindow,
-        String.format("Ticks %d should %s in throw window", 
-            usedTicks, shouldBeValid ? "be" : "not be"));
+    boolean isInThrowWindow =
+        usedTicks >= BaseCandy.getThrowMinTicks() && usedTicks <= BaseCandy.getThrowMaxTicks();
+
+    assertEquals(
+        shouldBeValid,
+        isInThrowWindow,
+        String.format(
+            "Ticks %d should %s in throw window", usedTicks, shouldBeValid ? "be" : "not be"));
   }
 
   @Test
@@ -88,9 +90,9 @@ class BaseCandyTest {
   void testThrowMaxAllowsBarDisplay() {
     int throwMax = BaseCandy.getThrowMaxTicks();
     int showBar = BaseCandy.getShowBarMinTicks();
-    
-    // Should have at least a few ticks to show the charge bar
-    assertTrue(throwMax - showBar >= 10, 
+
+    assertTrue(
+        throwMax - showBar >= 10,
         "Should have sufficient ticks between bar display and max charge");
   }
 
@@ -100,8 +102,7 @@ class BaseCandyTest {
     int throwMax = BaseCandy.getThrowMaxTicks();
     int pause = BaseCandy.getPauseTicks();
     int eatStart = BaseCandy.getEatStartTicks();
-    
-    // Verify there's a pause window
+
     assertTrue(pause > throwMax, "Pause should start after max throw");
     assertTrue(eatStart > pause, "Eat should start after pause");
     assertTrue(eatStart - throwMax >= 5, "Should have at least 5 tick pause window");

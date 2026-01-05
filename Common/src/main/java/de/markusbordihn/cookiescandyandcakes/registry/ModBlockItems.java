@@ -31,7 +31,7 @@ public class ModBlockItems {
   public static Supplier<BlockItem> SHULKER_BOX_COOKIE_JAR;
   public static Supplier<BlockItem> SKELETON_HEAD_COOKIE_JAR;
   public static Supplier<BlockItem> TNT_COOKIE_JAR;
-  
+
   // Food Block Items
   public static Supplier<BlockItem> GINGERBREAD_BLOCK;
 

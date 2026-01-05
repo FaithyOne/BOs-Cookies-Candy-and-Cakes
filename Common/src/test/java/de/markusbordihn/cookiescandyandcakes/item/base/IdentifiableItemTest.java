@@ -44,10 +44,9 @@ class IdentifiableItemTest {
   void testUnidentifiedNameIsObfuscated() {
     Component name = unidentifiedItem.getUnidentifiedName();
     assertNotNull(name, "Name should not be null");
-    
+
     String nameString = name.getString();
-    assertTrue(nameString.contains("unidentified"), 
-        "Unidentified name should contain base key");
+    assertTrue(nameString.contains("unidentified"), "Unidentified name should contain base key");
   }
 
   @Test
@@ -55,10 +54,9 @@ class IdentifiableItemTest {
   void testIdentifiedNameUsesNormalKey() {
     Component name = identifiedItem.getUnidentifiedName();
     assertNotNull(name, "Name should not be null");
-    
+
     String nameString = name.getString();
-    assertTrue(nameString.contains("test.item"), 
-        "Identified name should use description id");
+    assertTrue(nameString.contains("test.item"), "Identified name should use description id");
   }
 
   @Test
@@ -66,9 +64,10 @@ class IdentifiableItemTest {
   void testUnidentifiedTooltipIsObfuscated() {
     Component tooltip = unidentifiedItem.getIdentifiedTooltip();
     assertNotNull(tooltip, "Tooltip should not be null");
-    
+
     String tooltipString = tooltip.getString();
-    assertTrue(tooltipString.contains("unidentified") && tooltipString.contains("desc"),
+    assertTrue(
+        tooltipString.contains("unidentified") && tooltipString.contains("desc"),
         "Unidentified tooltip should use unidentified desc key");
   }
 
@@ -77,9 +76,10 @@ class IdentifiableItemTest {
   void testIdentifiedTooltipShowsDescription() {
     Component tooltip = identifiedItem.getIdentifiedTooltip();
     assertNotNull(tooltip, "Tooltip should not be null");
-    
+
     String tooltipString = tooltip.getString();
-    assertTrue(tooltipString.contains("test.item") && tooltipString.contains("desc"),
+    assertTrue(
+        tooltipString.contains("test.item") && tooltipString.contains("desc"),
         "Identified tooltip should use normal desc key");
   }
 
@@ -89,7 +89,7 @@ class IdentifiableItemTest {
     String baseKey = unidentifiedItem.getUnidentifiedBaseKey();
     String unidentifiedKey = unidentifiedItem.getUnidentifiedKey();
     String descKey = unidentifiedItem.getUnidentifiedDescKey();
-    
+
     assertEquals(baseKey, unidentifiedKey, "Base key should match unidentified key");
     assertEquals(baseKey + ".desc", descKey, "Desc key should be base + .desc");
   }
@@ -106,14 +106,12 @@ class IdentifiableItemTest {
   @DisplayName("Identification state should be persistent")
   void testIdentificationStatePersistence() {
     TestIdentifiableItem item = new TestIdentifiableItem(false);
-    
-    assertFalse(item.hasIdentified(item.getItemType()), 
-        "Item should start unidentified");
-    
+
+    assertFalse(item.hasIdentified(item.getItemType()), "Item should start unidentified");
+
     item.markAsIdentified(item.getItemType());
-    
-    assertTrue(item.hasIdentified(item.getItemType()), 
-        "Item should be identified after marking");
+
+    assertTrue(item.hasIdentified(item.getItemType()), "Item should be identified after marking");
   }
 
   // Test implementation of IdentifiableItem

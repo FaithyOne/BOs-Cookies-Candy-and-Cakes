@@ -116,7 +116,7 @@ public final class ModCreativeTabs {
               output.accept(ModItems.CIRCLE_CUTTER);
               output.accept(ModItems.HEART_CUTTER);
               output.accept(ModItems.GINGERBREAD_MAN_CUTTER);
-              
+
               // Blocks
               output.accept(ModBlockItems.GINGERBREAD_BLOCK.get());
 

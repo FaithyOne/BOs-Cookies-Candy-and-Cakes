@@ -1,28 +1,28 @@
 {
   "variants": {
     "age=0": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage0"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage0"
     },
     "age=1": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage0"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage0"
     },
     "age=2": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage1"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage1"
     },
     "age=3": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage1"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage1"
     },
     "age=4": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage2"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage2"
     },
     "age=5": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage2"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage2"
     },
     "age=6": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage2"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage2"
     },
     "age=7": {
-      "model": "cookies_candy_and_cakes:block/ginger_crop_stage3"
+      "model": "cookies_candy_and_cakes:block/crop/ginger_crop_stage3"
     }
   }
 }
