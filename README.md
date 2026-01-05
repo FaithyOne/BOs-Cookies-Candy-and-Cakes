@@ -12,8 +12,6 @@
 
 [![SpookyJam](https://img.shields.io/badge/SpookyJam-2025-orange?style=flat)][spookyjam]
 
-[![Support me on Ko-fi](https://img.shields.io/badge/Support_me_on_Ko--fi-!?labelColor=black&style=flat&logo=ko-fi)][ko-fi]
-
 ![Cookies, Candy and Cakes][logo]
 
 ⚠️ **Beta**: Use on copies/backups of your worlds.
@@ -89,7 +87,5 @@ See [AI ASSISTANCE](AI_ASSISTANCE.md) for full details.
 [spookyjam]: https://spooky-jam.com/submissions_list/#2025
 
 [winterjam]: https://winterjam.tophatcat.dev/jams/2025/
-
-[ko-fi]: https://ko-fi.com/markusbordihn
 
 [logo]: Common/src/main/resources/logo.png
